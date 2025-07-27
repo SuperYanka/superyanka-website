@@ -1,10 +1,7 @@
-Неоновый сайт-портфолио с плеером и проектами | В планах: переводы на англ. и укр.
-
-Neon portfolio site with music & projects | EN/UA translations coming soon
-
---- 
-
 # 🌐 SuperYanka Website
+
+Неоновый сайт-портфолио с плеером и проектами | В планах: переводы на англ. и укр.  
+Neon portfolio site with music & projects | EN/UA translations coming soon
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/29386dd1-1f83-4e45-be06-6b40ae9fe1f0/deploy-status)](https://app.netlify.com/sites/superyanka-website/deploys)
 [![Live Site](https://img.shields.io/website?url=https%3A%2F%2Fsuperyanka-website.netlify.app&style=flat&logo=netlify)](https://superyanka-website.netlify.app)
@@ -13,8 +10,12 @@ Neon portfolio site with music & projects | EN/UA translations coming soon
 ![Built with ❤️](https://img.shields.io/badge/Built%20with-%E2%9D%A4-red)
 
 ---
-Добро пожаловать на мой персональный сайт-портфолио [superyanka-website.netlify.app](https://superyanka-website.netlify.app) — интерактивное пространство, в котором я собрала всю свою цифровую жизнь 💫
 
+
+Добро пожаловать на мой персональный сайт-портфолио  
+👉 [superyanka-website.netlify.app](https://superyanka-website.netlify.app)
+
+Интерактивное пространство, в котором я собрала всю свою цифровую жизнь 💫
 
 
 ## 🔮 Что внутри
@@ -35,8 +36,6 @@ Neon portfolio site with music & projects | EN/UA translations coming soon
 - Lucide Icons, particles.js
 - WaveSurfer.js (аудио-плеер)
 - Netlify Forms (форма обратной связи)
-- Spline (3D-модель)
-- SPA-архитектура с поддержкой фона и аудио на всех страницах
 
 ## 🚀 Размещение
 
