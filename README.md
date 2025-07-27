@@ -10,7 +10,7 @@ Neon portfolio site with music & projects | EN/UA translations coming soon
 ![Built with ❤️](https://img.shields.io/badge/Built%20with-%E2%9D%A4-red)
 ![i18n](https://img.shields.io/badge/Localization-in%20progress-blueviolet?logo=translate)
 ![Made in Ukraine](https://img.shields.io/badge/Made%20in-Ukraine-005BBB?logo=flag&labelColor=FFD500)
-![visitors](https://shields-io-visitor-counter.onrender.com/badge?page=superyanka-website&label=visitors&labelColor=212121&color=00ffe1)
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=SuperYanka.superyanka-website)
 
 ---
 
