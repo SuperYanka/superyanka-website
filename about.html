@@ -114,6 +114,23 @@
     [x-cloak] {
       display: none;
     }
+
+
+    @keyframes flash {
+  0%   { opacity: 0; }
+  50%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+.animate-shake {
+  animation: shake 0.4s ease;
+}
+
   </style>
 
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -177,12 +194,52 @@
 
 
 
-  <main class="pt-28 sm:pt-32 lg:pt-32 pb-16 relative z-10">
+  <main x-data="{ vacationUnlocked: false, showConfetti: false, wrongAnswer: false}" class="pt-28 sm:pt-32 lg:pt-32 pb-16 relative z-10">
     <section class="text-center mb-12">
       <h2 class="text-4xl font-extrabold text-white mb-4 animate-fadeIn">Обо мне</h2>
       <p class="text-lg max-w-2xl mx-auto animate-fadeIn delay-200">«Моя хронология жизни. Фотоальбом»</p>
     </section>
 
+<!-- 🔐 Тест-доступ к отпускным фото -->
+<div
+  x-show="!vacationUnlocked"
+  x-transition:enter="transition ease-out duration-500"
+  x-transition:enter-start="opacity-0 scale-90"
+  x-transition:enter-end="opacity-100 scale-100"
+  x-transition:leave="transition ease-in duration-300"
+  x-transition:leave-start="opacity-100 scale-100"
+  x-transition:leave-end="opacity-0 scale-90"
+  class="text-center mt-12 mb-12 px-4 py-6 sm:px-6 sm:py-8 bg-white/5 backdrop-blur-md rounded-xl border border-white/10 shadow-md max-w-xl mx-auto animate-fadeIn"
+>
+  <p class="text-neon mb-2 text-base sm:text-lg">🔐 Чтобы просмотреть отпускные фото, ответь на вопрос:</p>
+  <p class="text-white mb-4 text-sm sm:text-base">В какой город я впервые полетела к морю?</p>
+
+  <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+    <input
+      x-ref="answer"
+      type="text"
+      placeholder="Введите ответ..."
+      class="w-full sm:w-auto px-3 py-2 rounded bg-deepblue text-white border border-neon focus:outline-none"
+    />
+    <button
+    @click="
+      if ($refs.answer.value.trim().toLowerCase() === 'алания') {
+        vacationUnlocked = true;
+        showConfetti = true;
+        setTimeout(() => showConfetti = false, 2000);
+        confetti();
+      } else {
+        wrongAnswer = true;
+        setTimeout(() => wrongAnswer = false, 500);
+      }
+    "
+    :class="wrongAnswer ? 'bg-red-600 animate-shake text-white' : 'bg-neon text-deepblue'"
+    class="px-4 py-2 rounded font-bold shadow hover:scale-105 transition w-full sm:w-auto"
+  >
+    Проверить
+  </button>
+  </div>
+</div>
 
 
     <!-- Timeline -->
@@ -365,7 +422,8 @@
 
 
             <!-- ☀️ Август 2009 -->
-            <div x-data="{ open2009: false }" class="mt-10 text-center">
+
+            <div x-data="{ open2009: false }" x-show="vacationUnlocked" class="mt-10 text-center">
               <button @click="open2009 = !open2009" class="text-neon font-semibold hover:underline transition">
                 ☀️ Август 2009: Поездка в Турцию. Аланья
               </button>
@@ -400,7 +458,7 @@
 
             
             <!-- ☀️ Зима 2010 -->
-            <div x-data="{ open2010: false }" class="mt-10 text-center">
+            <div x-data="{ open2010: false }" x-show="vacationUnlocked" class="mt-10 text-center">
               <button @click="open2010 = !open2010" class="text-neon font-semibold hover:underline transition">
                 ☀️ Брянск 2010
               </button>
@@ -673,7 +731,7 @@
 
 
             <!-- ☀️ Ноябрь 2010 -->
-            <div x-data="{ open2010: false }" class="mt-10 text-center">
+            <div x-data="{ open2010: false }" x-show="vacationUnlocked" class="mt-10 text-center">
               <button @click="open2010 = !open2010" class="text-neon font-semibold hover:underline transition">
                 ☀️ Ноябрь 2010: Поездка в Египет. Хургада
               </button>
@@ -708,7 +766,7 @@
 
 
             <!-- ☀️ Болгария 2011 -->
-            <div x-data="{ open2011: false }" class="mt-10 text-center">
+            <div x-data="{ open2011: false }" x-show="vacationUnlocked" class="mt-10 text-center">
               <button @click="open2011 = !open2011" class="text-neon font-semibold hover:underline transition">
                 ☀️ 2011: Поездка в Болгарию. 
               </button>
@@ -739,7 +797,7 @@
 
 
             <!-- ☀️ Belarus Shatsky 2012 -->
-            <div x-data="{ open2012: false }" class="mt-10 text-center">
+            <div x-data="{ open2012: false }" x-show="vacationUnlocked" class="mt-10 text-center">
               <button @click="open2012 = !open2012" class="text-neon font-semibold hover:underline transition">
                 ☀️ 2012: Поездка в Беларусь. Шацкие 
               </button>
@@ -768,7 +826,7 @@
 
 
             <!-- ☀️ Ноябрь 2012 -->
-            <div x-data="{ open2012: false }" class="mt-10 text-center">
+            <div x-data="{ open2012: false }" x-show="vacationUnlocked" class="mt-10 text-center">
               <button @click="open2012 = !open2012" class="text-neon font-semibold hover:underline transition">
                 ☀️ Ноябрь 2012: Поездка в Египет
               </button>
@@ -969,7 +1027,7 @@
             </div>
 
             <!-- ☀️ Май 2017 -->
-            <div x-data="{ open2017: false }" class="mt-10 text-center">
+            <div x-data="{ open2017: false }" x-show="vacationUnlocked" class="mt-10 text-center">
               <button @click="open2017 = !open2017" class="text-neon font-semibold hover:underline transition">
                 ☀️ Май 2017: Поездка в Москву
               </button>
@@ -1016,7 +1074,7 @@
 
 
             <!-- ☀️ Лето 2017 -->
-            <div x-data="{ open2017: false }" class="mt-10 text-center">
+            <div x-data="{ open2017: false }" x-show="vacationUnlocked" class="mt-10 text-center">
               <button @click="open2017 = !open2017" class="text-neon font-semibold hover:underline transition">
                 ☀️ Лето 2017: Поездка в Крым
               </button>
@@ -1043,7 +1101,7 @@
             </div>
 
             <!-- ☀️ Лето 2018 -->
-            <div x-data="{ open2018: false }" class="mt-10 text-center">
+            <div x-data="{ open2018: false }"x-show="vacationUnlocked" class="mt-10 text-center">
               <button @click="open2018 = !open2018" class="text-neon font-semibold hover:underline transition">
                 ☀️ Лето 2018: Поездка в Крым
               </button>
@@ -1292,7 +1350,7 @@
 
 
             <!-- ☀️ Лето 2019 — Египет -->
-            <div x-data="{ openEgypt: false }" class="mt-10 text-center">
+            <div x-data="{ openEgypt: false }" x-show="vacationUnlocked" class="mt-10 text-center">
               <button @click="openEgypt = !openEgypt" class="text-neon font-semibold hover:underline transition">
                 ☀️ Лето 2019: Поездка в Египет
               </button>
@@ -1318,7 +1376,7 @@
             </div>
 
             <!-- ☀️ Лето 2021 — Турция -->
-            <div x-data="{ openTurkey: false }" class="mt-10 text-center">
+            <div x-data="{ openTurkey: false }" x-show="vacationUnlocked" class="mt-10 text-center">
               <button @click="openTurkey = !openTurkey" class="text-neon font-semibold hover:underline transition">
                 ☀️ Лето 2021: Поездка в Турцию
               </button>
@@ -1897,7 +1955,7 @@
 
 
             <!-- ☀️  2023 Италия -->
-            <div x-data="{ openItaly: false }" class="mt-10 text-center">
+            <div x-data="{ openItaly: false }" x-show="vacationUnlocked" class="mt-10 text-center">
               <button @click="openItaly = !openItaly" class="text-neon font-semibold hover:underline transition">
                 ☀️ Лето 2023 (14–24 июля): Поездка в Италию
               </button>
@@ -2243,6 +2301,7 @@
     });
   </script>
 
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 </body>
 
