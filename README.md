@@ -8,6 +8,9 @@ Neon portfolio site with music & projects | EN/UA translations coming soon
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![Built with ❤️](https://img.shields.io/badge/Built%20with-%E2%9D%A4-red)
+![i18n](https://img.shields.io/badge/Localization-in%20progress-blueviolet?logo=translate)
+![Made in Ukraine](https://img.shields.io/badge/Made%20in-Ukraine-005BBB?logo=flag&labelColor=FFD500)
+![visitors](https://shields-io-visitor-counter.onrender.com/badge?page=superyanka-website&label=visitors&labelColor=212121&color=00ffe1)
 
 ---
 
