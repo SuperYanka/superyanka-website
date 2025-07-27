@@ -13,7 +13,11 @@ Neon portfolio site with music & projects | EN/UA translations coming soon
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=SuperYanka.superyanka-website)
 
 ---
-
+<p align="center">
+  <img src="assets/avatars/logo.png" alt="SuperYanka Logo" width="100"/>
+  <br>
+  <strong style="color:#00ffe1">SuperYanka: Portfolio & Magic</strong>
+</p>
 
 Добро пожаловать на мой персональный сайт-портфолио  
 👉 [superyanka-website.netlify.app](https://superyanka-website.netlify.app)
