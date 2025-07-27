@@ -307,6 +307,7 @@
           <option value="assets/music/Vanitas no Carte ED 0 (zero) by LMYK.mp3">Vanitas no Carte ED 0 (zero) by LMYK
           </option>
           <option value="assets/music/Vermilion.mp3">Vermilion</option>
+          <option value="assets/music/Wolf In Sheeps Clothing [REBORN].mp3">Wolf In Sheeps Clothing [REBORN]</option>
         </select>
       </div>
 
@@ -811,49 +812,61 @@ bg-opacity-50 bg-deepblue sm:bg-transparent z-40 px-4 sm:px-0 py-2 sm:py-0 text-
 
 
     const avatarList = [
-      "assets/avatars/ava1.jpg",
-      "assets/avatars/ava2.png",
-      "assets/avatars/ava3.jpg",
-      "assets/avatars/ava4.jpg",
-      "assets/avatars/ava5.jpg",
-      "assets/avatars/ava6.jpg",
-      "assets/avatars/ava7.jpg",
-    ];
-    let lastAvatar = null;
+  "assets/avatars/ava1.jpg",
+  "assets/avatars/ava2.png",
+  "assets/avatars/ava3.jpg",
+  "assets/avatars/ava4.jpg",
+  "assets/avatars/ava5.jpg",
+  "assets/avatars/ava6.jpg",
+  "assets/avatars/ava7.jpg",
+];
 
+let avatarPool = [...avatarList];
+let lastAvatar = null;
 
-    function getRandomAvatar() {
-      let src;
-      do {
-        src = avatarList[Math.floor(Math.random() * avatarList.length)];
-      } while (src === lastAvatar && avatarList.length > 1);
-      lastAvatar = src;
-      return src;
+function shuffle(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
+
+function getNextAvatar() {
+  if (avatarPool.length === 0) {
+    avatarPool = shuffle([...avatarList]);
+    // Убираем повтор предыдущего
+    if (avatarPool[0] === lastAvatar && avatarPool.length > 1) {
+      [avatarPool[0], avatarPool[1]] = [avatarPool[1], avatarPool[0]];
     }
-    function setRandomAvatar() {
-      const img = document.getElementById("avatarImg");
+  }
 
-      img.classList.remove("fade-in-avatar");
+  const next = avatarPool.shift();
+  lastAvatar = next;
+  return next;
+}
 
-      setTimeout(() => {
-        img.src = getRandomAvatar();
-        img.classList.add("fade-in-avatar");
-      }, 50);
-    }
+function setRandomAvatar() {
+  const img = document.getElementById("avatarImg");
 
-    document.addEventListener("DOMContentLoaded", () => {
-      setRandomAvatar();
-      showNewFact(); // функция с typing
-    });
+  img.classList.remove("fade-in-avatar");
 
-    // ✨ Менять при клике
-    document.addEventListener("DOMContentLoaded", () => {
-      const img = document.getElementById("avatarImg");
-      img.style.cursor = "pointer";
-      img.title = "Кликни, чтобы сменить образ!";
-      img.addEventListener("click", setRandomAvatar);
-    });
+  setTimeout(() => {
+    img.src = getNextAvatar();
+    img.classList.add("fade-in-avatar");
+  }, 50);
+}
 
+// При загрузке
+document.addEventListener("DOMContentLoaded", () => {
+  avatarPool = shuffle([...avatarList]);
+  setRandomAvatar();
+  showNewFact(); // typing
+});
+
+// При клике
+document.addEventListener("DOMContentLoaded", () => {
+  const img = document.getElementById("avatarImg");
+  img.style.cursor = "pointer";
+  img.title = "Кликни, чтобы сменить образ!";
+  img.addEventListener("click", setRandomAvatar);
+});
 
 
   </script>
@@ -910,27 +923,39 @@ bg-opacity-50 bg-deepblue sm:bg-transparent z-40 px-4 sm:px-0 py-2 sm:py-0 text-
       });
 
       function showCactusEasterEgg() {
-        const direction = Math.random() < 0.5 ? "left" : "right";
-        const egg = document.createElement("div");
+  const isMobile = window.innerWidth <= 640; // sm breakpoint
+  const direction = Math.random() < 0.5 ? "left" : "right";
+  const egg = document.createElement("div");
 
-        egg.textContent = "🌵 Вы нашли скрытый кактус Стас!";
-        egg.className = `
-    absolute top-1/2 -translate-y-1/2 
-    ${direction === "left"
-            ? "right-[120%] translate-x-[-10px]"
-            : "left-[120%] translate-x-[10px]"} 
+  egg.textContent = "🌵 Вы нашли скрытый кактус Стас!";
+
+  // Классы базовые
+  egg.className = `
+    absolute top-1/2 -translate-y-1/2
     bg-neon text-deepblue text-sm sm:text-base font-bold px-4 py-2 
     rounded-lg shadow-neon z-50 animate-cactus-pop pointer-events-none
     whitespace-nowrap
   `;
 
-        avatar.parentElement.appendChild(egg);
+  // Добавляем позицию в зависимости от устройства
+  if (isMobile) {
+    egg.classList.add("left-1/2", "-translate-x-1/2");
+  } else {
+    if (direction === "left") {
+      egg.classList.add("right-[120%]", "translate-x-[-10px]");
+    } else {
+      egg.classList.add("left-[120%]", "translate-x-[10px]");
+    }
+  }
 
-        setTimeout(() => {
-          egg.remove();
-        }, 3000);
+  avatar.parentElement.appendChild(egg);
+
+  setTimeout(() => {
+    egg.remove();
+  }, 3000);
       }
     });
+
 
     document.addEventListener("DOMContentLoaded", () => {
       const toggle = document.getElementById("menuToggle");
