@@ -11,20 +11,10 @@ Neon portfolio site with music & projects | EN/UA translations coming soon
 ![i18n](https://img.shields.io/badge/Localization-in%20progress-blueviolet?logo=translate)
 ![Made in Ukraine](https://img.shields.io/badge/Made%20in-Ukraine-005BBB?logo=flag&labelColor=FFD500)
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=SuperYanka.superyanka-website)
-
----
-<p align="center">
-  <img src="assets/avatars/logo.png" alt="SuperYanka Logo" width="100"/>
-  <br>
-  <strong style="color:#00ffe1">SuperYanka: Portfolio & Magic</strong>
-</p>
-
-<p align="center">
-  <img src="assets/avatars/logo.png" width="100" alt="SuperYanka Logo"/>
-  <br>
   <img src="https://img.shields.io/badge/Made%20by-SuperYanka-%2300ffe1?style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAZklEQVR4AWMYvXLlypU/w8DAwKigDhRmKAwMDCwYd1KqNHe/du1azWBgYICoy9evX8O7du4fo6GiMwsLCgkZGRogIuLi4j9+/c/hZGRkQgZGRmgAoODAwMD/z9xMTAwMKD7//+fQAygbAAXRC9tZt9k7gAAAABJRU5ErkJggg==" />
 </p>
 
+---
 
 
 Добро пожаловать на мой персональный сайт-портфолио  
