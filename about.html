@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles/common.css" />
 
   <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com" ></script>
   <script>
     tailwind.config = {
       theme: {
@@ -147,7 +147,8 @@
   <!-- Particle background -->
   <div id="particles-js"></div>
   <script>
-    particlesJS('particles-js', {
+    if (window.innerWidth > 768) {
+      particlesJS('particles-js', {
       particles: {
         number: { value: 80 },
         color: { value: '#00ffe1' },
@@ -159,7 +160,10 @@
       interactivity: {
         events: { onhover: { enable: true, mode: 'repulse' } }
       }
+      
     });
+}
+
   </script>
 
   <!-- Navigation -->
@@ -223,7 +227,7 @@
     />
     <button
     @click="
-      if ($refs.answer.value.trim().toLowerCase() === 'алания') {
+      if ($refs.answer.value.trim().toLowerCase() === 'аланья') {
         vacationUnlocked = true;
         showConfetti = true;
         setTimeout(() => showConfetti = false, 2000);
@@ -299,128 +303,71 @@
               <div class="overflow-hidden">
                 <div class="carousel-track flex gap-4 w-max transition-transform duration-1000 ease-in-out">
 
-                  <!-- ✅ ОРИГИНАЛЫ -->
-                  <img src="assets/education/kid_photos/kid_1.jpg"
+                  <img oading="lazy" src="assets/education/kid_photos/kid_1.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/kid_photos/kid_2.jpg"
+                  <img oading="lazy" src="assets/education/kid_photos/kid_2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/kid_photos/kid_3.jpg"
+                  <img oading="lazy" src="assets/education/kid_photos/kid_3.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/kid_photos/kid_4.jpg"
+                  <img oading="lazy" src="assets/education/kid_photos/kid_4.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/kid_photos/kid_5.jpg"
+                  <img oading="lazy" src="assets/education/kid_photos/kid_5.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/kid_photos/kid_6.jpg"
+                  <img oading="lazy" src="assets/education/kid_photos/kid_6.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/kid_photos/kid_7.jpg"
+                  <img oading="lazy" src="assets/education/kid_photos/kid_7.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/kid_photos/kid_8.jpg"
+                  <img oading="lazy" src="assets/education/kid_photos/kid_8.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/kid_photos/kid_9.jpg"
+                  <img oading="lazy" src="assets/education/kid_photos/kid_9.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/kid_photos/kid_10.jpg"
+                  <img oading="lazy" src="assets/education/kid_photos/kid_10.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/kid_photos/kid_11.jpg"
+                  <img oading="lazy" src="assets/education/kid_photos/kid_11.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/kid_photos/kid_12.jpg"
+                  <img oading="lazy" src="assets/education/kid_photos/kid_12.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/kid_photos/kid_13.jpg"
+                  <img oading="lazy" src="assets/education/kid_photos/kid_13.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/kid_photos/kid_14.jpg"
+                  <img oading="lazy" src="assets/education/kid_photos/kid_14.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/kid_photos/kid_15.jpg"
+                  <img oading="lazy" src="assets/education/kid_photos/kid_15.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/kid_photos/kid_16.jpg"
+                  <img oading="lazy" src="assets/education/kid_photos/kid_16.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/kid_photos/kid_17.jpg"
+                  <img oading="lazy" src="assets/education/kid_photos/kid_17.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/kid_photos/kid_18.jpg"
+                  <img oading="lazy" src="assets/education/kid_photos/kid_18.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/kid_photos/kid_19.jpg"
+                  <img oading="lazy" src="assets/education/kid_photos/kid_19.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
 
-                  <!-- ♻️ КЛОНЫ -->
-                  <img src="assets/education/kid_photos/kid_1.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/kid_photos/kid_2.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/kid_photos/kid_3.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/kid_photos/kid_4.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/kid_photos/kid_5.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/kid_photos/kid_6.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/kid_photos/kid_7.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/kid_photos/kid_8.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/kid_photos/kid_9.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/kid_photos/kid_10.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/kid_photos/kid_11.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/kid_photos/kid_12.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/kid_photos/kid_13.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/kid_photos/kid_14.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/kid_photos/kid_15.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/kid_photos/kid_16.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/kid_photos/kid_17.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/kid_photos/kid_18.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/kid_photos/kid_19.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
+                  </div>
                 </div>
               </div>
-            </div>
-
-
+  
+  
+  
+                    
             <!-- ☀️ Август 2009 -->
 
             <div x-data="{ open2009: false }" x-show="vacationUnlocked" class="mt-10 text-center">
@@ -554,173 +501,78 @@
                 <div class="carousel-track flex gap-4 w-max transition-transform duration-1000 ease-in-out">
 
                   <!-- ✅ ОРИГИНАЛЫ -->
-                  <img src="assets/education/school/1-4class/1class_1.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/1class_1.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/school/1-4class/1class_2.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/1class_2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/school/1-4class/1class_3.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/1class_3.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/school/1-4class/1class_4.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/1class_4.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/school/1-4class/1class_5.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/1class_5.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/school/1-4class/1class_6.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/1class_6.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/school/1-4class/1class_7.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/1class_7.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/school/1-4class/1class_8.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/1class_8.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/school/1-4class/1class_9.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/1class_10.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/school/1-4class/1class_10.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/school/1-4class/2class_1.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/2class_1.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
-                  <img src="assets/education/school/1-4class/2class_2.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/2class_2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
-                  <img src="assets/education/school/1-4class/2class_3.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/2class_3.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
-                  <img src="assets/education/school/1-4class/2class_4.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/2class_4.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
-                  <img src="assets/education/school/1-4class/2class_5.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/2class_5.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
-                  <img src="assets/education/school/1-4class/2class_6.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/2class_6.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
-                  <img src="assets/education/school/1-4class/3class_1.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/3class_1.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
-                  <img src="assets/education/school/1-4class/3class_2.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/3class_2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
-                  <img src="assets/education/school/1-4class/3class_3.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/3class_3.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
-                  <img src="assets/education/school/1-4class/3class_4.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="3">
-                  <img src="assets/education/school/1-4class/4class_1.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/4class_1.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="4">
-                  <img src="assets/education/school/1-4class/4class_2.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/4class_2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="5">
-                  <img src="assets/education/school/1-4class/4class_3.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/4class_3.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="6">
-                  <img src="assets/education/school/1-4class/4class_4.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/4class_4.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="6">
-                  <img src="assets/education/school/1-4class/4class_5.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/4class_5.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="6">
-                  <img src="assets/education/school/1-4class/4class_6.jpg"
+                  <img oading="lazy" src="assets/education/school/1-4class/4class_6.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="6">
-                  <img src="assets/education/school/1-4class/4class_7.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="6">
-
-
-                  <!-- ♻️ КЛОНЫ -->
-
-                  <img src="assets/education/school/1-4class/1class_1.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/school/1-4class/1class_2.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/school/1-4class/1class_3.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/school/1-4class/1class_4.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/school/1-4class/1class_5.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/school/1-4class/1class_6.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/school/1-4class/1class_7.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/school/1-4class/1class_8.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/school/1-4class/1class_9.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/school/1-4class/1class_10.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/school/1-4class/2class_1.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="3">
-                  <img src="assets/education/school/1-4class/2class_2.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="3">
-                  <img src="assets/education/school/1-4class/2class_3.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="3">
-                  <img src="assets/education/school/1-4class/2class_4.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="3">
-                  <img src="assets/education/school/1-4class/2class_5.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="3">
-                  <img src="assets/education/school/1-4class/2class_6.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="3">
-                  <img src="assets/education/school/1-4class/3class_1.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="3">
-                  <img src="assets/education/school/1-4class/3class_2.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="3">
-                  <img src="assets/education/school/1-4class/3class_3.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="3">
-                  <img src="assets/education/school/1-4class/3class_4.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="3">
-                  <img src="assets/education/school/1-4class/4class_1.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="4">
-                  <img src="assets/education/school/1-4class/4class_2.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="5">
-                  <img src="assets/education/school/1-4class/4class_3.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="6">
-                  <img src="assets/education/school/1-4class/4class_4.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="6">
-                  <img src="assets/education/school/1-4class/4class_5.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="6">
-                  <img src="assets/education/school/1-4class/4class_6.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="6">
-                  <img src="assets/education/school/1-4class/4class_7.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="6">
-
 
                 </div>
               </div>
@@ -923,105 +775,61 @@
                 <div class="carousel-track flex gap-4 w-max transition-transform duration-1000 ease-in-out">
 
                   <!-- ✅ ОРИГИНАЛЫ -->
-                  <img src="assets/education/school/9class/5class.jpg"
+                  <img oading="lazy" src="assets/education/school/9class/5class.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/school/9class/5class_2.jpg"
+                  <img oading="lazy" src="assets/education/school/9class/5class_2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/school/9class/6class_1.jpg"
+                  <img oading="lazy" src="assets/education/school/9class/6class_1.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/school/9class/6class_2.jpg"
+                  <img oading="lazy" src="assets/education/school/9class/6class_2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/school/9class/8class_1.jpg"
+                  <img oading="lazy" src="assets/education/school/9class/8class_1.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
-                  <img src="assets/education/school/9class/8class_2.jpg"
+                  <img oading="lazy" src="assets/education/school/9class/8class_2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
-                  <img src="assets/education/school/9class/8class_3.jpg"
+                  <img oading="lazy" src="assets/education/school/9class/8class_3.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
-                  <img src="assets/education/school/9class/8class_4.jpg"
+                  <img oading="lazy" src="assets/education/school/9class/8class_4.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
-                  <img src="assets/education/school/9class/9class_0.jpg"
+
+                  <img oading="lazy" src="assets/education/school/9class/9class_1.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="4">
-                  <img src="assets/education/school/9class/9class_10.jpg"
+                  <img oading="lazy" src="assets/education/school/9class/9class_2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="4">
-                  <img src="assets/education/school/9class/9class_1.jpg"
+                  <img oading="lazy" src="assets/education/school/9class/9class_3.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="5">
-                  <img src="assets/education/school/9class/9class_5.jpg"
+                  <img oading="lazy" src="assets/education/school/9class/9class_4.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="6">
-                  <img src="assets/education/school/9class/9class_3.jpg"
+                  <img oading="lazy" src="assets/education/school/9class/9class_5.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="8">
-                  <img src="assets/education/school/9class/9class_9.jpg"
+                  <img oading="lazy" src="assets/education/school/9class/9class_6.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="8-dup">
-                  <img src="assets/education/school/9class/9class_4.jpg"
+                  <img oading="lazy" src="assets/education/school/9class/9class_7.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="9">
-                  <img src="assets/education/school/9class/9class_6.jpg"
+                  <img oading="lazy" src="assets/education/school/9class/9class_8.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="10">
-                  <img src="assets/education/school/9class/9class_7.jpg"
+                  <img oading="lazy" src="assets/education/school/9class/9class_9.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="11">
-                  <img src="assets/education/school/9class/9class_8.jpg"
+                  <img oading="lazy" src="assets/education/school/9class/9class_10.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="11">
-
-                  <!-- ♻️ КЛОНЫ -->
-                  <img src="assets/education/school/9class/5class.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1-dup">
-                  <img src="assets/education/school/9class/5class_2.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2-dup">
-                  <img src="assets/education/school/9class/6class_1.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2-dup">
-                  <img src="assets/education/school/9class/8class_1.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="3-dup">
-                  <img src="assets/education/school/9class/9class_0.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="4-dup">
-                  <img src="assets/education/school/9class/9class_10.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="4">
-                  <img src="assets/education/school/9class/9class_1.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="5-dup">
-                  <img src="assets/education/school/9class/9class_5.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="6-dup">
-                  <img src="assets/education/school/9class/9class_3.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="8-dup">
-                  <img src="assets/education/school/9class/9class_9.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="8-dup">
-                  <img src="assets/education/school/9class/9class_4.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="9-dup">
-                  <img src="assets/education/school/9class/9class_6.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="10-dup">
-                  <img src="assets/education/school/9class/9class_7.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="11-dup">
-                  <img src="assets/education/school/9class/9class_8.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="11-dup">
-
                 </div>
               </div>
             </div>
@@ -1200,142 +1008,71 @@
                 <div class="carousel-track flex gap-4 w-max transition-transform duration-1000 ease-in-out">
 
                   <!-- ✅ ОРИГИНАЛЫ -->
-                  <img src="assets/education/school/11class/10class_1.jpg"
+                  <img oading="lazy" src="assets/education/school/11class/10class_1.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/school/11class/10class_2.jpg"
+                  <img oading="lazy" src="assets/education/school/11class/10class_2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/school/11class/10class_3.jpg"
+                  <img oading="lazy" src="assets/education/school/11class/10class_3.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/school/11class/10class_4.jpg"
+                  <img oading="lazy" src="assets/education/school/11class/10class_4.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/school/11class/10class_5.jpg"
+                  <img oading="lazy" src="assets/education/school/11class/10class_5.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education//music/music_myphoto.jpg"
+                  <img oading="lazy" src="assets/education//music/music_myphoto.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/school/11class/11class_8.jpg"
+                  <img oading="lazy" src="assets/education/school/11class/11class_8.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="5">
 
-                  <img src="assets/education/school/11class/11class_9.jpg"
+                  <img oading="lazy" src="assets/education/school/11class/11class_9.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="6">
-                  <img src="assets/education/school/11class/11class_10.jpg"
+                  <img oading="lazy" src="assets/education/school/11class/11class_10.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="6">
 
 
-                  <img src="assets/education/school/11class/11class_5.jpg"
+                  <img oading="lazy" src="assets/education/school/11class/11class_5.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="5">
-                  <img src="assets/education/school/11class/11class_1.jpg"
+                  <img oading="lazy" src="assets/education/school/11class/11class_1.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/school/11class/11class_2.jpg"
+                  <img oading="lazy" src="assets/education/school/11class/11class_2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/school/11class/11class_3.jpg"
+                  <img oading="lazy" src="assets/education/school/11class/11class_3.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
-                  <img src="assets/education/school/11class/11class_4.jpg"
+                  <img oading="lazy" src="assets/education/school/11class/11class_4.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="4">
-                  <img src="assets/education/school/11class/11class_6.jpg"
+                  <img oading="lazy" src="assets/education/school/11class/11class_6.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="6">
-                  <img src="assets/education/school/11class/11class_7.jpg"
+                  <img oading="lazy" src="assets/education/school/11class/11class_7.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="6">
-                  <img src="assets/education/school/11class/11class_myphoto.jpg"
+                  <img oading="lazy" src="assets/education/school/11class/11class_myphoto.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="5">
-                  <img src="assets/education/school/11class/11class_11.jpg"
+                  <img oading="lazy" src="assets/education/school/11class/11class_11.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="6">
-                  <img src="assets/education/school/11class/11class_12.jpg"
+                  <img oading="lazy" src="assets/education/school/11class/11class_12.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="6">
-                  <img src="assets/education/school/11class/11class_13.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="6">
-
-                  <img src="assets/education/school/11class/11class_14.jpg"
+                  <img oading="lazy" src="assets/education/school/11class/11class_13.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="6">
 
-                  <!-- ♻️ КЛОНЫ -->
-                  <img src="assets/education/school/11class/10class_1.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/school/11class/10class_2.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/school/11class/10class_3.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/school/11class/10class_4.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/school/11class/10class_5.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education//music/music_myphoto.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-
-                  <img src="assets/education/school/11class/11class_8.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="5">
-
-                  <img src="assets/education/school/11class/11class_9.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="6">
-                  <img src="assets/education/school/11class/11class_10.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="6">
-
-                  <img src="assets/education/school/11class/11class_5.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="5">
-                  <img src="assets/education/school/11class/11class_1.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/school/11class/11class_2.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/school/11class/11class_3.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="3">
-                  <img src="assets/education/school/11class/11class_4.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="4">
-                  <img src="assets/education/school/11class/11class_6.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="6">
-                  <img src="assets/education/school/11class/11class_7.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="6">
-                  <img src="assets/education/school/11class/11class_myphoto.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="5">
-                  <img src="assets/education/school/11class/11class_11.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="6">
-
-
-                  <img src="assets/education/school/11class/11class_12.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="6">
-                  <img src="assets/education/school/11class/11class_13.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="6">
-
-                  <img src="assets/education/school/11class/11class_14.jpg"
+                  <img oading="lazy" src="assets/education/school/11class/11class_14.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="6">
 
@@ -1479,84 +1216,43 @@
                 <div class="carousel-track flex gap-4 w-max transition-transform duration-1000 ease-in-out">
 
                   <!-- ✅ ОРИГИНАЛЫ -->
-                  <img src="assets/education/bachelor/photos/kpi_1.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_1.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_2.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_3.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_3.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
-                  <img src="assets/education/bachelor/photos/kpi_4.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_4.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="4">
-                  <img src="assets/education/bachelor/photos/kpi_5.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_5.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="5">
-                  <img src="assets/education/bachelor/photos/kpi_6.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_6.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="6">
-                  <img src="assets/education/bachelor/photos/kpi_7.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_7.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="7">
-                  <img src="assets/education/bachelor/photos/kpi_8.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_8.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="8">
-                  <img src="assets/education/bachelor/photos/kpi_10.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_10.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="10">
-                  <img src="assets/education/bachelor/photos/kpi_11.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_11.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="11">
-                  <img src="assets/education/bachelor/photos/kpi_12.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_12.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="12">
-                  <img src="assets/education/bachelor/photos/kpi_13.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_13.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="13">
-                  <img src="assets/education/bachelor/photos/kpi_14.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="14">
-
-                  <!-- ♻️ КЛОНЫ -->
-                  <img src="assets/education/bachelor/photos/kpi_1.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_2.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_3.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="3">
-                  <img src="assets/education/bachelor/photos/kpi_4.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="4">
-                  <img src="assets/education/bachelor/photos/kpi_5.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="5">
-                  <img src="assets/education/bachelor/photos/kpi_6.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="6">
-                  <img src="assets/education/bachelor/photos/kpi_7.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="7">
-                  <img src="assets/education/bachelor/photos/kpi_8.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="8">
-                  <img src="assets/education/bachelor/photos/kpi_10.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="10">
-                  <img src="assets/education/bachelor/photos/kpi_11.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="11">
-                  <img src="assets/education/bachelor/photos/kpi_12.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="12">
-                  <img src="assets/education/bachelor/photos/kpi_13.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="13">
-                  <img src="assets/education/bachelor/photos/kpi_14.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_14.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="14">
 
@@ -1606,69 +1302,36 @@
                 <div class="carousel-track flex gap-4 w-max transition-transform duration-1000 ease-in-out">
 
                   <!-- ✅ ОРИГИНАЛЫ -->
-                  <img src="assets/education/bachelor/photos/vin_1.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/vin_1.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/bachelor/photos/vin_2.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/vin_2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/bachelor/photos/kul_1.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kul_1.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
-                  <img src="assets/education/bachelor/photos/kul_2.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kul_2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="4">
-                  <img src="assets/education/bachelor/photos/kul_3.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kul_3.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="5">
-                  <img src="assets/education/bachelor/photos/kul_4.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kul_4.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="6">
-                  <img src="assets/education/bachelor/photos/kul_5.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kul_5.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="7">
-                  <img src="assets/education/bachelor/photos/kul_6.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kul_6.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="8">
-                  <img src="assets/education/bachelor/photos/kul_7.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kul_7.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="9">
-                  <img src="assets/education/bachelor/photos/kul_8.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kul_8.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="10">
-
-                  <!-- ♻️ КЛОНЫ -->
-                  <img src="assets/education/bachelor/photos/vin_1.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/bachelor/photos/vin_2.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/bachelor/photos/kul_1.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="3">
-                  <img src="assets/education/bachelor/photos/kul_2.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="4">
-                  <img src="assets/education/bachelor/photos/kul_3.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="5">
-                  <img src="assets/education/bachelor/photos/kul_4.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="6">
-                  <img src="assets/education/bachelor/photos/kul_5.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="7">
-                  <img src="assets/education/bachelor/photos/kul_6.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="8">
-                  <img src="assets/education/bachelor/photos/kul_7.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="9">
-                  <img src="assets/education/bachelor/photos/kul_8.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="10">
-
                 </div>
               </div>
             </div>
@@ -1714,117 +1377,60 @@
                 <div class="carousel-track flex gap-4 w-max transition-transform duration-1000 ease-in-out">
 
                   <!-- ✅ ОРИГИНАЛЫ -->
-                  <img src="assets/education/bachelor/photos/kpi_15.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_15.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_16.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_16.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_17.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_17.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_18.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_18.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_19.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_19.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_20.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_20.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_21.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_21.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_22.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_22.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_23.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_23.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_24.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_24.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_25.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_25.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_26.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_26.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_27.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_27.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_28.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_28.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_29.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_29.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_30.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_30.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_31.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_31.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_32.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_32.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-
-                  <!-- ♻️ КЛОНЫ -->
-                  <img src="assets/education/bachelor/photos/kpi_15.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_16.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_17.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_18.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_19.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_20.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_21.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_22.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_23.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_24.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_25.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_26.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_27.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_28.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_29.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_30.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_31.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_32.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-
                 </div>
               </div>
             </div>
@@ -1869,82 +1475,45 @@
                 <div class="carousel-track flex gap-4 w-max transition-transform duration-1000 ease-in-out">
 
                   <!-- ✅ ОРИГИНАЛЫ -->
-                  <img src="assets/education/bachelor/photos/kpi_33.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_33.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_34.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_34.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_35.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_35.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_36.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_36.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_37.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_37.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_38.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_38.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_39.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_39.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_40.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_40.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_41.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_41.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_42.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_42.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_43.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_43.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_45.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_44.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-
-                  <!-- ♻️ КЛОНЫ -->
-                  <img src="assets/education/bachelor/photos/kpi_33.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_34.jpg"
+                  <img oading="lazy" src="assets/education/bachelor/photos/kpi_45.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_35.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_36.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_37.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_38.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_39.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_40.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_41.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_42.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/bachelor/photos/kpi_43.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-                  <img src="assets/education/bachelor/photos/kpi_45.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="2">
-
-
                 </div>
               </div>
             </div>
@@ -2057,24 +1626,24 @@
                 <div class="carousel-track flex gap-4 w-max transition-transform duration-1000 ease-in-out">
 
                   <!-- ✅ ОРИГИНАЛЫ -->
-                  <img src="assets/pictures/p1.jpg"
+                  <img oading="lazy" src="assets/pictures/p1.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="...to be continued">
-                  <img src="assets/pictures/p3.jpg"
+                  <img oading="lazy" src="assets/pictures/p3.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="...to be continued">
-                  <img src="assets/pictures/p2.jpg"
+                  <img oading="lazy" src="assets/pictures/p2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="...to be continued">
 
                   <!-- ♻️ КЛОНЫ -->
-                  <img src="assets/pictures/p1.jpg"
+                  <img oading="lazy" src="assets/pictures/p1.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="...to be continued">
-                  <img src="assets/pictures/p3.jpg"
+                  <img oading="lazy" src="assets/pictures/p3.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="...to be continued">
-                  <img src="assets/pictures/p2.jpg"
+                  <img oading="lazy" src="assets/pictures/p2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="...to be continued">
 
@@ -2142,69 +1711,54 @@
 
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll('.carousel').forEach(carousel => {
-        const track = carousel.querySelector('.carousel-track');
-        const prevBtn = carousel.querySelector('.carousel-prev');
-        const nextBtn = carousel.querySelector('.carousel-next');
-        const slides = carousel.querySelectorAll('.carousel-img');
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.carousel').forEach(carousel => {
+    const track = carousel.querySelector('.carousel-track');
+    const slides = carousel.querySelectorAll('.carousel-img');
+    const photoWidth = slides[0].offsetWidth + 16; // 16 — gap между изображениями
+    const totalSlides = slides.length;
 
-        const photoWidth = slides[0].offsetWidth + 16;
-        const totalSlides = slides.length;
-        let currentIndex = 0;
-        let interval;
+    let currentIndex = 0;
+    let interval;
 
-        function scrollToIndex(index, animate = true) {
-          track.style.transition = animate ? 'transform 1s ease-in-out' : 'none';
-          track.style.transform = `translateX(-${index * photoWidth}px)`;
-        }
+    function scrollToIndex(index, animate = true) {
+      track.style.transition = animate ? 'transform 1s ease-in-out' : 'none';
+      track.style.transform = `translateX(-${index * photoWidth}px)`;
+    }
 
-        function goNext() {
-          currentIndex++;
-          scrollToIndex(currentIndex);
-          if (currentIndex >= totalSlides / 2) {
-            setTimeout(() => {
-              currentIndex = 0;
-              scrollToIndex(currentIndex, false);
-            }, 1000);
-          }
-        }
+    function goNext() {
+      currentIndex++;
+      if (currentIndex >= totalSlides) {
+        // мгновенно вернуться в начало
+        scrollToIndex(0, false);
+        currentIndex = 1;
+        setTimeout(() => scrollToIndex(currentIndex), 20); // маленькая задержка
+      } else {
+        scrollToIndex(currentIndex);
+      }
+    }
 
-        function goPrev() {
-          if (currentIndex === 0) {
-            currentIndex = totalSlides / 2;
-            scrollToIndex(currentIndex, false);
-          }
-          currentIndex--;
-          scrollToIndex(currentIndex);
-        }
+    function goPrev() {
+      currentIndex--;
+      if (currentIndex < 0) {
+        currentIndex = totalSlides - 1;
+        scrollToIndex(currentIndex, false);
+        setTimeout(() => scrollToIndex(currentIndex), 20);
+      } else {
+        scrollToIndex(currentIndex);
+      }
+    }
 
-        function startAutoScroll() {
-          interval = setInterval(goNext, 10000); // каждые 10 секунд
-        }
+    carousel.querySelector('.carousel-next').addEventListener('click', goNext);
+    carousel.querySelector('.carousel-prev').addEventListener('click', goPrev);
 
-        function stopAutoScroll() {
-          clearInterval(interval);
-        }
+    interval = setInterval(goNext, 10000); // каждые 10 сек
 
-        nextBtn.addEventListener('click', () => {
-          goNext();
-          stopAutoScroll();
-          startAutoScroll();
-        });
+    carousel.addEventListener('mouseenter', () => clearInterval(interval));
+    carousel.addEventListener('mouseleave', () => interval = setInterval(goNext, 10000));
+  });
+});
 
-        prevBtn.addEventListener('click', () => {
-          goPrev();
-          stopAutoScroll();
-          startAutoScroll();
-        });
-
-        carousel.addEventListener('mouseenter', stopAutoScroll);
-        carousel.addEventListener('mouseleave', startAutoScroll);
-
-        startAutoScroll();
-      });
-    });
 
   </script>
 

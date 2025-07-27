@@ -131,11 +131,26 @@
     class="fixed w-full top-0 left-0 bg-opacity-50 bg-deepblue backdrop-blur-sm px-4 py-2 flex items-center justify-between z-30">
     <a href="index.html" class="text-xl sm:text-2xl font-bold text-neon whitespace-nowrap">Super Yanka</a>
 
+    <div class="hidden sm:flex items-center gap-2 max-w-xs overflow-hidden">
 
     <!-- 🌟 Бегущая строка -->
-    <div class="overflow-hidden whitespace-nowrap text-sm text-aqua max-w-[160px] md:max-w-xs">
+    <div class="overflow-hidden whitespace-nowrap text-sm text-aqua max-w-[120px]">
       <span id="trackTitle" class="animate-marquee inline-block text-neon font-bold text-sm truncate"></span>
     </div>
+  <!-- 🔊 Ползунок громкости (только на sm и выше) -->
+  <input
+    id="volumeSlider"
+    type="range"
+    min="0"
+    max="1"
+    step="0.01"
+    value="0.2"
+    class="w-20 h-2 accent-neon cursor-pointer hidden sm:block"
+  />
+</div>
+
+
+
 
     <!-- 🎵 Музыкальные кнопки -->
     <div class="flex items-center gap-2 text-neon">

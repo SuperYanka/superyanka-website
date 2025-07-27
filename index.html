@@ -279,9 +279,7 @@
 
         <select id="trackSelect"
           class="bg-deepblue border border-neon text-neon text-xs sm:text-sm rounded px-1 py-0.5 w-[150px] sm:w-[220px] truncate"
-          style="max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-
-
+          style="max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
 
           <option value="assets/music/Chara - OVERWRITE.mp3">Chara - OVERWRITE</option>
           <option value="assets/music/Five Nights at Freddys.mp3">Five Nights at Freddy's</option>
@@ -319,7 +317,16 @@
         <div class="bar w-[3px] bg-neon rounded animate-eq delay-400"></div>
       </div>
     </div>
-
+<!-- Ползунок громкости (скрыт на мобильных, виден на sm и выше) -->
+<input
+  id="volumeSlider"
+  type="range"
+  min="0"
+  max="1"
+  step="0.01"
+  value="0.2"
+  class="hidden sm:block w-20 h-2 accent-neon cursor-pointer"
+/>
     <!-- Навигация справа -->
     <!-- Mobile nav toggle -->
     <button id="menuToggle" class="sm:hidden text-neon z-50">
@@ -803,6 +810,18 @@ bg-opacity-50 bg-deepblue sm:bg-transparent z-40 px-4 sm:px-0 py-2 sm:py-0 text-
       });
 
       setBarsActive(false);
+
+      const volumeSlider = document.getElementById('volumeSlider');
+  if (volumeSlider) {
+    volumeSlider.value = 0.2;
+    wavesurfer.setVolume(0.1);
+
+    // Изменение громкости
+    volumeSlider.addEventListener('input', (e) => {
+      wavesurfer.setVolume(parseFloat(e.target.value));
+    });
+  }
+
     });
 
 
