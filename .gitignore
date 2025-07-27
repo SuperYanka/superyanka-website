@@ -1,0 +1,4 @@
+my-flask-app/
+*.env
+*.pyc
+__pycache__/

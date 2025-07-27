@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ru" class="h-full">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Хобби — Super Yanka</title>
+  <link rel="stylesheet" href="styles/common.css" />
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            neon: '#00ffe1',
+            aqua: '#00c9c9',
+            deepblue: '#0b0f3b'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <style>
+    /* Canvas for floating edu icons */
+    #edu-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Hover enlarge */
+    .img-hover {
+      transition: transform 0.3s ease;
+    }
+
+    .img-hover:hover {
+      transform: scale(1.05);
+    }
+
+    /* Scrollable gallery */
+
+    .gallery-scroll {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 0.5rem;
+    }
+
+    .gallery-scroll img {
+      flex: 0 0 auto;
+      width: 200px;
+      height: auto;
+      border-radius: 0.5rem;
+      border: 2px solid #00ffe1;
+      scroll-snap-align: start;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-scroll img:hover {
+      transform: scale(1.05);
+    }
+
+    .carousel-track img {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .carousel-track img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ffe1;
+    }
+
+    .carousel-track {
+      height: 280px;
+      /* уменьшенная высота секции */
+    }
+
+
+
+
+
+    /* Content layering */
+    header,
+    main,
+    footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes bounce-left {
+
+      0%,
+      100% {
+        transform: translateY(-50%) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-50%) translateX(-6px);
+      }
+    }
+
+    @keyframes bounce-right {
+
+      0%,
+      100% {
+        transform: translateY(-50%) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-50%) translateX(6px);
+      }
+    }
+
+    .animate-bounce-left {
+      animation: bounce-left 1s infinite;
+    }
+
+    .animate-bounce-right {
+      animation: bounce-right 1s infinite;
+    }
+  </style>
+</head>
+
+
+
+
+<body class="relative text-aqua font-sans overflow-x-hidden min-h-screen">
+
+  <!-- 🎞 Фон-видео -->
+  <video autoplay muted loop id="video-bg">
+    <source src="assets/video/misk.mp4" type="video/mp4" />
+    Ваш браузер не поддерживает видео.
+  </video>
+
+  <!-- Overlay that darkens video -->
+  <div id="video-overlay"></div>
+
+
+
+  <!-- Navigation -->
+  <header
+    class="fixed w-full top-0 left-0 bg-opacity-50 bg-deepblue backdrop-blur-sm px-4 py-2 flex items-center justify-between z-30">
+    <a href="index.html" class="text-xl sm:text-2xl font-bold text-neon whitespace-nowrap">Super Yanka</a>
+    <!-- Гамбургер -->
+    <button id="menuToggle" class="sm:hidden text-neon z-50">
+      <i data-lucide="menu" class="w-6 h-6"></i>
+    </button>
+    </div>
+
+    <!-- Навигация -->
+    <nav id="navMenu"
+      class="hidden sm:flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 absolute sm:relative top-full sm:top-0 left-0 w-full sm:w-auto
+         bg-opacity-50 bg-deepblue sm:bg-transparent z-40 px-4 sm:px-0 py-2 sm:py-0 text-aqua font-medium backdrop-blur-sm sm:backdrop-blur-0">
+      <a href="index.html" class="hover:text-neon transition">Главная</a>
+      <a href="about.html" class="hover:text-neon transition">Обо мне</a>
+      <a href="education.html" class="hover:text-neon transition">Образование</a>
+      <a href="projects.html" class="hover:text-neon transition">Проекты</a>
+      <a href="resume.html" class="hover:text-neon transition">Резюме</a>
+      <a href="art.html" class="hover:text-neon transition">Хобби и Творчество</a>
+      <a href="youtube.html" class="hover:text-neon transition">YouTube</a>
+      <a href="misc.html" class="text-neon">Разное</a>
+      <a href="contact.html" class="hover:text-neon transition">Контакты</a>
+    </nav>
+  </header>
+
+  <main class="relative pt-32 pb-16 z-10 px-4">
+    <!-- Заголовок -->
+
+
+    <section class="text-center mb-12" data-aos="fade-up">
+      <h2 class="text-4xl font-extrabold text-white mb-4">🎲Разное🎲</h2>
+      <p class="text-lg max-w-2xl mx-auto">
+        Здесь собрались все милые и безумные штучки, которые делают меня мной:
+        любимые <span class="text-neon">аниме</span>,
+        <span class="text-neon">коллекции</span>,
+        <span class="text-neon">важные события</span> и даже мои колючие <span class="text-neon">кактусы</span> 🌵
+        Просто уютный уголок всего, что я люблю.
+      </p>
+    </section>
+
+
+
+    <!-- 🌸 Shikimori -->
+    <section
+      class="px-6 py-12 max-w-4xl mx-auto rounded-xl bg-opacity-40 bg-deepblue shadow-[0_0_20px_#00ffe1] mb-20 text-center relative"
+      data-aos="fade-up">
+      <h3 class="text-3xl font-bold text-neon mb-6 border-b border-neon pb-2 inline-block">
+        🌸 Моя аниме-библиотека на Shikimori 🌸
+      </h3>
+      <p class="text-aqua mb-8 text-sm">
+        ✨Я смотрю много аниме, и почти каждое находит отклик в душе. ✨ <br>
+        ✨Заглядывай в мой профиль, чтобы увидеть любимые сериалы, коллекции и список на потом!✨
+      </p>
+
+      <!-- Кнопка с анимацией -->
+      <div class="relative inline-block mt-4 mb-4">
+        <!-- Стрелки Lucide с анимацией -->
+        <i data-lucide="arrow-left"
+          class="lucide text-neon w-5 h-5 animate-bounce-left absolute top-1/2 -right-6 -translate-y-1/2"></i>
+        <i data-lucide="arrow-right"
+          class="lucide text-neon w-5 h-5 animate-bounce-right absolute top-1/2 -left-6 -translate-y-1/2"></i>
+
+        <!-- Кнопка -->
+        <a href="https://shikimori.one/%D0%A1%D1%83%D0%BF%D0%B5%D1%80+%D0%AF%D0%BD%D0%BA%D0%B0" target="_blank"
+          class="bg-neon text-deepblue px-6 py-3 rounded-xl font-bold shadow-lg hover:bg-aqua hover:shadow-[0_0_25px_#00ffe1] transition text-base">
+          Перейти к моему профилю
+        </a>
+      </div>
+
+
+
+      <!-- Любимые аниме -->
+      <div class="mt-10" data-aos="fade-up" data-aos-delay="100">
+        <h4 class="text-2xl font-semibold text-white mb-6"> Мои любимые аниме</h4>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 bg-deepblue bg-opacity-50 p-6 rounded-xl border-2 border-neon">
+
+          <!-- Аниме карточки -->
+          <div
+            class="bg-deepblue bg-opacity-60 p-4 rounded-lg border border-neon hover:scale-105 transition hover:shadow-[0_0_25px_#00ffe1] transition">
+            <img src="assets/misk/anime/naruto.jpg" alt="Naruto"
+              class="w-full h-48 object-cover rounded border border-neon mb-3" />
+            <h5 class="text-neon font-bold text-lg">Naruto</h5>
+            <p class="text-aqua text-sm">История о мечте, упорстве и настоящей дружбе.</p>
+          </div>
+
+          <div
+            class="bg-deepblue bg-opacity-60 p-4 rounded-lg border border-neon hover:scale-105 transition hover:shadow-[0_0_25px_#00ffe1] transition">
+            <img src="assets/misk/anime/hxh.jpg" alt="Hunter x Hunter"
+              class="w-full h-48 object-cover rounded border border-neon mb-3" />
+            <h5 class="text-neon font-bold text-lg">Hunter x Hunter</h5>
+            <p class="text-aqua text-sm">Глубокое приключение с харизматичными персонажами.</p>
+          </div>
+
+          <div
+            class="bg-deepblue bg-opacity-60 p-4 rounded-lg border border-neon hover:scale-105 transition hover:shadow-[0_0_25px_#00ffe1] transition">
+            <img src="assets/misk/anime/kakegurui.jpg" alt="Kakegurui"
+              class="w-full h-48 object-cover rounded border border-neon mb-3" />
+            <h5 class="text-neon font-bold text-lg">Kakegurui</h5>
+            <p class="text-aqua text-sm">Азарт, ставки и безумие — кто сыграет ва-банк?</p>
+          </div>
+
+          <div
+            class="bg-deepblue bg-opacity-60 p-4 rounded-lg border border-neon hover:scale-105 transition hover:shadow-[0_0_25px_#00ffe1] transition">
+            <img src="assets/misk/anime/mob.jpg" alt="Mob Psycho 100"
+              class="w-full h-48 object-cover rounded border border-neon mb-3" />
+            <h5 class="text-neon font-bold text-lg">Mob Psycho 100</h5>
+            <p class="text-aqua text-sm">Мощный сюжет и зрелищные способности в мире эмоций.</p>
+          </div>
+
+          <div
+            class="bg-deepblue bg-opacity-60 p-4 rounded-lg border border-neon hover:scale-105 transition hover:shadow-[0_0_25px_#00ffe1] transition">
+            <img src="assets/misk/anime/higurashi.jpg" alt="Higurashi"
+              class="w-full h-48 object-cover rounded border border-neon mb-3" />
+            <h5 class="text-neon font-bold text-lg">Когда плачут цикады</h5>
+            <p class="text-aqua text-sm">Атмосфера таинственности и неожиданные повороты.</p>
+          </div>
+
+          <div
+            class="bg-deepblue bg-opacity-60 p-4 rounded-lg border border-neon hover:scale-105 transition hover:shadow-[0_0_25px_#00ffe1] transition">
+            <img src="assets/misk/anime/land.jpg" alt="Houseki no Kuni"
+              class="w-full h-48 object-cover rounded border border-neon mb-3" />
+            <h5 class="text-neon font-bold text-lg">Страна самоцветов</h5>
+            <p class="text-aqua text-sm">Философская красота и уникальный визуальный стиль.</p>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+
+
+
+    <section class="mb-20 max-w-5xl mx-auto" data-aos="fade-up">
+      <h3 class="text-3xl font-semibold text-white mb-4 text-center">Моя коллекция аниме-плакатов</h3>
+
+      <div
+        class="carousel relative overflow-hidden mt-6 mx-auto max-w-7xl rounded-xl border-2 border-neon shadow-neon group">
+
+
+        <!-- ⬅️ Влево -->
+        <button
+          class="carousel-prev absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+
+        <!-- ➡️ Вправо -->
+        <button
+          class="carousel-next absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </button>
+
+        <!-- 🖼 Слайдер -->
+        <div class="overflow-hidden">
+          <div class="carousel-track flex gap-4 w-max transition-transform duration-1000 ease-in-out px-4">
+
+            <!-- Постеры -->
+            <img src="assets/misk/posters/pos1.jpg" alt="Аниме постер 1"
+              class="carousel-img h-[300px] w-auto object-contain rounded-lg border-2 border-neon shadow cursor-pointer transition-transform duration-300 hover:scale-105"
+              onclick="openImageModal(this.src)" />
+
+            <img src="assets/misk/posters/pos2.jpg" alt="Аниме постер 1"
+              class="carousel-img h-[300px] w-auto object-contain rounded-lg border-2 border-neon shadow cursor-pointer transition-transform duration-300 hover:scale-105"
+              onclick="openImageModal(this.src)" />
+
+            <img src="assets/misk/posters/pos3.jpg" alt="Аниме постер 1"
+              class="carousel-img h-[300px] w-auto object-contain rounded-lg border-2 border-neon shadow cursor-pointer transition-transform duration-300 hover:scale-105"
+              onclick="openImageModal(this.src)" />
+
+            <img src="assets/misk/posters/pos4.jpg" alt="Аниме постер 1"
+              class="carousel-img h-[300px] w-auto object-contain rounded-lg border-2 border-neon shadow cursor-pointer transition-transform duration-300 hover:scale-105"
+              onclick="openImageModal(this.src)" />
+
+            <img src="assets/misk/posters/pos5.jpg" alt="Аниме постер 1"
+              class="carousel-img h-[300px] w-auto object-contain rounded-lg border-2 border-neon shadow cursor-pointer transition-transform duration-300 hover:scale-105"
+              onclick="openImageModal(this.src)" />
+
+            <img src="assets/misk/posters/pos6.jpg" alt="Аниме постер 1"
+              class="carousel-img h-[300px] w-auto object-contain rounded-lg border-2 border-neon shadow cursor-pointer transition-transform duration-300 hover:scale-105"
+              onclick="openImageModal(this.src)" />
+
+            <img src="assets/misk/posters/pos7.jpg" alt="Аниме постер 1"
+              class="carousel-img h-[300px] w-auto object-contain rounded-lg border-2 border-neon shadow cursor-pointer transition-transform duration-300 hover:scale-105"
+              onclick="openImageModal(this.src)" />
+
+            <img src="assets/misk/posters/pos8.jpg" alt="Аниме постер 1"
+              class="carousel-img h-[300px] w-auto object-contain rounded-lg border-2 border-neon shadow cursor-pointer transition-transform duration-300 hover:scale-105"
+              onclick="openImageModal(this.src)" />
+
+            <!-- Дубляжи -->
+
+            <img src="assets/misk/posters/pos1.jpg" alt="Аниме постер 1"
+              class="carousel-img h-[300px] w-auto object-contain rounded-lg border-2 border-neon shadow cursor-pointer transition-transform duration-300 hover:scale-105"
+              onclick="openImageModal(this.src)" />
+
+            <img src="assets/misk/posters/pos2.jpg" alt="Аниме постер 1"
+              class="carousel-img h-[300px] w-auto object-contain rounded-lg border-2 border-neon shadow cursor-pointer transition-transform duration-300 hover:scale-105"
+              onclick="openImageModal(this.src)" />
+
+            <img src="assets/misk/posters/pos3.jpg" alt="Аниме постер 1"
+              class="carousel-img h-[300px] w-auto object-contain rounded-lg border-2 border-neon shadow cursor-pointer transition-transform duration-300 hover:scale-105"
+              onclick="openImageModal(this.src)" />
+
+            <img src="assets/misk/posters/pos4.jpg" alt="Аниме постер 1"
+              class="carousel-img h-[300px] w-auto object-contain rounded-lg border-2 border-neon shadow cursor-pointer transition-transform duration-300 hover:scale-105"
+              onclick="openImageModal(this.src)" />
+
+            <img src="assets/misk/posters/pos5.jpg" alt="Аниме постер 1"
+              class="carousel-img h-[300px] w-auto object-contain rounded-lg border-2 border-neon shadow cursor-pointer transition-transform duration-300 hover:scale-105"
+              onclick="openImageModal(this.src)" />
+
+            <img src="assets/misk/posters/pos6.jpg" alt="Аниме постер 1"
+              class="carousel-img h-[300px] w-auto object-contain rounded-lg border-2 border-neon shadow cursor-pointer transition-transform duration-300 hover:scale-105"
+              onclick="openImageModal(this.src)" />
+
+            <img src="assets/misk/posters/pos7.jpg" alt="Аниме постер 1"
+              class="carousel-img h-[300px] w-auto object-contain rounded-lg border-2 border-neon shadow cursor-pointer transition-transform duration-300 hover:scale-105"
+              onclick="openImageModal(this.src)" />
+
+            <img src="assets/misk/posters/pos8.jpg" alt="Аниме постер 1"
+              class="carousel-img h-[300px] w-auto object-contain rounded-lg border-2 border-neon shadow cursor-pointer transition-transform duration-300 hover:scale-105"
+              onclick="openImageModal(this.src)" />
+
+
+          </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="mb-20 max-w-5xl mx-auto" data-aos="fade-up">
+      <h3 class="text-3xl font-bold text-white mb-6 text-center"> Мои аниме-фигурки</h3>
+
+      <div class="flex flex-wrap justify-center gap-8 px-4">
+
+        <!-- 🌟 Фигурка 1 -->
+        <div class="relative group">
+          <img src="assets/misk/figs/fig_1.png" alt="Фигурка 1" class="h-[280px] transition-transform duration-300 ease-in-out transform group-hover:scale-110 cursor-pointer
+      drop-shadow-[0_0_8px_#00ffe1] hover:drop-shadow-[0_0_16px_#00ffe1]"
+            onclick="openImageModal('assets/misk/figs/fig_1_full.jpg')" />
+          <div
+            class="absolute inset-0 rounded-xl   opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none">
+          </div>
+        </div>
+
+        <!-- 🌟 Фигурка 2 -->
+        <div class="relative group">
+          <img src="assets/misk/figs/fig_2.png" alt="Фигурка 2" class="h-[280px] transition-transform duration-300 ease-in-out transform group-hover:scale-110 cursor-pointer
+      drop-shadow-[0_0_8px_#00ffe1] hover:drop-shadow-[0_0_16px_#00ffe1]"
+            onclick="openImageModal('assets/misk/figs/fig_2_full.jpg')" />
+          <div
+            class="absolute inset-0 rounded-xl  opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+    <!-- 🌵 Мои кактусы -->
+    <section class="mb-20 max-w-6xl mx-auto px-4" data-aos="fade-up">
+      <h3 class="text-3xl font-bold text-white mb-6 text-center">🌵 Моя коллекция кактусов 🌵</h3>
+      <p class="text-aqua text-center mb-10">Я люблю суккуленты, особенно колючие и странные</p>
+
+      <div class="flex flex-wrap justify-center gap-6">
+        <!-- 🟩 Кактус 1 -->
+        <div class="w-40 aspect-square text-center group">
+          <img src="assets/misk/cacti/cactus1.jpg" alt="Кактус 1"
+            class="w-full h-full object-cover rounded-xl border-2 border-neon shadow-neon cursor-pointer transition duration-300 transform group-hover:scale-105 group-hover:shadow-[0_0_20px_#00ffe1]"
+            onclick="openImageModal(this.src)" />
+          <p class="mt-2 text-sm text-aqua">Стас</p>
+        </div>
+
+        <!-- 🟩 Кактус 2 -->
+        <div class="w-40 aspect-square text-center group">
+          <img src="assets/misk/cacti/cactus2.jpg" alt="Кактус 2"
+            class="w-full h-full object-cover rounded-xl border-2 border-neon shadow-neon cursor-pointer transition duration-300 transform group-hover:scale-105 group-hover:shadow-[0_0_20px_#00ffe1]"
+            onclick="openImageModal(this.src)" />
+          <p class="mt-2 text-sm text-aqua">Вениамин-Бенджамин</p>
+        </div>
+
+        <!-- 🟩 Кактус 3 -->
+        <div class="w-40 aspect-square text-center group">
+          <img src="assets/misk/cacti/cactus3.jpg" alt="Кактус 3"
+            class="w-full h-full object-cover rounded-xl border-2 border-neon shadow-neon cursor-pointer transition duration-300 transform group-hover:scale-105 group-hover:shadow-[0_0_20px_#00ffe1]"
+            onclick="openImageModal(this.src)" />
+          <p class="mt-2 text-sm text-aqua">СерГей (приёмный)</p>
+        </div>
+
+        <!-- 🟩 Кактус 4 -->
+        <div class="w-40 aspect-square text-center group">
+          <img src="assets/misk/cacti/cactus4.jpg" alt="Кактус 4"
+            class="w-full h-full object-cover rounded-xl border-2 border-neon shadow-neon cursor-pointer transition duration-300 transform group-hover:scale-105 group-hover:shadow-[0_0_20px_#00ffe1]"
+            onclick="openImageModal(this.src)" />
+          <p class="mt-2 text-sm text-aqua">Мини-дракон</p>
+        </div>
+
+        <!-- 🟩 Кактус 5 -->
+        <div class="w-40 aspect-square text-center group">
+          <img src="assets/misk/cacti/cactus5.jpg" alt="Кактус 5"
+            class="w-full h-full object-cover rounded-xl border-2 border-neon shadow-neon cursor-pointer transition duration-300 transform group-hover:scale-105 group-hover:shadow-[0_0_20px_#00ffe1]"
+            onclick="openImageModal(this.src)" />
+          <p class="mt-2 text-sm text-aqua">Поле колючек</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 📅 Важные и личные события -->
+    <section class="max-w-3xl mx-auto px-6 py-10 bg-deepblue bg-opacity-60 rounded-xl shadow-[0_0_20px_#00ffe1]"
+      data-aos="fade-up">
+      <h3 class="text-3xl font-bold text-neon mb-6 border-b border-neon pb-2 inline-block">📅 Важные и личные события по
+        годам</h3>
+
+      <ul class="text-white text-left leading-relaxed space-y-2 text-sm sm:text-base">
+        <li><span class="text-neon font-semibold w-24 inline-block">05.05.2009</span> — Релиз <strong>Plants vs.
+            Zombies</strong> 🧟🌻 — культовая защита дома от нежити</li>
+        <li><span class="text-neon font-semibold w-24 inline-block">11.12.2009</span> — Релиз <strong>Angry
+            Birds</strong> 🐦🎯 — первая волна популярности мобильных игр </li>
+        <li><span class="text-neon font-semibold w-24 inline-block">18.11.2011</span> — Официальный релиз
+          <strong>Minecraft</strong> ⛏️🎂 — ровно в мой день рождения!</li>
+        <li><span class="text-neon font-semibold w-24 inline-block">13.08.2013</span> — Релиз <strong>Geometry
+            Dash</strong> 🎶🟨 — музыкальная боль и слава платформеров</li>
+        <li><span class="text-neon font-semibold w-24 inline-block">2013–2014</span> — Вирус <strong>Flappy
+            Bird</strong> и клоны. Вирусная мобильная истерия 🐤📱</li>
+
+        <li><span class="text-neon font-semibold w-24 inline-block">08.08.2014</span> — Релиз <strong>Five Nights at
+            Freddy’s</strong> 🐻🐰🐥🦊</li>
+        <li><span class="text-neon font-semibold w-24 inline-block">10.11.2014</span> — <strong>FNaF 2</strong>: новые
+          аниматроники и механики 🤖👥</li>
+        <li><span class="text-neon font-semibold w-24 inline-block">02.03.2015</span> — <strong>FNaF 3</strong>:
+          Спрингтрап, фиолетовый парень 💀🟩</li>
+        <li><span class="text-neon font-semibold w-24 inline-block">23.07.2015</span> — <strong>FNaF 4</strong>: ночные
+          кошмары 🌙😱</li>
+
+        <li><span class="text-neon font-semibold w-24 inline-block">15.09.2015</span> — Выход <strong>Undertale</strong>
+          💖☠️ — культ и саундтрек на века</li>
+        <li><span class="text-neon font-semibold w-24 inline-block">07.10.2016</span> — <strong>FNaF 5: Sister
+            Location</strong> — цирк, голосовой помощник и сюжет 🎪🗣️</li>
+
+        <li><span class="text-neon font-semibold w-24 inline-block">08.09.2017</span> — Премьера хоррора <strong>It /
+            Оно</strong> в кино 🤡🎈</li>
+        <li><span class="text-neon font-semibold w-24 inline-block">Весна 2017</span> — Бум <strong>спиннеров</strong>
+          🔄🌀. Все крутили!</li>
+        <li><span class="text-neon font-semibold w-24 inline-block">17.02.2018</span> — Начало моего аниме-пути:
+          <strong>Наруто</strong> 🍥🔥</li>
+
+        <li><span class="text-neon font-semibold w-24 inline-block">28.10.2019</span> — Пилот <strong>Hazbin
+            Hotel</strong> вышел на YouTube 👿🏨</li>
+        <li><span class="text-neon font-semibold w-24 inline-block">14.02.2020</span> — Премьера <strong>Sonic the
+            Hedgehog</strong> в кино 🦔👟🌀</li>
+        <li><span class="text-neon font-semibold w-24 inline-block">2020</span> — Бум <strong>Among Us</strong> 🛸🔪 —
+          sus, impostor, мемы</li>
+
+        <li><span class="text-neon font-semibold w-24 inline-block">20.11.2020</span> — Релиз <strong>Friday Night
+            Funkin’</strong> demo 🎤🕹️</li>
+        <li><span class="text-neon font-semibold w-24 inline-block">2020-2021</span> — <strong>Pop It</strong> стал
+          вирусной игрушкой: щёлкай, дави, радуйся 🌈🫧</li>
+
+        <li><span class="text-neon font-semibold w-24 inline-block">17.09.2021</span> — <strong>Squid Game</strong>:
+          куклы, маски, мемы 🦑🩸</li>
+        <li><span class="text-neon font-semibold w-24 inline-block">12.10.2021</span> — Первая глава <strong>Poppy
+            Playtime</strong> 💙🧩</li>
+
+        <li><span class="text-neon font-semibold w-24 inline-block">07.01.2022</span> — Фан-сериал
+          <strong>Backrooms</strong> от Kane Pixels — крипота в гиперреализме 🟨🚪</li>
+
+        <li><span class="text-neon font-semibold w-24 inline-block">08.04.2022</span> — Премьера <strong>Sonic the
+            Hedgehog 2</strong> в кино 🦔🦊🥊</li>
+        <li><span class="text-neon font-semibold w-24 inline-block">07.01.2023</span> — Вирусный абсурд: <strong>Skibidi
+            Toilet</strong> 😀🚽🎺</li>
+
+        <li><span class="text-neon font-semibold w-24 inline-block">12.04.2023</span> — Взрыв <strong>Oshi no
+            Ko</strong> и песни Idol 🌟🎧</li>
+        <li><span class="text-neon font-semibold w-24 inline-block">27.10.2023</span> — Выход фильма
+          <strong>FNaF</strong> 🐻🎥</li>
+        <li><span class="text-neon font-semibold w-24 inline-block">20.12.2023</span> — Обнова <strong>🟨 Geometry Dash
+            2.2 🟨</strong> спустя 7 лет!</li>
+
+        <li><span class="text-neon font-semibold w-24 inline-block">19.01.2024</span> — Премьера первого сезона
+          <strong>Hazbin Hotel</strong> 🌈🔥</li>
+        <li><span class="text-neon font-semibold w-24 inline-block">26.08.2024</span> — Мод <strong>Sprunki</strong> мод
+          на Incredibox в жанре хоррор 😇👿</li>
+        <li><span class="text-neon font-semibold w-24 inline-block">20.12.2024</span> — Премьера <strong>Sonic the
+            Hedgehog 3</strong> 🦔🌀🆚🦔🖤</li>
+
+        <li><span class="text-neon font-semibold w-24 inline-block">02.04.2025</span> — Премьера <strong>Minecraft
+            Movie</strong> в кино! 🎥🧱</li>
+        <li><span class="text-neon font-semibold w-24 inline-block">2025</span> — Вирусные зверята
+          <strong>Labubu</strong> 🧸💀</li>
+        <li><span class="text-neon font-semibold w-24 inline-block">05.12.2025</span> — Анонс фильма <strong>FNaF 2
+            Movie</strong> 📽️👁️</li>
+
+      </ul>
+
+
+    </section>
+
+
+
+
+
+
+
+  </main>
+  <div id="footer-placeholder"></div>
+
+
+  <!-- 🌌 Модалка -->
+  <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+    <div class="relative">
+      <button id="closeModal"
+        class="absolute -top-4 -right-4 bg-neon text-deepblue rounded-full p-2 hover:bg-white transition">
+        ✕
+      </button>
+      <img id="modalImage" src="" alt="Увеличенное фото"
+        class="max-w-full max-h-[80vh] rounded-lg shadow-[0_0_25px_#00ffe1] border-2 border-neon" />
+    </div>
+  </div>
+
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+
+  </script>
+
+
+  <!-- AOS Init -->
+  <script>
+    AOS.init({
+      duration: 1000, once: true,
+      easing: 'ease-out-cubic'
+    });
+
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll('.carousel').forEach(carousel => {
+        const track = carousel.querySelector('.carousel-track');
+        const slides = carousel.querySelectorAll('.carousel-img');
+        const prevBtn = carousel.querySelector('.carousel-prev');
+        const nextBtn = carousel.querySelector('.carousel-next');
+
+        const photoWidth = slides[0].offsetWidth + 16;
+        const totalSlides = slides.length;
+        let currentIndex = 0;
+        let interval;
+
+        function scrollToIndex(index, animate = true) {
+          track.style.transition = animate ? 'transform 1.3s ease-in-out' : 'none';
+          track.style.transform = `translateX(-${index * photoWidth}px)`;
+        }
+
+        function goNext() {
+          currentIndex++;
+          scrollToIndex(currentIndex);
+          if (currentIndex >= totalSlides / 2) {
+            setTimeout(() => {
+              currentIndex = 0;
+              scrollToIndex(currentIndex, false);
+            }, 1300);
+          }
+        }
+
+        function goPrev() {
+          if (currentIndex === 0) {
+            currentIndex = totalSlides / 2;
+            scrollToIndex(currentIndex, false);
+          }
+          currentIndex--;
+          scrollToIndex(currentIndex);
+        }
+
+        function startAutoScroll() {
+          interval = setInterval(goNext, 15000);
+        }
+
+        function stopAutoScroll() {
+          clearInterval(interval);
+        }
+
+        nextBtn?.addEventListener('click', () => {
+          goNext();
+          stopAutoScroll();
+          startAutoScroll();
+        });
+
+        prevBtn?.addEventListener('click', () => {
+          goPrev();
+          stopAutoScroll();
+          startAutoScroll();
+        });
+
+        carousel.addEventListener('mouseenter', stopAutoScroll);
+        carousel.addEventListener('mouseleave', startAutoScroll);
+
+        startAutoScroll();
+      });
+    });
+  </script>
+
+
+
+  <script>
+    function openImageModal(src) {
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("modalImage");
+      modalImg.src = src;
+      modal.classList.remove("hidden");
+    }
+
+    document.getElementById("closeModal").addEventListener("click", () => {
+      document.getElementById("imageModal").classList.add("hidden");
+    });
+
+    // Закрытие при клике вне изображения
+    document.getElementById("imageModal").addEventListener("click", (e) => {
+      if (e.target === e.currentTarget) {
+        e.currentTarget.classList.add("hidden");
+      }
+    });
+  </script>
+
+
+  <script>
+    fetch("components/footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+  </script>
+
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById("menuToggle");
+      const menu = document.getElementById("navMenu");
+
+      toggle.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+
+      // lucide icons (если используешь)
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+
+
+
+
+</body>
+
+</html>

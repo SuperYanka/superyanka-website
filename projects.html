@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru" class="h-full">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Проекты — Super Yanka</title>
+  <link rel="stylesheet" href="styles/common.css" />
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            neon: '#00ffe1',
+            aqua: '#00c9c9',
+            deepblue: '#0b0f3b'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <style>
+    /* Overlay to darken background */
+    #projects-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(11, 15, 59, 0.7);
+      z-index: 1;
+    }
+
+    /* Project card hover */
+    .project-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(0, 255, 225, 0.3);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 0.3s ease-out;
+    }
+  </style>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+
+<body class="relative bg-deepblue text-aqua font-sans overflow-x-hidden min-h-screen">
+
+
+
+
+  <video autoplay muted loop id="video-bg">
+    <source src="assets/video/proj_background.mp4" type="video/mp4" />
+    Ваш браузер не поддерживает видео.
+  </video>
+
+  <!-- 🌌 Оверлей -->
+  <div id="projects-overlay"></div>
+
+  <!-- Navigation -->
+  <header
+    class="fixed w-full top-0 left-0 bg-opacity-50 bg-deepblue backdrop-blur-sm px-4 py-2 flex items-center justify-between z-30">
+    <a href="index.html" class="text-xl sm:text-2xl font-bold text-neon whitespace-nowrap">Super Yanka</a>
+    <!-- Гамбургер -->
+    <button id="menuToggle" class="sm:hidden text-neon z-50">
+      <i data-lucide="menu" class="w-6 h-6"></i>
+    </button>
+    </div>
+
+    <!-- Навигация -->
+    <nav id="navMenu"
+      class="hidden sm:flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 absolute sm:relative top-full sm:top-0 left-0 w-full sm:w-auto
+bg-opacity-50 bg-deepblue sm:bg-transparent z-40 px-4 sm:px-0 py-2 sm:py-0 text-aqua font-medium backdrop-blur-sm sm:backdrop-blur-0">
+      <a href="index.html" class="hover:text-neon transition">Главная</a>
+      <a href="about.html" class="hover:text-neon transition">Обо мне</a>
+      <a href="education.html" class="hover:text-neon transition">Образование</a>
+      <a href="projects.html" class="text-neon">Проекты</a>
+      <a href="resume.html" class="hover:text-neon transition">Резюме</a>
+      <a href="art.html" class="hover:text-neon transition">Хобби и Творчество</a>
+      <a href="youtube.html" class="hover:text-neon transition">YouTube</a>
+      <a href="misc.html" class="hover:text-neon transition">Разное</a>
+      <a href="contact.html" class="hover:text-neon transition">Контакты</a>
+    </nav>
+  </header>
+
+
+
+
+  <main class="relative z-10 pt-32 pb-16">
+
+
+    <!-- Заголовок -->
+    <section class="text-center px-4 mb-12" data-aos="fade-up">
+      <h2 class="text-4xl font-extrabold text-white mb-4">Мои проекты</h2>
+      <p class="text-lg max-w-2xl mx-auto">Здесь собраны мои цифровые и творческие работы — от анализа данных до
+        визуального арта.</p>
+    </section>
+
+    <!-- Галерея проектов -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 max-w-6xl mx-auto">
+
+
+
+
+      <!-- Проект: Airbnb NYC -->
+      <div
+        class="project-card bg-deepblue bg-opacity-60 p-6 rounded-xl border-2 border-neon hover:scale-105 hover:shadow-[0_0_25px_#00ffe1] transition duration-300 cursor-pointer"
+        data-aos="fade-up" data-aos-delay="100" onclick="openModal({
+    title: 'Airbnb NYC Analysis',
+    desc: 'EDA и визуализация цен, районов и типов жилья в Нью-Йорке. Использованы Pandas, SQL и Matplotlib.',
+    links: [
+      { label: 'GitHub', url: 'https://github.com/SuperYanka/airbnb-data-analysis' },
+      { label: 'Kaggle', url: 'https://www.kaggle.com/code/yaninakostiv/airbnb-nyc-data-analysis' }
+    ]
+  })">
+
+        <img src="assets/projects/airbnb.png" alt="Airbnb NYC"
+          class="w-full h-40 object-cover rounded mb-4 border border-neon cursor-zoom-in"
+          onclick="event.stopPropagation(); openImageModal(this.src)" />
+
+        <h3 class="text-xl font-semibold text-neon mb-2">Airbnb NYC Analysis</h3>
+        <p class="text-aqua text-sm mb-4">EDA на Python и SQL: графики, boxplot, группировка, геокарта.</p>
+        <span class="text-neon underline">Подробнее →</span>
+      </div>
+
+
+      <!-- Проект: Customer Churn -->
+
+
+      <div
+        class="project-card bg-deepblue bg-opacity-60 p-6 rounded-xl border-2 border-neon hover:scale-105 hover:shadow-[0_0_25px_#00ffe1] transition duration-300 cursor-pointer"
+        data-aos="fade-up" data-aos-delay="100" onclick="openModal({
+   title: 'Customer Churn Prediction',
+      desc: 'ML-проект по предсказанию оттока клиентов: логрег, Random Forest, XGBoost, pipeline, метрики.',
+      links: [
+        { label: 'GitHub', url: 'https://github.com/SuperYanka/customer-churn-prediction' },
+        { label: 'Kaggle', url: 'https://www.kaggle.com/code/yaninakostiv/customer-churn-prediction-with-ml-logreg-rf-xgb' }
+      ]
+    })">
+
+        <img src="assets/projects/churn.png" alt="Churn Prediction"
+          class="w-full h-40 object-cover rounded mb-4 border border-neon cursor-zoom-in"
+          onclick="event.stopPropagation(); openImageModal(this.src)" />
+
+        <h3 class="text-xl font-semibold text-neon mb-2">Customer Churn Prediction</h3>
+        <p class="text-aqua text-sm mb-4">ML-пайплайн, XGBoost, визуализация ROC-кривых, сохранение моделей и метрик.
+        </p>
+        <span class="text-neon underline">Подробнее →</span>
+      </div>
+
+
+      <!-- Проект: Sentiment Analysis -->
+
+
+      <div
+        class="project-card bg-deepblue bg-opacity-60 p-6 rounded-xl border-2 border-neon hover:scale-105 hover:shadow-[0_0_25px_#00ffe1] transition duration-300 cursor-pointer"
+        data-aos="fade-up" data-aos-delay="100" onclick="openModal({
+     title: 'Sentiment Analysis',
+      desc: 'NLP-проект по анализу отзывов IMDB с использованием TF-IDF, Word2Vec, визуализаций и сравнения моделей.',
+      links: [
+        { label: 'GitHub', url: 'https://github.com/SuperYanka/imdb-sentiment-analysis-nlp' },
+        { label: 'Kaggle', url: 'https://www.kaggle.com/code/yaninakostiv/imdb-sentiment-analysis-with-tf-idf-lr-nb' }
+      ]
+    })">
+
+        <img src="assets/projects/sentiment.png" alt="Sentiment Analysis"
+          class="w-full h-40 object-cover rounded mb-4 border border-neon cursor-zoom-in"
+          onclick="event.stopPropagation(); openImageModal(this.src)" />
+
+        <h3 class="text-xl font-semibold text-neon mb-2">Sentiment Analysis</h3>
+        <p class="text-aqua text-sm mb-4">NLP: предсказание тональности отзывов, TF-IDF, Word2Vec, визуализация метрик.
+        </p>
+        <span class="text-neon underline">Подробнее →</span>
+      </div>
+
+      <!-- Personal Website -->
+
+      <div
+        class="project-card bg-deepblue bg-opacity-60 p-6 rounded-xl border-2 border-neon hover:scale-105 hover:shadow-[0_0_25px_#00ffe1] transition duration-300 cursor-pointer"
+        data-aos="fade-up" data-aos-delay="300" onclick="openModal({
+     title: 'Персональный сайт Super Yanka',
+desc: 'Личный сайт Super Yanka — креативное портфолио в виде многостраничного сайта, созданного вручную. Использованы Tailwind CSS, анимации, кастомный плеер, карусели и неоновый стиль. ' +
+'Интеграция с YouTube реализована через собственный сервер-прокси на Flask для защиты API-ключа. Блок YouTube-статистики на сайте автоматически обновляется в реальном времени.',
+          links: [
+            { label: 'GitHub', url: 'https://github.com/superyanka/personal-website' }
+          ]
+        })">
+
+        <img src="assets/projects/website.png" alt="Personal Website"
+          class="w-full h-40 object-cover rounded mb-4 border border-neon cursor-zoom-in"
+          onclick="event.stopPropagation(); openImageModal(this.src)" />
+
+        <h3 class="text-xl font-semibold text-neon mb-2">Личный сайт Super Yanka</h3>
+        <p class="text-aqua text-sm mb-4">Этот сайт — проект сам по себе: Tailwind, анимации, пасхалки, YouTube API.</p>
+        <span class="text-neon underline">Подробнее →</span>
+      </div>
+
+
+      <!-- In future -->
+
+      <div
+        class="project-card bg-deepblue bg-opacity-60 p-6 rounded-xl border-2 border-neon hover:scale-105 hover:shadow-[0_0_25px_#00ffe1] transition duration-300 cursor-pointer"
+        data-aos="fade-up" data-aos-delay="300" onclick="openModal({
+     title: 'Soon',
+          desc: 'Soon...',
+          links: [
+            { label: 'GitHub', url: 'https://github.com/superyanka/' }
+          ]
+        })">
+
+        <img src="assets/projects/soon.png" alt="soon"
+          class="w-full h-40 object-cover rounded mb-4 border border-neon cursor-zoom-in"
+          onclick="event.stopPropagation(); openImageModal(this.src)" />
+
+        <h3 class="text-xl font-semibold text-neon mb-2">Soon...</h3>
+        <p class="text-aqua text-sm mb-4">Soon...</p>
+        <span class="text-neon underline">Подробнее →</span>
+      </div>
+
+
+
+      <!-- In future -->
+
+      <div
+        class="project-card bg-deepblue bg-opacity-60 p-6 rounded-xl border-2 border-neon hover:scale-105 hover:shadow-[0_0_25px_#00ffe1] transition duration-300 cursor-pointer"
+        data-aos="fade-up" data-aos-delay="300" onclick="openModal({
+     title: 'Soon',
+          desc: 'Soon...',
+          links: [
+            { label: 'GitHub', url: 'https://github.com/superyanka/' }
+          ]
+        })">
+
+        <img src="assets/projects/soon.png" alt="soon"
+          class="w-full h-40 object-cover rounded mb-4 border border-neon cursor-zoom-in"
+          onclick="event.stopPropagation(); openImageModal(this.src)" />
+
+        <h3 class="text-xl font-semibold text-neon mb-2">Soon...</h3>
+        <p class="text-aqua text-sm mb-4">Soon...</p>
+        <span class="text-neon underline">Подробнее →</span>
+      </div>
+
+
+
+
+
+
+    </section>
+  </main>
+  <div id="footer-placeholder"></div>
+
+  <!-- 🌌 Модальное окно -->
+  <div id="modal"
+    class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm z-50 hidden flex items-center justify-center px-4">
+    <div class="bg-deepblue border-2 border-neon rounded-xl p-6 max-w-xl w-full text-white relative animate-fadeIn">
+      <button onclick="closeModal()"
+        class="absolute top-2 right-2 text-neon text-xl hover:scale-110 transition">✖</button>
+      <h3 id="modal-title" class="text-2xl font-bold text-neon mb-2"></h3>
+      <p id="modal-desc" class="text-aqua text-sm mb-4"></p>
+      <div id="modal-links" class="flex flex-wrap gap-4">
+        <!-- Сюда подставляются кнопки -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 🌌 Модалка для увеличенного изображения -->
+  <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[100] hidden">
+    <div class="relative max-w-3xl w-full p-4">
+      <button id="closeImageModal"
+        class="absolute top-2 right-2 text-neon text-2xl font-bold hover:scale-110 transition">✖</button>
+      <img id="modalImage" src="" alt="Project Preview"
+        class="w-full h-auto max-h-[80vh] object-contain rounded border-2 border-neon shadow-neon" />
+    </div>
+  </div>
+
+
+  <!-- Scripts -->
+  <script>
+    AOS.init({ duration: 800, once: true });
+
+
+    const modal = document.getElementById('modal');
+    const title = document.getElementById('modal-title');
+    const desc = document.getElementById('modal-desc');
+    const links = document.getElementById('modal-links');
+
+    function openModal(data) {
+      title.textContent = data.title;
+      desc.textContent = data.desc;
+      links.innerHTML = '';
+      data.links.forEach(link => {
+        const a = document.createElement('a');
+        a.href = link.url;
+        a.target = '_blank';
+        a.className = 'bg-neon text-deepblue font-bold px-4 py-2 rounded hover:bg-aqua transition';
+        a.textContent = link.label;
+        links.appendChild(a);
+      });
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+    }
+
+
+
+    function openImageModal(src) {
+      const modal = document.getElementById("imageModal");
+      const img = document.getElementById("modalImage");
+      img.src = src;
+      modal.classList.remove("hidden");
+    }
+
+    document.getElementById("closeImageModal").addEventListener("click", () => {
+      document.getElementById("imageModal").classList.add("hidden");
+    });
+
+    // Закрытие по клику вне картинки
+    document.getElementById("imageModal").addEventListener("click", (e) => {
+      if (e.target.id === "imageModal") {
+        document.getElementById("imageModal").classList.add("hidden");
+      }
+    });
+
+  </script>
+
+  <script>
+    fetch("components/footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+  </script>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById("menuToggle");
+      const menu = document.getElementById("navMenu");
+
+      toggle.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+
+      // lucide icons (если используешь)
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+
+</body>
+
+</html>

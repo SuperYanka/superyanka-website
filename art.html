@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="ru" class="h-full">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="modal-trigger width=device-width, initial-scale=1.0" />
+  <title>Творчество — Super Yanka</title>
+  <link rel="stylesheet" href="styles/common.css" />
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            neon: '#00ffe1',
+            aqua: '#00c9c9',
+            deepblue: '#0b0f3b'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* Floating notes canvas */
+    #notes-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Hover effect for images */
+    .img-hover:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+
+
+    @keyframes eq {
+
+      0%,
+      100% {
+        height: 10%;
+      }
+
+      50% {
+        height: 100%;
+      }
+    }
+
+    @keyframes eq {
+      0% {
+        height: 10%;
+      }
+
+      50% {
+        height: 100%;
+      }
+
+      100% {
+        height: 10%;
+      }
+    }
+
+    .animate-eq {
+      animation: eq 1s infinite ease-in-out;
+    }
+
+    .delay-100 {
+      animation-delay: 0.1s;
+    }
+
+    .delay-200 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-300 {
+      animation-delay: 0.3s;
+    }
+
+    .delay-400 {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(100%);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    .animate-marquee {
+      animation: marquee 8s linear infinite;
+    }
+  </style>
+</head>
+
+
+<body class="relative bg-deepblue text-aqua font-sans overflow-x-hidden min-h-screen">
+  <!-- Video background -->
+  <video autoplay muted loop id="video-bg">
+    <source src="assets/video/art.mp4" type="video/mp4">
+    Ваш браузер не поддерживает видео.
+  </video>
+  <div id="video-overlay"></div>
+
+
+
+
+
+  <!-- Canvas for floating notes -->
+  <canvas id="notes-canvas"></canvas>
+
+
+
+  <!-- Navigation -->
+  <header
+    class="fixed w-full top-0 left-0 bg-opacity-50 bg-deepblue backdrop-blur-sm px-4 py-2 flex items-center justify-between z-30">
+    <a href="index.html" class="text-xl sm:text-2xl font-bold text-neon whitespace-nowrap">Super Yanka</a>
+
+
+    <!-- 🌟 Бегущая строка -->
+    <div class="overflow-hidden whitespace-nowrap text-sm text-aqua max-w-[160px] md:max-w-xs">
+      <span id="trackTitle" class="animate-marquee inline-block text-neon font-bold text-sm truncate"></span>
+    </div>
+
+    <!-- 🎵 Музыкальные кнопки -->
+    <div class="flex items-center gap-2 text-neon">
+
+
+      <!-- Кнопки управления -->
+      <button class="prevBtn hover:scale-110 transition" aria-label="Назад">
+        <i data-lucide="skip-back" class="w-5 h-5"></i>
+      </button>
+      <button class="playBtn" class="hover:scale-110 transition" aria-label="Плей/Пауза">
+        <i data-lucide="play" class="w-5 h-5" id="playIcon"></i>
+      </button>
+      <button class="nextBtn hover:scale-110 transition" aria-label="Вперёд">
+        <i data-lucide="skip-forward" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Эквалайзер для ПК -->
+    <div id="equalizer" class="hidden sm:flex space-x-1 items-end h-5 sm:h-6 w-10">
+      <div class="bar w-[3px] bg-neon rounded animate-eq"></div>
+      <div class="bar w-[3px] bg-neon rounded animate-eq delay-100"></div>
+      <div class="bar w-[3px] bg-neon rounded animate-eq delay-200"></div>
+      <div class="bar w-[3px] bg-neon rounded animate-eq delay-300"></div>
+      <div class="bar w-[3px] bg-neon rounded animate-eq delay-400"></div>
+    </div>
+
+    <!-- Эквалайзер для мобилки + бургер -->
+    <div class="flex sm:hidden items-center gap-2">
+
+      <!-- Эквалайзер для мобилки -->
+      <div id="equalizer-mobile" class="flex space-x-1 items-end h-5 w-10">
+        <div class="bar w-[3px] bg-neon rounded animate-eq"></div>
+        <div class="bar w-[3px] bg-neon rounded animate-eq delay-100"></div>
+        <div class="bar w-[3px] bg-neon rounded animate-eq delay-200"></div>
+        <div class="bar w-[3px] bg-neon rounded animate-eq delay-300"></div>
+        <div class="bar w-[3px] bg-neon rounded animate-eq delay-400"></div>
+      </div>
+
+      <!-- Гамбургер -->
+      <button id="menuToggle" class="text-neon z-50">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Навигация -->
+    <nav id="navMenu"
+      class="hidden sm:flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 absolute sm:relative top-full sm:top-0 left-0 w-full sm:w-auto
+    bg-opacity-50 bg-deepblue sm:bg-transparent z-40 px-4 sm:px-0 py-2 sm:py-0 text-aqua font-medium backdrop-blur-sm sm:backdrop-blur-0">
+      <a href="index.html" class="hover:text-neon transition">Главная</a>
+      <a href="about.html" class="hover:text-neon transition">Обо мне</a>
+      <a href="education.html" class="hover:text-neon transition">Образование</a>
+      <a href="projects.html" class="hover:text-neon transition">Проекты</a>
+      <a href="resume.html" class="hover:text-neon transition">Резюме</a>
+      <a href="art.html" class="text-neon">Хобби и Творчество</a>
+      <a href="youtube.html" class="hover:text-neon transition">YouTube</a>
+      <a href="misc.html" class="hover:text-neon transition">Разное</a>
+      <a href="contact.html" class="hover:text-neon transition">Контакты</a>
+    </nav>
+  </header>
+
+  <main class="relative pt-32 pb-16 z-10">
+    <!-- Заголовок -->
+    <section class="text-center p-10" data-aos="fade-up">
+      <h2 class="text-4xl font-extrabold text-white mb-4">Творчество</h2>
+      <p class="text-lg max-w-2xl mx-auto">Рисую, слышу, чувствую. Всё это — часть моего внутреннего мира.</p>
+    </section>
+
+
+
+
+    <!-- 🎵 Музыкальный блок -->
+    <section class="px-6 py-12 max-w-3xl mx-auto rounded-xl bg-opacity-40 bg-deepblue shadow-[0_0_20px_#00ffe1] mb-10"
+      data-aos="fade-up">
+      <h3 class="text-3xl font-bold text-neon mb-6 border-b border-neon pb-2 inline-block text-center">🎵 Мои песни</h3>
+
+      <p class="text-aqua mb-6 text-sm text-center">Музыка, которую я написала. Не забудь включить их,
+        нажми на кнопку ▶️ и наслаждайся!</p>
+
+      <!-- 🎧 Выбор трека -->
+      <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-6 w-full">
+        <label for="trackSelect" class="text-white font-semibold  text-sm sm:text-base">Выбери трек:</label>
+        <select id="trackSelect"
+          class="w-full sm:w-auto bg-neon text-deepblue px-3 sm:px-4 py-2 rounded-xl font-bold text-sm sm:text-base hover:bg-aqua transition truncate">
+
+          <option value="assets/arts/mymusic/mg_sanctum_cov.mp3">🔮 Track 1 — YaSuoY-Magical Sanctum MSM Cover🔮
+          </option>
+          <option value="assets/arts/mymusic/YaSuoY-Aria_Math.mp3">👾 Track 2 — YaSuoY-Aria Math MSM Cover 👾</option>
+          <option value="assets/arts/mymusic/YaSuoY-Main_theme_pigeon.mp3">🕊️ Track 3 — YaSuoY-Main_theme_pigeon 💥
+          </option>
+          <option value="assets/arts/mymusic/YaSuoY-SintWawe.mp3.mp3">🌊 Track 4 — YaSuoY-SintWawe 🌊</option>
+          <option value="assets/arts/mymusic/YaSuoY-Tararam.mp3">💫 Track 5 — YaSuoY-Tararam 💫</option>
+          <option value="assets/arts/mymusic/YaSuoY-Happiness_of_Death.mp3">💀 Track 6 — YaSuoY-Happiness of Death 💀
+          </option>
+          <option value="assets/arts/mymusic/YaSuoY-Guitarshots.mp3">🎸 Track 7 — YaSuoY-Guitarshots 🎶</option>
+          <option value="assets/arts/mymusic/YaSuoY-Cullo.mp3">🌀 Track 8 — YaSuoY-Cullo 🌀</option>
+          <option value="assets/arts/mymusic/YaSuoY-SubatMine.mp3">🕳️ Track 9 — YaSuoY-SubatMine 🕳️</option>
+        </select>
+      </div>
+
+
+      <!-- Кастомный плеер -->
+
+
+      <div class="flex items-center justify-center space-x-6 mb-6">
+        <button class="prevBtn text-neon hover:scale-110 transition" aria-label="Предыдущий">
+          <i data-lucide="skip-back" class="w-6 h-6"></i>
+        </button>
+
+        <button class="playBtn text-neon hover:scale-110 transition" aria-label="Play/Pause">
+          <i data-lucide="play" class="w-6 h-6"></i>
+        </button>
+
+        <button class="nextBtn text-neon hover:scale-110 transition" aria-label="Следующий">
+          <i data-lucide="skip-forward" class="w-6 h-6"></i>
+        </button>
+        <button class="shuffleBtn group text-neon transition" aria-label="Рандом" data-active="false">
+          <i id="shuffleIcon" data-lucide="shuffle"
+            class="w-6 h-6 transition-all group-data-[active=true]:text-aqua group-data-[active=true]:drop-shadow-[0_0_5px_#00ffe1] group-data-[active=false]:text-neon"></i>
+        </button>
+
+
+        <button class="repeatBtn group text-neon transition" aria-label="Повтор" data-active="false">
+          <i id="repeatIcon" data-lucide="repeat"
+            class="w-6 h-6 transition-all group-data-[active=true]:text-aqua group-data-[active=true]:drop-shadow-[0_0_5px_#00ffe1] group-data-[active=false]:text-neon"></i>
+        </button>
+      </div>
+      </div>
+
+      <!-- Звуковая волна -->
+      <div id="waveform" class="mt-2 mb-6 max-w-2xl mx-auto"></div>
+      <!-- 🔈 Невидимый аудиоплеер -->
+      <audio id="musicPlayer">
+        <source src="assets/arts/mymusic/mg_sanctum_cov.mp3" type="audio/mp3" />
+      </audio>
+      </div>
+    </section>
+
+
+
+
+
+
+
+    <!-- 🎨 Мини-галерея рисунков -->
+    <section class="max-w-6xl mx-auto px-6 py-12 rounded-xl bg-opacity-40 bg-deepblue shadow-[0_0_20px_#00ffe1] mb-10"
+      data-aos="fade-up">
+      <h3 class="text-3xl font-bold text-neon mb-6 border-b border-neon pb-2 inline-block">🎨 Рисунки</h3>
+
+      <p class="text-aqua mb-6 text-sm">
+        Цифровые и традиционные. Я люблю играть с формой, эмоцией и цветом
+      </p>
+
+      <!-- Кнопка -->
+      <button onclick="toggleGallery()"
+        class="bg-neon text-deepblue px-6 py-2 rounded-xl font-bold transition hover:bg-aqua hover:scale-105 mb-6">
+        Показать / скрыть мини-галерею
+      </button>
+
+      <!-- 🎨 Галерея артов -->
+      <div class="flex justify-center items-center gap-4 mb-4">
+        <button onclick="prevArtPage()" class="bg-neon text-deepblue px-4 py-1 rounded hover:bg-aqua">← Назад</button>
+        <button onclick="nextArtPage()" class="bg-neon text-deepblue px-4 py-1 rounded hover:bg-aqua">Вперёд →</button>
+      </div>
+      <div id="artGallery" class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-1 hidden">
+      </div>
+
+
+      </div>
+    </section>
+
+
+    <!-- 🧵 Рукоделие -->
+    <section class="px-6 py-12 max-w-6xl mx-auto rounded-xl bg-opacity-40 bg-deepblue shadow-[0_0_20px_#00ffe1] mb-10"
+      data-aos="fade-up">
+      <h3 class="text-3xl font-bold text-neon mb-6 border-b border-neon pb-2 inline-block">🧵 Рукоделие
+      </h3>
+      <p class="text-aqua mb-4 text-sm">Ручная работа — моя медитация ✨</p>
+
+      <div class="flex overflow-x-auto gap-4 scrollbar-hide py-2">
+        <img src="assets/arts/tvorchestvo/braslet_2018.jpg" alt="1"
+          class="h-[240px] object-cover object-center rounded border-2 border-neon hover:scale-110 transition modal-trigger" />
+        <img src="assets/arts/tvorchestvo/tvorch_2021.jpg" alt=" 2"
+          class="h-[240px] object-cover object-center rounded border-2 border-neon hover:scale-110 transition modal-trigger" />
+        <img src="assets/arts/tvorchestvo/tvorch_2021_2.jpg" alt="  1"
+          class="h-[240px] object-cover object-center rounded border-2 border-neon hover:scale-110 transition modal-trigger" />
+        <img src="assets/arts/tvorchestvo/tvorch_1.jpg" alt="  2"
+          class="h-[240px] object-cover object-center rounded border-2 border-neon hover:scale-110 transition modal-trigger" />
+        <img src="assets/arts/tvorchestvo/tvorch_2.jpg" alt="  2"
+          class="h-[240px] object-cover object-center rounded border-2 border-neon hover:scale-110 transition modal-trigger" />
+        <img src="assets/arts/tvorchestvo/tvorch_3.jpg" alt="  2"
+          class="h-[240px] object-cover object-center rounded border-2 border-neon hover:scale-110 transition modal-trigger" />
+        <img src="assets/arts/tvorchestvo/tvorch_4.jpg" alt="  2"
+          class="h-[240px] object-cover object-center rounded border-2 border-neon hover:scale-110 transition modal-trigger" />
+        <img src="assets/arts/tvorchestvo/tvorch_5.jpg" alt="  2"
+          class="h-[240px] object-cover object-center rounded border-2 border-neon hover:scale-110 transition modal-trigger" />
+      </div>
+    </section>
+
+    <!-- 🧵 Паззлы -->
+    <section class="px-6 py-12 max-w-6xl mx-auto rounded-xl bg-opacity-40 bg-deepblue shadow-[0_0_20px_#00ffe1] mb-10"
+      data-aos="fade-up">
+      <h3 class="text-3xl font-bold text-neon mb-6 border-b border-neon pb-2 inline-block">🧩 Паззлы</h3>
+
+      <p class="text-aqua mb-4 text-sm">Паззлы с детства — моё любимое занятие перед сном 😴🧠</p>
+      <div class="flex overflow-x-auto gap-4 scrollbar-hide py-2">
+        <img src="assets/arts/puzzle/puz_0.jpg" alt="1"
+          class="h-[240px] object-cover object-center rounded border-2 border-neon hover:scale-110 transition modal-trigger" />
+        <img src="assets/arts/puzzle/puz_1.jpg" alt="1"
+          class="h-[240px] object-cover object-center rounded border-2 border-neon hover:scale-110 transition modal-trigger" />
+        <img src="assets/arts/puzzle/puz_2.jpg" alt=" 2"
+          class="h-[240px] object-cover object-center rounded border-2 border-neon hover:scale-110 transition modal-trigger" />
+        <img src="assets/arts/puzzle/puz_3.jpg" alt="  2"
+          class="h-[240px] object-cover object-center rounded border-2 border-neon hover:scale-110 transition modal-trigger" />
+        <img src="assets/arts/puzzle/puz_4.jpg" alt="  2"
+          class="h-[240px] object-cover object-center rounded border-2 border-neon hover:scale-110 transition modal-trigger" />
+      </div>
+    </section>
+
+
+
+
+
+    <!-- 🍱 Галерея еды -->
+    <section class="max-w-6xl mx-auto px-6 py-12 rounded-xl bg-opacity-40 bg-deepblue shadow-[0_0_20px_#00ffe1] mb-10"
+      data-aos="fade-up">
+      <h3 class="text-3xl font-bold text-neon mb-6 border-b border-neon pb-2 inline-block">📷 Фотография еды</h3>
+
+      <p class="text-aqua mb-6 text-sm">
+        Я обожаю фотографировать еду — как приготовленную, так и в кафе. Эти снимки — мой способ ловить красоту в
+        деталях 🍰🍓
+      </p>
+
+      <!-- Кнопка для показа/скрытия -->
+      <button onclick="toggleFoodGallery()"
+        class="bg-neon text-deepblue px-6 py-2 rounded-xl font-bold transition hover:bg-aqua hover:scale-105 mb-6">
+        Показать / скрыть мини-галерею
+      </button>
+
+
+      <div class="flex justify-center items-center gap-4 mb-4">
+        <button onclick="prevFoodPage()" class="bg-neon text-deepblue px-4 py-1 rounded hover:bg-aqua">← Назад</button>
+        <button onclick="nextFoodPage()" class="bg-neon text-deepblue px-4 py-1 rounded hover:bg-aqua">Вперёд →</button>
+      </div>
+      <!-- Галерея еды -->
+      <div id="foodGallery" class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-1 hidden">
+
+
+      </div>
+    </section>
+
+
+
+    <!-- Вдохновение -->
+    <section class="text-center px-6 py-16" data-aos="fade-up">
+      <h3 class="text-xl text-aqua font-medium mb-2">О чём моё искусство?</h3>
+      <p class="text-aqua max-w-2xl mx-auto leading-relaxed">
+        Это попытка понять себя. О тенях, о свете, о текстурах, которые не видно, но чувствуешь.<br>
+        Я не просто художник — я наблюдатель, который оставляет след.
+      </p>
+    </section>
+  </main>
+
+
+
+  <!-- Подвал -->
+  <div id="footer-placeholder"></div>
+
+  <!-- 🌌 Модальное окно -->
+  <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+    <button id="prevBtn"
+      class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-50 text-neon text-4xl sm:text-5xl bg-transparent p-6 hover:scale-125 transition">
+      ⟨
+    </button>
+    <div class="relative">
+      <button id="closeModal"
+        class="absolute -top-4 -right-4 bg-neon text-deepblue rounded-full p-2 hover:bg-white transition">✕</button>
+      <img id="modalImage" src="" alt="Увеличенное фото"
+        class="max-w-[90vw] max-h-[90vh] rounded-lg shadow-[0_0_25px_#00ffe1] border-2 border-neon" />
+      <p id="imageCounter" class="text-center text-aqua mt-4 text-sm font-semibold">Фото 1 из 150</p>
+
+    </div>
+    <button id="nextBtn"
+      class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-50 text-neon text-4xl sm:text-5xl bg-transparent p-6 hover:scale-125 transition">
+      ⟩
+    </button>
+  </div>
+
+
+  <script>lucide.createIcons();</script>
+
+  <!-- AOS Init -->
+  <script>
+    AOS.init({ duration: 800, once: true });
+
+    // Floating musical notes
+    const canvas = document.getElementById('notes-canvas');
+    const ctx = canvas.getContext('2d');
+    let notes = [];
+
+    function initCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', initCanvas);
+    initCanvas();
+
+    class Note {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height + 20;
+        this.speed = 1 + Math.random() * 1.5;
+        this.size = 16 + Math.random() * 16;
+        this.alpha = 0.7 + Math.random() * 0.3;
+      }
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.fillStyle = '#00ffe1';
+        ctx.font = `${this.size}px serif`;
+        ctx.fillText('♪', this.x, this.y);
+        ctx.restore();
+      }
+      update() {
+        this.y -= this.speed;
+        if (this.y < -20) this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height + 20;
+        this.speed = 1 + Math.random() * 1.5;
+        this.size = 16 + Math.random() * 16;
+        this.alpha = 0.7 + Math.random() * 0.3;
+      }
+    }
+
+    function animateNotes() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (notes.length < 80) notes.push(new Note());
+      notes.forEach(n => { n.update(); n.draw(); });
+      requestAnimationFrame(animateNotes);
+    }
+    animateNotes();
+
+  </script>
+
+
+
+
+
+
+
+
+
+  <script>
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeModalBtn = document.getElementById('closeModal');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const imageCounter = document.getElementById('imageCounter');
+
+    // Общие переменные
+    let activeGallery = null;
+
+    // 🎨 Арты
+    const drawImages = Array.from({ length: 200 }, (_, i) => `assets/arts/draw/art(${i}).jpg`);
+    let currentDrawPage = 0;
+    const drawPerPage = 40;
+    let currentDrawIndex = 0;
+
+    function renderArtGallery() {
+      const artGallery = document.getElementById('artGallery');
+      artGallery.innerHTML = '';
+      const start = currentDrawPage * drawPerPage;
+      const end = start + drawPerPage;
+      const currentImages = drawImages.slice(start, end);
+
+      currentImages.forEach((src, i) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = `Арт ${start + i + 1}`;
+        img.className = 'w-[100px] h-[100px] object-cover object-center rounded border-2 border-neon cursor-pointer hover:scale-110 transition modal-trigger';
+        img.onclick = () => openDrawModal(start + i);
+        artGallery.appendChild(img);
+      });
+    }
+
+    function nextArtPage() {
+      const maxPage = Math.floor(drawImages.length / drawPerPage);
+      currentDrawPage = (currentDrawPage + 1) % (maxPage + 1);
+      renderArtGallery();
+    }
+
+    function prevArtPage() {
+      const maxPage = Math.floor(drawImages.length / drawPerPage);
+      currentDrawPage = (currentDrawPage - 1 + (maxPage + 1)) % (maxPage + 1);
+      renderArtGallery();
+    }
+    function openArtModal(index) {
+      activeGallery = 'art';
+      currentArtIndex = index;
+      modalImg.src = artImages[currentArtIndex];
+      modal.classList.remove('hidden');
+      updateImageCounter();
+    }
+    function openDrawModal(index) {
+      activeGallery = 'draw';
+      currentDrawIndex = index;
+      modalImg.src = drawImages[currentDrawIndex];
+      modal.classList.remove('hidden');
+      updateImageCounter();
+    }
+
+    function closeImageModal() {
+      document.getElementById('imageModal').classList.add('hidden');
+    }
+
+
+
+    function toggleGallery() {
+      const gallery = document.getElementById('artGallery');
+      gallery.classList.toggle('hidden');
+    }
+
+
+
+
+    // 🍱 Еда
+    const foodImages = Array.from({ length: 150 }, (_, i) => `assets/arts/food/food(${i + 1}).jpg`);
+    let currentPage = 0;
+    const imagesPerPage = 40;
+    let currentFoodIndex = 0;
+
+    function renderFoodGallery() {
+      const foodGallery = document.getElementById('foodGallery');
+      foodGallery.innerHTML = '';
+      const start = currentPage * imagesPerPage;
+      const end = start + imagesPerPage;
+      const currentImages = foodImages.slice(start, end);
+
+      currentImages.forEach((src, i) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = `Еда ${start + i + 1}`;
+        img.className = 'w-[100px] h-[100px] object-cover object-center rounded border-2 border-neon cursor-pointer hover:scale-110 transition';
+        img.onclick = () => openFoodModal(start + i); // индекс из полного массива
+        foodGallery.appendChild(img);
+      });
+    }
+
+
+    function toggleFoodGallery() {
+      const gallery = document.getElementById('foodGallery');
+      gallery.classList.toggle('hidden');
+    }
+
+    function nextFoodPage() {
+      const maxPage = Math.floor(foodImages.length / imagesPerPage);
+      currentPage = (currentPage + 1) % (maxPage + 1);
+      renderFoodGallery();
+    }
+
+    function prevFoodPage() {
+      const maxPage = Math.floor(foodImages.length / imagesPerPage);
+      currentPage = (currentPage - 1 + (maxPage + 1)) % (maxPage + 1);
+      renderFoodGallery();
+    }
+
+    function openFoodModal(index) {
+      activeGallery = 'food';
+      currentFoodIndex = index;
+      modalImg.src = foodImages[currentFoodIndex];
+      modal.classList.remove('hidden');
+    }
+    // ❌ Закрытие
+    closeModalBtn.addEventListener('click', () => modal.classList.add('hidden'));
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.add('hidden');
+    });
+
+
+    // ⬅️➡️ Переключение
+    nextBtn.addEventListener('click', () => {
+      if (activeGallery === 'draw') {
+        currentDrawIndex = (currentDrawIndex + 1) % drawImages.length;
+        modalImg.src = drawImages[currentDrawIndex];
+        updateImageCounter();
+      } else if (activeGallery === 'food') {
+        currentFoodIndex = (currentFoodIndex + 1) % foodImages.length;
+        modalImg.src = foodImages[currentFoodIndex];
+        updateImageCounter();
+      }
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (activeGallery === 'draw') {
+        currentDrawIndex = (currentDrawIndex - 1 + drawImages.length) % drawImages.length;
+        modalImg.src = drawImages[currentDrawIndex];
+        updateImageCounter();
+      } else if (activeGallery === 'food') {
+        currentFoodIndex = (currentFoodIndex - 1 + foodImages.length) % foodImages.length;
+        modalImg.src = foodImages[currentFoodIndex];
+        updateImageCounter();
+      }
+    });
+
+
+
+    // 🎨 Навешиваем обработчики на арты
+
+
+    function toggleFoodGallery() {
+      const gallery = document.getElementById('foodGallery');
+      gallery.classList.toggle('hidden');
+      images.length = 0;
+      images.push(...document.querySelectorAll('.modal-trigger'));
+
+    }
+
+
+
+
+    function updateImageCounter() {
+      if (activeGallery === 'food') {
+        imageCounter.textContent = `🍰 Фото ${currentFoodIndex + 1} из ${foodImages.length}`;
+      } else if (activeGallery === 'draw') {
+        imageCounter.textContent = `🎨 Арт ${currentDrawIndex + 1} из ${drawImages.length}`;
+      } else {
+        imageCounter.textContent = '';
+      }
+    }
+
+
+    renderArtGallery();
+    renderFoodGallery();
+
+
+  </script>
+
+
+
+
+
+  <script src="https://unpkg.com/wavesurfer.js"></script>
+  <script>
+
+
+
+    const tracks = Array.from(document.querySelectorAll('#trackSelect option')).map(o => o.value);
+    let current = 0;
+
+    const wavesurfer = WaveSurfer.create({
+      container: '#waveform',
+      waveColor: '#00c9c9',
+      progressColor: '#00ffe1',
+      cursorColor: '#ffffff',
+      height: 60,
+      barWidth: 2,
+    });
+
+
+    const trackTitle = document.getElementById('trackTitle'); // ⬅️ обязательно
+
+
+    // 🔊 Обновление иконки
+    function updatePlayIcon(isPlaying) {
+      const icon = isPlaying ? 'pause' : 'play';
+      document.querySelectorAll('.playBtn').forEach(btn => {
+        btn.innerHTML = `<i data-lucide="${icon}" class="w-6 h-6"></i>`;
+      });
+      lucide.createIcons();
+    }
+
+    // 🔉 Анимация эквалайзера
+    function setBarsActive(active) {
+      document.querySelectorAll('.bar').forEach(bar => {
+        bar.style.animationPlayState = active ? 'running' : 'paused';
+      });
+    }
+    setBarsActive(false); // отключить эквалайзер до нажатия Play
+
+    function loadTrack(idx) {
+      const src = tracks[idx];
+      current = idx;
+
+      wavesurfer.load(src);
+      document.getElementById('trackSelect').selectedIndex = idx;
+
+      const titles = [
+        "🔮 Magical Sanctum MSM Cover 🔮",
+        "👾 Aria Math MSM Cover 👾",
+        "🐦 Main_theme_pigeon 🎵",
+        "🌊 YaSuoY-SintWawe 🌊",
+        "💫 Tararam 💫",
+        "💀 Happiness of Death 💀",
+        "🎸 Guitarshots 🎶",
+        "🌀 Cullo 🌀",
+        "🕳️ SubatMine 🕳️"
+      ];
+
+      if (trackTitle) trackTitle.textContent = titles[idx];
+    }
+
+
+
+    // ▶️ Воспроизведение с защитой от блокировки
+    function playCurrentTrack() {
+      wavesurfer.once('ready', () => {
+        const played = wavesurfer.play();
+
+        if (played instanceof Promise) {
+          played.then(() => {
+            updatePlayIcon(true);
+            setBarsActive(true);
+          }).catch(() => {
+            updatePlayIcon(false);
+            setBarsActive(false);
+          });
+        }
+      });
+    }
+
+    function getRandomTrack() {
+      let next;
+      do {
+        next = Math.floor(Math.random() * tracks.length);
+      } while (next === current && tracks.length > 1);
+      return next;
+    }
+
+    // 🎧 Переключение трека вручную
+    document.getElementById('trackSelect').addEventListener('change', e => {
+      loadTrack(e.target.selectedIndex);
+      playCurrentTrack();
+    });
+
+    let shuffleEnabled = false;
+    let repeatEnabled = false;
+
+    const shuffleBtn = document.querySelector('.shuffleBtn');
+    const repeatBtn = document.querySelector('.repeatBtn');
+
+    shuffleBtn.addEventListener('click', () => {
+      shuffleEnabled = !shuffleEnabled;
+      shuffleBtn.setAttribute('data-active', shuffleEnabled);
+    });
+
+    repeatBtn.addEventListener('click', () => {
+      repeatEnabled = !repeatEnabled;
+      repeatBtn.setAttribute('data-active', repeatEnabled);
+    });
+
+    // ▶️/⏸️ Play/Pause
+    document.querySelectorAll('.playBtn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        wavesurfer.playPause();
+        setTimeout(() => {
+          const isPlaying = wavesurfer.isPlaying();
+          updatePlayIcon(isPlaying);
+          setBarsActive(isPlaying);
+        }, 100);
+      });
+    });
+
+    // ⏮ Предыдущий
+    document.querySelectorAll('.prevBtn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        current = (current - 1 + tracks.length) % tracks.length;
+        loadTrack(current);
+        playCurrentTrack();
+      });
+    });
+
+    // ⏭ Следующий
+    document.querySelectorAll('.nextBtn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (shuffleEnabled) {
+          current = getRandomTrack();
+        } else {
+          current = (current + 1) % tracks.length;
+        }
+        loadTrack(current);
+        playCurrentTrack();
+      });
+    });
+
+    // 🔁 Автоматический переход при завершении
+    wavesurfer.on('finish', () => {
+      if (repeatEnabled) {
+        // 🔁 Повтор текущего трека
+        loadTrack(current);
+        playCurrentTrack();
+      } else if (shuffleEnabled) {
+        // 🔀 Рандомный трек
+        current = getRandomTrack();
+        loadTrack(current);
+        playCurrentTrack();
+      } else {
+        // ▶️ Следующий по порядку
+        current = (current + 1) % tracks.length;
+        loadTrack(current);
+        playCurrentTrack();
+      }
+    });
+
+    function changeTrack() {
+      const selector = document.getElementById('trackSelector');
+      const player = document.getElementById('musicPlayer');
+      const selectedTrack = selector.value;
+
+      player.src = selectedTrack;
+      player.play(); // Автовоспроизведение при смене
+    }
+
+
+    // 🚀 Начальный запуск
+    loadTrack(current);
+
+
+  </script>
+  <script>
+    fetch("components/footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById("menuToggle");
+      const menu = document.getElementById("navMenu");
+
+      toggle.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+
+      // lucide icons (если используешь)
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+
+
+</body>
+
+</html>

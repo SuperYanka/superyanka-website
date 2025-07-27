@@ -1,0 +1,2032 @@
+<!DOCTYPE html>
+<html lang="ru" class="overflow-x-hidden">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Yanka — Обо мне</title>
+  <link rel="stylesheet" href="styles/common.css" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            neon: '#00ffe1',
+            aqua: '#00c9c9',
+            deepblue: '#0b0f3b'
+          }
+        }
+      }
+    }    
+  </script>
+  <!-- Particles.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <style>
+    /* Full-screen particle background */
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    /* Timeline photo scroll */
+    .photo-scroll {
+      overflow-x: auto;
+      display: flex;
+      gap: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .photo-scroll img {
+      flex: 0 0 auto;
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      border: 2px solid #00ffe1;
+    }
+
+    .border-aqua {
+      box-shadow: 0 0 15px #00ffe1;
+    }
+
+    .carousel-img {
+      min-width: 192px;
+      height: 192px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border-radius: 0.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .carousel-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ffe1;
+    }
+
+    img.modal-trigger {
+      cursor: zoom-in;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      /* если хочешь чуть вниз */
+      transition: opacity 1.6s ease-out, transform 1.6s ease-out;
+    }
+
+    .reveal-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide-from-left {
+      transform: translateX(-60px);
+    }
+
+    .slide-from-right {
+      transform: translateX(60px);
+    }
+
+    .reveal-visible.slide-from-left {
+      transform: translateX(0);
+    }
+
+    .reveal-visible.slide-from-right {
+      transform: translateX(0);
+    }
+
+    .slide-from-bottom {
+      transform: translateY(60px);
+    }
+
+    .reveal-visible.slide-from-bottom {
+      transform: translateY(0);
+    }
+
+
+    [x-cloak] {
+      display: none;
+    }
+  </style>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script src="https://unpkg.com/alpinejs" defer></script>
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+</head>
+
+<body class="relative bg-deepblue text-aqua min-h-screen overflow-x-hidden">
+
+
+  <!-- Particle background -->
+  <div id="particles-js"></div>
+  <script>
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80 },
+        color: { value: '#00ffe1' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5 },
+        size: { value: 3 },
+        move: { enable: true, speed: 2, direction: 'none', out_mode: 'bounce' }
+      },
+      interactivity: {
+        events: { onhover: { enable: true, mode: 'repulse' } }
+      }
+    });
+  </script>
+
+  <!-- Navigation -->
+  <header
+    class="fixed w-full top-0 left-0 bg-opacity-50 bg-deepblue backdrop-blur-sm px-4 py-2 flex items-center justify-between z-30">
+    <a href="index.html" class="text-xl sm:text-2xl font-bold text-neon whitespace-nowrap">Super Yanka</a>
+
+
+    <!-- Гамбургер -->
+    <button id="menuToggle" class="sm:hidden text-neon z-50">
+      <i data-lucide="menu" class="w-6 h-6"></i>
+    </button>
+    </div>
+
+    <!-- Навигация -->
+    <nav id="navMenu"
+      class="hidden sm:flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 absolute sm:relative top-full sm:top-0 left-0 w-full sm:w-auto
+    bg-opacity-50 bg-deepblue sm:bg-transparent z-40 px-4 sm:px-0 py-2 sm:py-0 text-aqua font-medium backdrop-blur-sm sm:backdrop-blur-0">
+      <a href="index.html" class="hover:text-neon transition">Главная</a>
+      <a href="about.html" class="text-neon">Обо мне</a>
+      <a href="education.html" class="hover:text-neon transition">Образование</a>
+      <a href="projects.html" class="hover:text-neon transition">Проекты</a>
+      <a href="resume.html" class="hover:text-neon transition">Резюме</a>
+      <a href="art.html" class="hover:text-neon transition">Хобби и Творчество</a>
+      <a href="youtube.html" class="hover:text-neon transition">YouTube</a>
+      <a href="misc.html" class="hover:text-neon transition">Разное</a>
+      <a href="contact.html" class="hover:text-neon transition">Контакты</a>
+    </nav>
+
+
+  </header>
+
+
+
+  <main class="pt-28 sm:pt-32 lg:pt-32 pb-16 relative z-10">
+    <section class="text-center mb-12">
+      <h2 class="text-4xl font-extrabold text-white mb-4 animate-fadeIn">Обо мне</h2>
+      <p class="text-lg max-w-2xl mx-auto animate-fadeIn delay-200">«Моя хронология жизни. Фотоальбом»</p>
+    </section>
+
+
+
+    <!-- Timeline -->
+    <section class="relative container mx-auto px-4">
+      <div class="border-l-2 border-aqua absolute h-full left-1/2 transform -translate-x-1/2"></div>
+      <ul class="space-y-16">
+
+
+
+        <!-- Item 1: left -->
+        <li class="relative flex flex-col md:flex-row justify-between items-start w-full group">
+          <!-- Неоновая точка на линии -->
+          <div
+            class="absolute top-[0.75rem] sm:top-4 left-1/2 transform -translate-x-1/2 w-3 h-3 sm:w-4 sm:h-4 bg-neon rounded-full shadow-[0_0_10px_#00ffe1] z-20">
+          </div>
+
+          <!-- Контент -->
+          <div
+            class="reveal slide-from-right w-full md:max-w-[680px] px-4 py-4 mx-auto md:ml-6 bg-deepblue bg-opacity-75 rounded-xl border-2 border-neon shadow-[0_0_15px_#00ffe1] group-hover:scale-[1.02]"
+            style="transition-delay: 0s;">
+
+            <section class="reveal slide-from-bottom">
+              <h3 class="text-2xl sm:text-3xl font-bold text-neon mb-2 glow-text">2004–2010 — Младенчество</h3>
+              <p class="text-aqua text-lg font-light italic mb-4">«Родилась! И сразу обнаружила в себе страсть к
+                кривляниям, куколкам, гитаркам и, конечно же, катаниям на больших машинках»</p>
+              <ul class="list-disc list-inside text-aqua space-y-1 pl-4">
+                <li>Разрисованные обои</li>
+                <li>Игрушки и познавание мира</li>
+                <li><strong>2009:</strong> детский сад, песочница, злая и добрая воспитательницы, невкусная каша</li>
+              </ul>
+            </section>
+
+
+            <!-- 🌌 УНИВЕРСАЛЬНАЯ КАРУСЕЛЬ -->
+            <div
+              class="carousel relative overflow-hidden mt-6 w-full max-w-[624px] mx-auto rounded-xl border-2 border-neon shadow-neon group">
+
+              <!-- ⬅️ Стрелка ВЛЕВО -->
+              <button
+                class="carousel-prev absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+
+              <!-- ➡️ Стрелка ВПРАВО -->
+              <button
+                class="carousel-next absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+
+              <!-- 🖼 Слайдер -->
+              <div class="overflow-hidden">
+                <div class="carousel-track flex gap-4 w-max transition-transform duration-1000 ease-in-out">
+
+                  <!-- ✅ ОРИГИНАЛЫ -->
+                  <img src="assets/education/kid_photos/kid_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_3.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_5.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_6.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_7.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_8.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_9.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_10.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_11.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_12.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_13.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_14.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_15.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_16.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_17.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+
+                  <!-- ♻️ КЛОНЫ -->
+                  <img src="assets/education/kid_photos/kid_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_3.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_5.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_6.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_7.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_8.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_9.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_10.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_11.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_12.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_13.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_14.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_15.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_16.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_17.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Противоположная сторона -->
+            <div class="md:w-5/12"></div>
+        </li>
+
+
+
+
+
+        <!-- Item 2: right -->
+        <li
+          class="relative flex flex-col md:flex-row-reverse justify-between items-start w-full animate-fadeIn delay-200 group">
+
+          <!-- 🟡 Центральная точка -->
+          <div
+            class="absolute top-[0.75rem] sm:top-4 left-1/2 transform -translate-x-1/2 w-3 h-3 sm:w-4 sm:h-4 bg-neon rounded-full shadow-[0_0_10px_#00ffe1] z-20">
+          </div>
+
+          <!-- Правая карточка -->
+
+
+          <div
+            class="reveal slide-from-left w-full md:max-w-[680px] px-4 py-4 mx-auto md:mr-6 bg-deepblue bg-opacity-75 rounded-xl border-2 border-neon shadow-[0_0_15px_#00ffe1] group-hover:scale-[1.02]"
+            style="transition-delay: 0.2s;">
+
+            <section class="reveal slide-from-bottom">
+              <h3 class="text-2xl sm:text-3xl font-bold text-neon mb-2 glow-text">2010–2014 — Младшая школа</h3>
+              <p class="text-aqua text-lg font-light italic mb-4"> «Мир стал шире. Появились первые друзья, первые
+                оценки и первые выступления на сцене.»
+              </p>
+              <ul class="list-disc list-inside text-aqua space-y-2 pl-4">
+                <li>Учёба в младших классах с рюкзаком почти больше меня</li>
+                <li>Игры с друзями на переменке и после школы</li>
+                <li>Поступление в художественную школу</li>
+                <li>Один год ходила на кружок танцев</li>
+                <li><strong>2012:</strong> поступила в музыкальную школу по специальности скрипка</li>
+              </ul>
+            </section>
+
+
+
+
+            <!-- 🌌 УНИВЕРСАЛЬНАЯ КАРУСЕЛЬ -->
+            <div
+              class="carousel relative overflow-hidden mt-6 w-full max-w-[624px] mx-auto rounded-xl border-2 border-neon shadow-neon group">
+
+              <!-- ⬅️ Стрелка ВЛЕВО -->
+              <button
+                class="carousel-prev absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+
+              <!-- ➡️ Стрелка ВПРАВО -->
+              <button
+                class="carousel-next absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+
+              <!-- 🖼 Слайдер -->
+              <div class="overflow-hidden">
+                <div class="carousel-track flex gap-4 w-max transition-transform duration-1000 ease-in-out">
+
+                  <!-- ✅ ОРИГИНАЛЫ -->
+                  <img src="assets/education/school/1-4class/1class_0.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/school/1-4class/1class_myphoto.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/school/1-4class/1class_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/school/1-4class/1class_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/school/1-4class/1class_3.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/school/1-4class/2class_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/school/1-4class/2class_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/school/1-4class/3class_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/school/1-4class/3class_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/school/1-4class/4class_0.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="4">
+                  <img src="assets/education/school/1-4class/4class_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="4">
+                  <img src="assets/education/school/1-4class/4class_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="5">
+                  <img src="assets/education/school/1-4class/4class_3.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+                  <img src="assets/education/school/1-4class/4class_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+
+
+                  <!-- ♻️ КЛОНЫ -->
+
+                  <img src="assets/education/school/1-4class/1class_0.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/school/1-4class/1class_myphoto.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/school/1-4class/1class_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/school/1-4class/1class_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/school/1-4class/1class_3.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/school/1-4class/2class_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/school/1-4class/2class_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/school/1-4class/3class_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/school/1-4class/3class_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/school/1-4class/4class_0.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="4">
+                  <img src="assets/education/school/1-4class/4class_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="4">
+                  <img src="assets/education/school/1-4class/4class_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="5">
+                  <img src="assets/education/school/1-4class/4class_3.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+                  <img src="assets/education/school/1-4class/4class_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+            <!-- ☀️ Ноябрь 2010 -->
+            <div x-data="{ open2010: false }" class="mt-10 text-center">
+              <button @click="open2010 = !open2010" class="text-neon font-semibold hover:underline transition">
+                ☀️ Ноябрь 2010: Поездка в Египет
+              </button>
+
+              <div x-show="open2010" x-transition class="mt-6">
+                <div class="overflow-x-auto">
+                  <div class="flex gap-4 px-4 py-2 w-max mx-auto">
+                    <template x-for="(src, index) in [
+          'assets/education/school/1-4class/egypt_2010/eg_1.jpg',
+          'assets/education/school/1-4class/egypt_2010/eg_2.jpg',
+          'assets/education/school/1-4class/egypt_2010/eg_3.jpg',
+          'assets/education/school/1-4class/egypt_2010/eg_4.jpg',
+          'assets/education/school/1-4class/egypt_2010/eg_5.jpg',
+          'assets/education/school/1-4class/egypt_2010/eg_6.jpg',
+          'assets/education/school/1-4class/egypt_2010/eg_7.jpg',
+          'assets/education/school/1-4class/egypt_2010/eg_8.jpg',
+          'assets/education/school/1-4class/egypt_2010/eg_9.jpg',
+          'assets/education/school/1-4class/egypt_2010/eg_10.jpg',
+          'assets/education/school/1-4class/egypt_2010/eg_11.jpg',
+          'assets/education/school/1-4class/egypt_2010/eg_12.jpg'
+        ]" :key="index">
+                      <img :src="src" @click="openImageModal(src)"
+                        class="w-48 h-43 object-cover rounded-xl border-2 border-neon shadow-neon hover:scale-105 transition-all cursor-zoom-in"
+                        :alt="'Египет 2010 - ' + (index + 1)" />
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ☀️ Ноябрь 2012 -->
+            <div x-data="{ open2012: false }" class="mt-10 text-center">
+              <button @click="open2012 = !open2012" class="text-neon font-semibold hover:underline transition">
+                ☀️ Ноябрь 2012: Поездка в Египет
+              </button>
+
+              <div x-show="open2012" x-transition class="mt-6">
+                <div class="overflow-x-auto">
+                  <div class="flex gap-4 px-4 py-2 w-max mx-auto">
+                    <template x-for="(src, index) in [
+          'assets/education/school/1-4class/egypt_2012/eg_1.jpg',
+          'assets/education/school/1-4class/egypt_2012/eg_2.jpg',
+          'assets/education/school/1-4class/egypt_2012/eg_3.jpg',
+          'assets/education/school/1-4class/egypt_2012/eg_4.jpg',
+          'assets/education/school/1-4class/egypt_2012/eg_5.jpg',
+          'assets/education/school/1-4class/egypt_2012/eg_6.jpg',
+          'assets/education/school/1-4class/egypt_2012/eg_7.jpg',
+          'assets/education/school/1-4class/egypt_2012/eg_8.jpg',
+          'assets/education/school/1-4class/egypt_2012/eg_9.jpg'
+        ]" :key="index">
+                      <img :src="src" @click="openImageModal(src)"
+                        class="w-48 h-43 object-cover rounded-xl border-2 border-neon shadow-neon hover:scale-105 transition-all cursor-zoom-in"
+                        :alt="'Египет 2012 - ' + (index + 1)" />
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+            <!-- Противоположная сторона -->
+            <div class="md:w-5/12"></div>
+        </li>
+        <!-- Item 3: left -->
+        <li class="relative flex flex-col md:flex-row justify-between items-start w-full animate-fadeIn group">
+          <div
+            class="absolute top-[0.75rem] sm:top-4 left-1/2 transform -translate-x-1/2 w-3 h-3 sm:w-4 sm:h-4 bg-neon rounded-full shadow-[0_0_10px_#00ffe1] z-20">
+          </div>
+          <div
+            class="reveal slide-from-right w-full md:max-w-[680px] px-4 py-4 mx-auto md:ml-6 bg-deepblue bg-opacity-75 rounded-xl border-2 border-neon shadow-[0_0_15px_#00ffe1] group-hover:scale-[1.02]"
+            style="transition-delay: 0s;">
+
+
+            <section class="reveal slide-from-bottom">
+              <h3 class="text-2xl sm:text-3xl font-bold text-neon mb-2 glow-text">2014–2019 — Средняя школа</h3>
+              <p class="text-aqua text-lg font-light italic mb-4"> «Средняя школа — время открытий, вдохновения и
+                сомнений.
+                Я пробовала, бросала, возвращалась. Музыка, мода, учёба — всё смешалось в вихре взросления.//(поменять
+                этот бред)»
+              </p>
+              <ul class="list-disc list-inside text-aqua space-y-2 pl-4">
+                <li>Размер рюкзака увеличился</li>
+                <li>Успехи в учёбе и музыкальной школе</li>
+                <li><strong>2014:</strong> бросила художественную школу, но не перестала рисовать, рисую просто
+                  по-своему</li>
+                <li><strong>2017-2018:</strong> завершение модельной школы - фотосессии, актерское мастерство и участие
+                  в съемках нескольких сериалов (третьестепенные роли)</li>
+                <li><strong>2018:</strong> разделение классов и поступление в "математический" класс и подтягивание
+                  математики</li>
+                <li>Новые друзья</li>
+              </ul>
+            </section>
+
+
+
+            <!-- 🌌 УНИВЕРСАЛЬНАЯ КАРУСЕЛЬ -->
+            <div
+              class="carousel relative overflow-hidden mt-6 w-full max-w-[624px] mx-auto rounded-xl border-2 border-neon shadow-neon group">
+
+              <!-- ⬅️ Стрелка ВЛЕВО -->
+              <button
+                class="carousel-prev absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+
+              <!-- ➡️ Стрелка ВПРАВО -->
+              <button
+                class="carousel-next absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+
+              <!-- 🖼 Слайдер -->
+              <div class="overflow-hidden">
+                <div class="carousel-track flex gap-4 w-max transition-transform duration-1000 ease-in-out">
+
+                  <!-- ✅ ОРИГИНАЛЫ -->
+                  <img src="assets/education/school/9class/5class.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/school/9class/5class_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/school/9class/6class_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/school/9class/6class_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/school/9class/8class_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/school/9class/8class_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/school/9class/8class_3.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/school/9class/8class_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/school/9class/9class_0.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="4">
+                  <img src="assets/education/school/9class/9class_10.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="4">
+                  <img src="assets/education/school/9class/9class_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="5">
+                  <img src="assets/education/school/9class/9class_5.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+                  <img src="assets/education/school/9class/9class_3.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="8">
+                  <img src="assets/education/school/9class/9class_9.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="8-dup">
+                  <img src="assets/education/school/9class/9class_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="9">
+                  <img src="assets/education/school/9class/9class_6.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="10">
+                  <img src="assets/education/school/9class/9class_7.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="11">
+                  <img src="assets/education/school/9class/9class_8.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="11">
+
+                  <!-- ♻️ КЛОНЫ -->
+                  <img src="assets/education/school/9class/5class.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1-dup">
+                  <img src="assets/education/school/9class/5class_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2-dup">
+                  <img src="assets/education/school/9class/6class_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2-dup">
+                  <img src="assets/education/school/9class/8class_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3-dup">
+                  <img src="assets/education/school/9class/9class_0.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="4-dup">
+                  <img src="assets/education/school/9class/9class_10.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="4">
+                  <img src="assets/education/school/9class/9class_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="5-dup">
+                  <img src="assets/education/school/9class/9class_5.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6-dup">
+                  <img src="assets/education/school/9class/9class_3.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="8-dup">
+                  <img src="assets/education/school/9class/9class_9.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="8-dup">
+                  <img src="assets/education/school/9class/9class_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="9-dup">
+                  <img src="assets/education/school/9class/9class_6.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="10-dup">
+                  <img src="assets/education/school/9class/9class_7.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="11-dup">
+                  <img src="assets/education/school/9class/9class_8.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="11-dup">
+
+                </div>
+              </div>
+            </div>
+
+            <!-- ☀️ Май 2017 -->
+            <div x-data="{ open2017: false }" class="mt-10 text-center">
+              <button @click="open2017 = !open2017" class="text-neon font-semibold hover:underline transition">
+                ☀️ Май 2017: Поездка в Москву
+              </button>
+
+              <div x-show="open2017" x-transition class="mt-6">
+                <div class="overflow-x-auto">
+                  <div class="flex gap-4 px-4 py-2 w-max mx-auto">
+                    <template x-for="(src, index) in [
+                      'assets/education/school/9class/moskow_2017/mos_1.jpg',
+                      'assets/education/school/9class/moskow_2017/mos_2.jpg',
+                      'assets/education/school/9class/moskow_2017/mos_3.jpg',
+                      'assets/education/school/9class/moskow_2017/mos_4.jpg',
+                      'assets/education/school/9class/moskow_2017/mos_5.jpg',
+                      'assets/education/school/9class/moskow_2017/mos_6.jpg',
+                      'assets/education/school/9class/moskow_2017/mos_7.jpg',
+                      'assets/education/school/9class/moskow_2017/mos_8.jpg',
+                      'assets/education/school/9class/moskow_2017/mos_9.jpg',
+                      'assets/education/school/9class/moskow_2017/mos_10.jpg',
+                      'assets/education/school/9class/moskow_2017/mos_11.jpg',
+                      'assets/education/school/9class/moskow_2017/mos_12.jpg',
+                      'assets/education/school/9class/moskow_2017/mos_13.jpg',
+                      'assets/education/school/9class/moskow_2017/mos_14.jpg',
+                      'assets/education/school/9class/moskow_2017/mos_15.jpg',
+                      'assets/education/school/9class/moskow_2017/mos_16.jpg',
+                      'assets/education/school/9class/moskow_2017/mos_17.jpg',
+                      'assets/education/school/9class/moskow_2017/mos_18.jpg',
+                      'assets/education/school/9class/moskow_2017/mos_19.jpg',
+                      'assets/education/school/9class/moskow_2017/mos_20.jpg',
+                      'assets/education/school/9class/moskow_2017/mos_21.jpg'
+
+                    ]" :key="index">
+                      <img :src="src" @click="openImageModal(src)"
+                        class="w-48 rounded-xl border-2 border-neon shadow-neon hover:scale-105 transition-all cursor-zoom-in"
+                        :alt="'Москва и Брянск 2017 — фото ' + (index + 1)" />
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+            <!-- ☀️ Лето 2017 -->
+            <div x-data="{ open2017: false }" class="mt-10 text-center">
+              <button @click="open2017 = !open2017" class="text-neon font-semibold hover:underline transition">
+                ☀️ Лето 2017: Поездка в Крым
+              </button>
+
+              <div x-show="open2017" x-transition class="mt-6">
+                <div class="overflow-x-auto">
+                  <div class="flex gap-4 px-4 py-2 w-max mx-auto">
+                    <template x-for="(src, index) in [
+          'assets/education/school/9class/krim_2017/krim_1.jpg',
+          'assets/education/school/9class/krim_2017/krim_2.jpg',
+          'assets/education/school/9class/krim_2017/krim_3.jpg',
+          'assets/education/school/9class/krim_2017/krim_4.jpg',
+          'assets/education/school/9class/krim_2017/krim_5.jpg',
+          'assets/education/school/9class/krim_2017/krim_6.jpg'
+
+        ]" :key="index">
+                      <img :src="src" @click="openImageModal(src)"
+                        class="w-48 rounded-xl border-2 border-neon shadow-neon hover:scale-105 transition-all cursor-zoom-in"
+                        :alt="'Крым 2017 - ' + (index + 1)" />
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ☀️ Лето 2018 -->
+            <div x-data="{ open2018: false }" class="mt-10 text-center">
+              <button @click="open2018 = !open2018" class="text-neon font-semibold hover:underline transition">
+                ☀️ Лето 2018: Поездка в Крым
+              </button>
+
+              <div x-show="open2018" x-transition class="mt-6">
+                <div class="overflow-x-auto">
+                  <div class="flex gap-4 px-4 py-2 w-max mx-auto">
+                    <template x-for="(src, index) in [
+        'assets/education/school/9class/krim_2018/krim_0.jpg',
+        'assets/education/school/9class/krim_2018/krim_1.jpg',
+        'assets/education/school/9class/krim_2018/krim_2.jpg',
+        'assets/education/school/9class/krim_2018/krim_7.jpg',
+        'assets/education/school/9class/krim_2018/krim_4.jpg',
+        'assets/education/school/9class/krim_2018/krim_5.jpg',
+        'assets/education/school/9class/krim_2018/krim_6.jpg',
+        'assets/education/school/9class/krim_2018/krim_3.jpg',
+        'assets/education/school/9class/krim_2018/krim_8.jpg'
+        ]" :key="index">
+                      <img :src="src" @click="openImageModal(src)"
+                        class="w-48 rounded-xl border-2 border-neon shadow-neon hover:scale-105 transition-all cursor-zoom-in"
+                        :alt="'Крым 2018 - ' + (index + 1)" />
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="md:w-5/12"></div>
+        </li>
+
+
+
+
+
+
+
+
+
+
+        <!-- Item 4: right -->
+        <li
+          class="relative flex flex-col md:flex-row-reverse justify-between items-start w-full animate-fadeIn delay-200 group">
+          <div
+            class="absolute top-[0.75rem] sm:top-4 left-1/2 transform -translate-x-1/2 w-3 h-3 sm:w-4 sm:h-4 bg-neon rounded-full shadow-[0_0_10px_#00ffe1] z-20">
+          </div>
+          <div
+            class="reveal slide-from-left w-full md:max-w-[680px] px-4 py-4 mx-auto md:mr-6 bg-deepblue bg-opacity-75 rounded-xl border-2 border-neon shadow-[0_0_15px_#00ffe1] group-hover:scale-[1.02]"
+            style="transition-delay: 0.2s;">
+
+
+
+            <section class="reveal slide-from-bottom">
+              <h3 class="text-2xl sm:text-3xl font-bold text-neon mb-2 glow-text">2019–2021 — Старшая школа</h3>
+              <p class="text-aqua text-lg font-light italic mb-4"> «Формула успеха: немного математики, немного музыки и
+                много внутренней работы.»
+
+              </p>
+              <ul class="list-disc list-inside text-aqua space-y-2 pl-4">
+                <li>Началась пандемия и учёба стала онлайн на несколько месяцев</li>
+                <li>Познакомилась с человеком, который стал вдохновением и опорой в непростые годы </li>
+                <li>Открыла для себя новые места и варианты времяпровождения</li>
+                <li>Активная подготовка к поступлению</li>
+                <li>Окончила музыкальную школу с отличием 🎶</li>
+                <li>Окончание школы, выбор специальности и прощание с одноклассниками</li>
+              </ul>
+            </section>
+
+
+
+
+            <!-- 🌌 УНИВЕРСАЛЬНАЯ КАРУСЕЛЬ -->
+            <div
+              class="carousel relative overflow-hidden mt-6 w-full max-w-[624px] mx-auto rounded-xl border-2 border-neon shadow-neon group">
+
+              <!-- ⬅️ Стрелка ВЛЕВО -->
+              <button
+                class="carousel-prev absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+
+              <!-- ➡️ Стрелка ВПРАВО -->
+              <button
+                class="carousel-next absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+
+              <!-- 🖼 Слайдер -->
+              <div class="overflow-hidden">
+                <div class="carousel-track flex gap-4 w-max transition-transform duration-1000 ease-in-out">
+
+                  <!-- ✅ ОРИГИНАЛЫ -->
+                  <img src="assets/education/school/11class/10class_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/school/11class/10class_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/school/11class/10class_3.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/school/11class/10class_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/school/11class/10class_5.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education//music/music_myphoto.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/school/11class/11class_8.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="5">
+
+                  <img src="assets/education/school/11class/11class_9.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+                  <img src="assets/education/school/11class/11class_10.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+
+
+                  <img src="assets/education/school/11class/11class_5.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="5">
+                  <img src="assets/education/school/11class/11class_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/school/11class/11class_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/school/11class/11class_3.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/school/11class/11class_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="4">
+                  <img src="assets/education/school/11class/11class_6.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+                  <img src="assets/education/school/11class/11class_7.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+                  <img src="assets/education/school/11class/11class_myphoto.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="5">
+                  <img src="assets/education/school/11class/11class_11.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+                  <img src="assets/education/school/11class/11class_12.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+                  <img src="assets/education/school/11class/11class_13.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+
+                  <img src="assets/education/school/11class/11class_14.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+
+                  <!-- ♻️ КЛОНЫ -->
+                  <img src="assets/education/school/11class/10class_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/school/11class/10class_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/school/11class/10class_3.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/school/11class/10class_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/school/11class/10class_5.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education//music/music_myphoto.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+
+                  <img src="assets/education/school/11class/11class_8.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="5">
+
+                  <img src="assets/education/school/11class/11class_9.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+                  <img src="assets/education/school/11class/11class_10.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+
+                  <img src="assets/education/school/11class/11class_5.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="5">
+                  <img src="assets/education/school/11class/11class_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/school/11class/11class_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/school/11class/11class_3.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/school/11class/11class_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="4">
+                  <img src="assets/education/school/11class/11class_6.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+                  <img src="assets/education/school/11class/11class_7.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+                  <img src="assets/education/school/11class/11class_myphoto.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="5">
+                  <img src="assets/education/school/11class/11class_11.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+
+
+                  <img src="assets/education/school/11class/11class_12.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+                  <img src="assets/education/school/11class/11class_13.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+
+                  <img src="assets/education/school/11class/11class_14.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+            <!-- ☀️ Лето 2019 — Египет -->
+            <div x-data="{ openEgypt: false }" class="mt-10 text-center">
+              <button @click="openEgypt = !openEgypt" class="text-neon font-semibold hover:underline transition">
+                ☀️ Лето 2019: Поездка в Египет
+              </button>
+
+              <div x-show="openEgypt" x-transition class="mt-6">
+                <div class="overflow-x-auto">
+                  <div class="flex gap-4 px-4 py-2 w-max mx-auto">
+                    <template x-for="(src, index) in [
+          'assets/education/school/11class/egypt_2019/eg_1.jpg',
+          'assets/education/school/11class/egypt_2019/eg_2.jpg',
+          'assets/education/school/11class/egypt_2019/eg_3.jpg',
+          'assets/education/school/11class/egypt_2019/eg_4.jpg',
+          'assets/education/school/11class/egypt_2019/eg_5.jpg',
+          'assets/education/school/11class/egypt_2019/eg_6.jpg'
+        ]" :key="index">
+                      <img :src="src" @click="openImageModal(src)"
+                        class="w-48 rounded-xl border-2 border-neon shadow-neon hover:scale-105 transition-all cursor-zoom-in"
+                        :alt="'Египет 2019 - ' + (index + 1)" />
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ☀️ Лето 2021 — Турция -->
+            <div x-data="{ openTurkey: false }" class="mt-10 text-center">
+              <button @click="openTurkey = !openTurkey" class="text-neon font-semibold hover:underline transition">
+                ☀️ Лето 2021: Поездка в Турцию
+              </button>
+
+              <div x-show="openTurkey" x-transition class="mt-6">
+                <div class="overflow-x-auto">
+                  <div class="flex gap-4 px-4 py-2 w-max mx-auto">
+                    <template x-for="(src, index) in [
+          'assets/education/school/11class/turcia_2021/tur_1.jpg',
+          'assets/education/school/11class/turcia_2021/tur_2.jpg',
+          'assets/education/school/11class/turcia_2021/tur_3.jpg',
+          'assets/education/school/11class/turcia_2021/tur_4.jpg',
+          'assets/education/school/11class/turcia_2021/tur_5.jpg',
+          'assets/education/school/11class/turcia_2021/tur_6.jpg',
+          'assets/education/school/11class/turcia_2021/tur_7.jpg',
+          'assets/education/school/11class/turcia_2021/tur_8.jpg',
+          'assets/education/school/11class/turcia_2021/tur_9.jpg',
+          'assets/education/school/11class/turcia_2021/tur_10.jpg',
+          'assets/education/school/11class/turcia_2021/tur_11.jpg',
+          'assets/education/school/11class/turcia_2021/tur_12.jpg',
+          'assets/education/school/11class/turcia_2021/tur_13.jpg',
+          'assets/education/school/11class/turcia_2021/tur_14.jpg',
+          'assets/education/school/11class/turcia_2021/tur_15.jpg',
+          'assets/education/school/11class/turcia_2021/tur_16.jpg',
+          'assets/education/school/11class/turcia_2021/tur_17.jpg',
+          'assets/education/school/11class/turcia_2021/tur_18.jpg',
+          'assets/education/school/11class/turcia_2021/tur_19.jpg',
+          'assets/education/school/11class/turcia_2021/tur_20.jpg',
+          'assets/education/school/11class/turcia_2021/tur_21.jpg',
+          'assets/education/school/11class/turcia_2021/tur_22.jpg',
+          'assets/education/school/11class/turcia_2021/tur_23.jpg',
+          'assets/education/school/11class/turcia_2021/tur_24.jpg',
+          'assets/education/school/11class/turcia_2021/tur_25.jpg',
+          'assets/education/school/11class/turcia_2021/tur_26.jpg'
+        ]" :key="index">
+                      <img :src="src" @click="openImageModal(src)"
+                        class="w-48 rounded-xl border-2 border-neon shadow-neon hover:scale-105 transition-all cursor-zoom-in"
+                        :alt="'Турция 2021 - ' + (index + 1)" />
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="md:w-5/12"></div>
+        </li>
+
+
+
+
+
+
+
+        <!-- Item 5: left -->
+        <li class="relative flex flex-col md:flex-row justify-between items-start w-full animate-fadeIn group">
+          <div
+            class="absolute top-[0.75rem] sm:top-4 left-1/2 transform -translate-x-1/2 w-3 h-3 sm:w-4 sm:h-4 bg-neon rounded-full shadow-[0_0_10px_#00ffe1] z-20">
+          </div>
+          <div
+            class="reveal slide-from-right w-full md:max-w-[680px] px-4 py-4 mx-auto md:ml-6 bg-deepblue bg-opacity-75 rounded-xl border-2 border-neon shadow-[0_0_15px_#00ffe1] group-hover:scale-[1.02]"
+            style="transition-delay: 0s;">
+
+            <section class="reveal slide-from-bottom">
+              <h3 class="text-2xl sm:text-3xl font-bold text-neon mb-2 glow-text"> 2021–2025 — Бакалавриат в КПИ</h3>
+              <p class="text-aqua text-lg font-light italic mb-4"> «Я начала свой путь в университете, как будто зашла в
+                новую RPG:
+                с прокачкой навыков, испытаниями, апгрейдами личности — и, конечно же, с боевыми сценами в лице защит
+                лабораторных.
+                Мир вокруг менялся, и я менялась вместе с ним.»
+              </p>
+              <ul class="list-disc list-inside text-aqua space-y-2 pl-4">
+                <li><strong>2021:</strong> поступила в КПИ на первый курс, увлеклась стрельбой из лука 🏹</li>
+                <li>Через месяц начался карантин и учёба перешла в онлайн</li>
+              </ul>
+            </section>
+
+            <!-- 🌌 УНИВЕРСАЛЬНАЯ КАРУСЕЛЬ -->
+            <div
+              class="carousel relative overflow-hidden mt-6 w-full max-w-[624px] mx-auto rounded-xl border-2 border-neon shadow-neon group">
+
+              <!-- ⬅️ Стрелка ВЛЕВО -->
+              <button
+                class="carousel-prev absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+
+              <!-- ➡️ Стрелка ВПРАВО -->
+              <button
+                class="carousel-next absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+
+              <!-- 🖼 Слайдер -->
+              <div class="overflow-hidden">
+                <div class="carousel-track flex gap-4 w-max transition-transform duration-1000 ease-in-out">
+
+                  <!-- ✅ ОРИГИНАЛЫ -->
+                  <img src="assets/education/bachelor/photos/kpi_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_3.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/bachelor/photos/kpi_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="4">
+                  <img src="assets/education/bachelor/photos/kpi_5.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="5">
+                  <img src="assets/education/bachelor/photos/kpi_6.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+                  <img src="assets/education/bachelor/photos/kpi_7.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="7">
+                  <img src="assets/education/bachelor/photos/kpi_8.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="8">
+                  <img src="assets/education/bachelor/photos/kpi_10.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="10">
+                  <img src="assets/education/bachelor/photos/kpi_11.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="11">
+                  <img src="assets/education/bachelor/photos/kpi_12.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="12">
+                  <img src="assets/education/bachelor/photos/kpi_13.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="13">
+                  <img src="assets/education/bachelor/photos/kpi_14.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="14">
+
+                  <!-- ♻️ КЛОНЫ -->
+                  <img src="assets/education/bachelor/photos/kpi_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_3.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/bachelor/photos/kpi_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="4">
+                  <img src="assets/education/bachelor/photos/kpi_5.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="5">
+                  <img src="assets/education/bachelor/photos/kpi_6.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+                  <img src="assets/education/bachelor/photos/kpi_7.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="7">
+                  <img src="assets/education/bachelor/photos/kpi_8.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="8">
+                  <img src="assets/education/bachelor/photos/kpi_10.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="10">
+                  <img src="assets/education/bachelor/photos/kpi_11.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="11">
+                  <img src="assets/education/bachelor/photos/kpi_12.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="12">
+                  <img src="assets/education/bachelor/photos/kpi_13.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="13">
+                  <img src="assets/education/bachelor/photos/kpi_14.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="14">
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+            <section class="reveal mt-4 slide-from-bottom">
+              <ul class="list-disc list-inside text-aqua space-y-2 pl-4">
+                <li><strong>2022:</strong> началась война. Эвакуация в Винницу, потом во Львов, в Кульчицы на два месяца
+                </li>
+                <li>Несмотря ни на что, успешно завершила 1й курс</li>
+              </ul>
+            </section>
+
+
+
+
+            <!-- 🌌 УНИВЕРСАЛЬНАЯ КАРУСЕЛЬ -->
+            <div
+              class="carousel relative overflow-hidden mt-6 w-full max-w-[624px] mx-auto rounded-xl border-2 border-neon shadow-neon group">
+
+              <!-- ⬅️ Стрелка ВЛЕВО -->
+              <button
+                class="carousel-prev absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+
+              <!-- ➡️ Стрелка ВПРАВО -->
+              <button
+                class="carousel-next absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+
+              <!-- 🖼 Слайдер -->
+              <div class="overflow-hidden">
+                <div class="carousel-track flex gap-4 w-max transition-transform duration-1000 ease-in-out">
+
+                  <!-- ✅ ОРИГИНАЛЫ -->
+                  <img src="assets/education/bachelor/photos/vin_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/vin_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kul_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/bachelor/photos/kul_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="4">
+                  <img src="assets/education/bachelor/photos/kul_3.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="5">
+                  <img src="assets/education/bachelor/photos/kul_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+                  <img src="assets/education/bachelor/photos/kul_5.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="7">
+                  <img src="assets/education/bachelor/photos/kul_6.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="8">
+                  <img src="assets/education/bachelor/photos/kul_7.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="9">
+                  <img src="assets/education/bachelor/photos/kul_8.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="10">
+
+                  <!-- ♻️ КЛОНЫ -->
+                  <img src="assets/education/bachelor/photos/vin_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/vin_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kul_1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/bachelor/photos/kul_2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="4">
+                  <img src="assets/education/bachelor/photos/kul_3.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="5">
+                  <img src="assets/education/bachelor/photos/kul_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+                  <img src="assets/education/bachelor/photos/kul_5.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="7">
+                  <img src="assets/education/bachelor/photos/kul_6.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="8">
+                  <img src="assets/education/bachelor/photos/kul_7.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="9">
+                  <img src="assets/education/bachelor/photos/kul_8.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="10">
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+            <section class="reveal mt-4 slide-from-bottom">
+              <ul class="list-disc list-inside text-aqua space-y-2 pl-4">
+                <li><strong>2023:</strong> Получила права. Осваивала жизнь с блекаутами.
+                  Впервые стреляла с арбалета, играла на гитаре, сыграла в Beat Saber и попробовала кальян</li>
+              </ul>
+            </section>
+
+            <!-- 🌌 УНИВЕРСАЛЬНАЯ КАРУСЕЛЬ -->
+            <div
+              class="carousel relative overflow-hidden mt-6 w-full max-w-[624px] mx-auto rounded-xl border-2 border-neon shadow-neon group">
+
+              <!-- ⬅️ Стрелка ВЛЕВО -->
+              <button
+                class="carousel-prev absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+
+              <!-- ➡️ Стрелка ВПРАВО -->
+              <button
+                class="carousel-next absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+
+              <!-- 🖼 Слайдер -->
+              <div class="overflow-hidden">
+                <div class="carousel-track flex gap-4 w-max transition-transform duration-1000 ease-in-out">
+
+                  <!-- ✅ ОРИГИНАЛЫ -->
+                  <img src="assets/education/bachelor/photos/kpi_15.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_16.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_17.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_18.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_19.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_20.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_21.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_22.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_23.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_24.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_25.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_26.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_27.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_28.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_29.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_30.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_31.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_32.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+
+                  <!-- ♻️ КЛОНЫ -->
+                  <img src="assets/education/bachelor/photos/kpi_15.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_16.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_17.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_18.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_19.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_20.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_21.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_22.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_23.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_24.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_25.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_26.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_27.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_28.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_29.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_30.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_31.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_32.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+            <section class="reveal mt-4 slide-from-bottom">
+              <ul class="list-disc list-inside text-aqua space-y-2 pl-4">
+                <li><strong>2024–2025:</strong> выпуск. Закончила бакалавриат по специальности Автоматизация и
+                  компьютерно-интегрированные технологии.
+                  Сейчас я — будущий Data Scientist и художник своего будущего</li>
+              </ul>
+            </section>
+
+            <!-- 🌌 УНИВЕРСАЛЬНАЯ КАРУСЕЛЬ -->
+            <div
+              class="carousel relative overflow-hidden mt-6 w-full max-w-[624px] mx-auto rounded-xl border-2 border-neon shadow-neon group">
+
+              <!-- ⬅️ Стрелка ВЛЕВО -->
+              <button
+                class="carousel-prev absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+
+              <!-- ➡️ Стрелка ВПРАВО -->
+              <button
+                class="carousel-next absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+
+              <!-- 🖼 Слайдер -->
+              <div class="overflow-hidden">
+                <div class="carousel-track flex gap-4 w-max transition-transform duration-1000 ease-in-out">
+
+                  <!-- ✅ ОРИГИНАЛЫ -->
+                  <img src="assets/education/bachelor/photos/kpi_33.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_34.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_35.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_36.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_37.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_38.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_39.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_40.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_41.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_42.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_43.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_45.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+
+                  <!-- ♻️ КЛОНЫ -->
+                  <img src="assets/education/bachelor/photos/kpi_33.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_34.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_35.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_36.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_37.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_38.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_39.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_40.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_41.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_42.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/bachelor/photos/kpi_43.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/bachelor/photos/kpi_45.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+            <!-- ☀️  2023 Италия -->
+            <div x-data="{ openItaly: false }" class="mt-10 text-center">
+              <button @click="openItaly = !openItaly" class="text-neon font-semibold hover:underline transition">
+                ☀️ Лето 2023 (14–24 июля): Поездка в Италию
+              </button>
+
+              <div x-show="openItaly" x-transition class="mt-6">
+                <div class="overflow-x-auto">
+                  <div class="flex gap-4 px-4 py-2 w-max mx-auto">
+                    <template x-for="(src, index) in [
+          'assets/education/bachelor/italy_2023/ita_1.jpg',
+          'assets/education/bachelor/italy_2023/ita_2.jpg',
+          'assets/education/bachelor/italy_2023/ita_3.jpg',
+          'assets/education/bachelor/italy_2023/ita_4.jpg',
+          'assets/education/bachelor/italy_2023/ita_6.jpg',
+          'assets/education/bachelor/italy_2023/ita_7.jpg',
+          'assets/education/bachelor/italy_2023/ita_8.jpg',
+          'assets/education/bachelor/italy_2023/ita_9.jpg',
+          'assets/education/bachelor/italy_2023/ita_10.jpg',
+          'assets/education/bachelor/italy_2023/ita_12.jpg',
+          'assets/education/bachelor/italy_2023/ita_13.jpg',
+          'assets/education/bachelor/italy_2023/ita_14.jpg',
+          'assets/education/bachelor/italy_2023/ita_15.jpg',
+          'assets/education/bachelor/italy_2023/ita_16.jpg',
+          'assets/education/bachelor/italy_2023/ita_17.jpg',
+          'assets/education/bachelor/italy_2023/ita_18.jpg',
+          'assets/education/bachelor/italy_2023/ita_19.jpg',
+          'assets/education/bachelor/italy_2023/ita_20.jpg',
+          'assets/education/bachelor/italy_2023/ita_21.jpg',
+          'assets/education/bachelor/italy_2023/ita_22.jpg'
+        ]" :key="index">
+                      <img :src="src" @click="openImageModal(src)"
+                        class="w-48 h-43 object-cover rounded-xl border-2 border-neon shadow-neon hover:scale-105 transition-all cursor-zoom-in"
+                        :alt="'Италия 2023 - ' + (index + 1)" />
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <div class="md:w-5/12"></div>
+        </li>
+
+
+
+
+
+
+
+
+
+        <!-- Item 6: right -->
+        <li
+          class="relative flex flex-col md:flex-row-reverse justify-between items-start w-full animate-fadeIn delay-200 group">
+          <div
+            class="absolute top-[0.75rem] sm:top-4 left-1/2 transform -translate-x-1/2 w-3 h-3 sm:w-4 sm:h-4 bg-neon rounded-full shadow-[0_0_10px_#00ffe1] z-20">
+          </div>
+          <div
+            class="reveal slide-from-left w-full md:max-w-[680px] px-4 py-4 mx-auto md:mr-6 bg-deepblue bg-opacity-75 rounded-xl border-2 border-neon shadow-[0_0_15px_#00ffe1] group-hover:scale-[1.02]"
+            style="transition-delay: 0.2s;">
+            <section class="reveal slide-from-bottom">
+              <h3 class="text-2xl sm:text-3xl font-bold text-neon mb-2 glow-text">2025 - БУДУЩЕЕ</h3>
+              <p class="text-aqua text-lg font-light italic mb-4"> «Начало усердной подготовки к трудоустройству.
+                Пайтон, машинное обучение
+                Запуск личного сайта Super Yanka и новые горизонты в Data Science и искусстве.»
+              </p>
+              <ul class="list-disc list-inside text-aqua space-y-2 pl-4">
+                <li>Все впереди</li>
+              </ul>
+            </section>
+
+
+
+            <!-- 🌌 УНИВЕРСАЛЬНАЯ КАРУСЕЛЬ -->
+            <div
+              class="carousel relative overflow-hidden mt-6 w-full max-w-[624px] mx-auto rounded-xl border-2 border-neon shadow-neon group">
+
+              <!-- ⬅️ Стрелка ВЛЕВО -->
+              <button
+                class="carousel-prev absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+
+              <!-- ➡️ Стрелка ВПРАВО -->
+              <button
+                class="carousel-next absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+
+              <!-- 🖼 Слайдер -->
+              <div class="overflow-hidden">
+                <div class="carousel-track flex gap-4 w-max transition-transform duration-1000 ease-in-out">
+
+                  <!-- ✅ ОРИГИНАЛЫ -->
+                  <img src="assets/pictures/p1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="...to be continued">
+                  <img src="assets/pictures/p3.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="...to be continued">
+                  <img src="assets/pictures/p2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="...to be continued">
+
+                  <!-- ♻️ КЛОНЫ -->
+                  <img src="assets/pictures/p1.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="...to be continued">
+                  <img src="assets/pictures/p3.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="...to be continued">
+                  <img src="assets/pictures/p2.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="...to be continued">
+
+                </div>
+              </div>
+            </div>
+            <div class="md:w-5/12"></div>
+        </li>
+    </section>
+
+
+
+    <!-- ✨ Надпись -->
+    <div class="text-center mt-6 reveal slide-from-bottom">
+      <p class="text-neon text-xl sm:text-2xl font-semibold glow-text animate-fadeIn delay-200">
+        ...to be continued
+      </p>
+      <p class="text-aqua mt-1 text-sm italic opacity-70 animate-fadeIn delay-500">
+        История ещё пишется — и я её автор 🌠
+      </p>
+    </div>
+
+
+
+  </main>
+  <div id="footer-placeholder"></div>
+
+  <!-- 🌌 Модалка -->
+  <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+    <div class="relative">
+      <button id="closeModal"
+        class="absolute -top-4 -right-4 bg-neon text-deepblue rounded-full p-2 hover:bg-white transition">
+        ✕
+      </button>
+      <img id="modalImage" src="" alt="Увеличенное фото"
+        class="max-w-full max-h-[80vh] rounded-lg shadow-[0_0_25px_#00ffe1] border-2 border-neon" />
+    </div>
+  </div>
+
+
+  <!-- Shared FadeIn animation -->
+  <style>
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 1s ease-out forwards;
+      opacity: 0;
+    }
+
+    .delay-200 {
+      animation-delay: 0.2s;
+    }
+  </style>
+
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll('.carousel').forEach(carousel => {
+        const track = carousel.querySelector('.carousel-track');
+        const prevBtn = carousel.querySelector('.carousel-prev');
+        const nextBtn = carousel.querySelector('.carousel-next');
+        const slides = carousel.querySelectorAll('.carousel-img');
+
+        const photoWidth = slides[0].offsetWidth + 16;
+        const totalSlides = slides.length;
+        let currentIndex = 0;
+        let interval;
+
+        function scrollToIndex(index, animate = true) {
+          track.style.transition = animate ? 'transform 1s ease-in-out' : 'none';
+          track.style.transform = `translateX(-${index * photoWidth}px)`;
+        }
+
+        function goNext() {
+          currentIndex++;
+          scrollToIndex(currentIndex);
+          if (currentIndex >= totalSlides / 2) {
+            setTimeout(() => {
+              currentIndex = 0;
+              scrollToIndex(currentIndex, false);
+            }, 1000);
+          }
+        }
+
+        function goPrev() {
+          if (currentIndex === 0) {
+            currentIndex = totalSlides / 2;
+            scrollToIndex(currentIndex, false);
+          }
+          currentIndex--;
+          scrollToIndex(currentIndex);
+        }
+
+        function startAutoScroll() {
+          interval = setInterval(goNext, 10000); // каждые 10 секунд
+        }
+
+        function stopAutoScroll() {
+          clearInterval(interval);
+        }
+
+        nextBtn.addEventListener('click', () => {
+          goNext();
+          stopAutoScroll();
+          startAutoScroll();
+        });
+
+        prevBtn.addEventListener('click', () => {
+          goPrev();
+          stopAutoScroll();
+          startAutoScroll();
+        });
+
+        carousel.addEventListener('mouseenter', stopAutoScroll);
+        carousel.addEventListener('mouseleave', startAutoScroll);
+
+        startAutoScroll();
+      });
+    });
+
+  </script>
+
+
+
+
+
+
+
+  <script>
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeModal = document.getElementById('closeModal');
+
+    document.querySelectorAll('.carousel-img').forEach(img => {
+      img.classList.add('modal-trigger');
+      img.addEventListener('click', () => {
+        modalImg.src = img.src;
+        modal.classList.remove('hidden');
+      });
+    });
+
+    closeModal.addEventListener('click', () => modal.classList.add('hidden'));
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.add('hidden');
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+            observer.unobserve(entry.target); // если не нужно повторно
+          }
+        });
+      }, { threshold: 0.2 });
+
+      document.querySelectorAll('.reveal').forEach(el => {
+        observer.observe(el);
+      });
+    });
+
+    function initCarousel() {
+      document.querySelectorAll('.carousel').forEach(carousel => {
+        const prev = carousel.querySelector('.carousel-prev');
+        const next = carousel.querySelector('.carousel-next');
+        const track = carousel.querySelector('.carousel-track');
+
+        let scrollAmount = 300;
+
+        prev?.addEventListener('click', () => {
+          track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+
+        next?.addEventListener('click', () => {
+          track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+      });
+    }
+
+    function openImageModal(src) {
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("modalImage");
+      modalImg.src = src;
+      modal.classList.remove("hidden");
+    }
+
+    document.getElementById("closeModal").addEventListener("click", () => {
+      document.getElementById("imageModal").classList.add("hidden");
+    });
+  </script>
+
+  <script>
+    fetch("components/footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById("menuToggle");
+      const menu = document.getElementById("navMenu");
+
+      toggle.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+
+      // lucide icons (если используешь)
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+
+
+</body>
+
+</html>

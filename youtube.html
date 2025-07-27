@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="ru" class="h-full">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube — Super Yanka</title>
+  <link rel="stylesheet" href="styles/common.css" />
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { neon: '#00ffe1', aqua: '#00c9c9', deepblue: '#0b0f3b' } } } };
+  </script>
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <style>
+    /* Floating YouTube icons */
+    #youtube-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Video background */
+    #video-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      #video-bg {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        min-height: 100vh;
+        object-fit: cover;
+      }
+    }
+
+    header,
+    main {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hover-scale:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 15px rgba(0, 255, 225, 0.3);
+    }
+
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes bounce-left {
+
+      0%,
+      100% {
+        transform: translateY(-50%) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-50%) translateX(-6px);
+      }
+    }
+
+    @keyframes bounce-right {
+
+      0%,
+      100% {
+        transform: translateY(-50%) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-50%) translateX(6px);
+      }
+    }
+
+    .animate-bounce-left {
+      animation: bounce-left 1s infinite;
+    }
+
+    .animate-bounce-right {
+      animation: bounce-right 1s infinite;
+    }
+  </style>
+</head>
+
+
+<body class="relative bg-deepblue text-aqua font-sans flex flex-col">
+
+
+
+  <!-- Video background -->
+  <video autoplay muted loop id="video-bg" playsinline>
+    <source src="assets/video/youtube_bk.mp4" type="video/mp4">
+  </video>
+
+  <!-- Overlay that darkens video -->
+  <div id="video-overlay"></div>
+
+
+
+
+
+  <!-- Canvas for floating icons -->
+  <canvas id="youtube-canvas"></canvas>
+
+  <!-- Navigation -->
+  <header
+    class="fixed w-full top-0 left-0 bg-opacity-50 bg-deepblue backdrop-blur-sm px-4 py-2 flex items-center justify-between z-30">
+    <a href="index.html" class="text-xl sm:text-2xl font-bold text-neon whitespace-nowrap">Super Yanka</a>
+    <!-- Гамбургер -->
+    <button id="menuToggle" class="sm:hidden text-neon z-50">
+      <i data-lucide="menu" class="w-6 h-6"></i>
+    </button>
+    </div>
+
+    <!-- Навигация -->
+    <nav id="navMenu"
+      class="hidden sm:flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 absolute sm:relative top-full sm:top-0 left-0 w-full sm:w-auto
+         bg-opacity-50 bg-deepblue sm:bg-transparent z-40 px-4 sm:px-0 py-2 sm:py-0 text-aqua font-medium backdrop-blur-sm sm:backdrop-blur-0">
+      <a href="index.html" class="hover:text-neon transition">Главная</a>
+      <a href="about.html" class="hover:text-neon transition">Обо мне</a>
+      <a href="education.html" class="hover:text-neon transition">Образование</a>
+      <a href="projects.html" class="hover:text-neon transition">Проекты</a>
+      <a href="resume.html" class="hover:text-neon transition">Резюме</a>
+      <a href="art.html" class="hover:text-neon transition">Хобби и Творчество</a>
+      <a href="youtube.html" class="text-neon">YouTube</a>
+      <a href="misc.html" class="hover:text-neon transition">Разное</a>
+      <a href="contact.html" class="hover:text-neon transition">Контакты</a>
+    </nav>
+  </header>
+
+  <main class="flex-grow relative pt-32 pb-16 z-10 min-h-[3000px]">
+    <!-- Заголовок -->
+    <section class="text-center p-10" data-aos="fade-up">
+      <h2 class="text-4xl font-extrabold text-white mb-4">YouTube-творчество</h2>
+      <p class="text-lg font-semibold max-w-2xl mx-auto">Здесь мой канал, где я делюсь гайдами, летсплеями и творческими
+        видео.</p>
+    </section>
+
+
+    <!-- 🎮 YouTube-канал + Рубрики -->
+    <section class="mb-20 px-6 py-10 max-w-5xl mx-auto rounded-xl bg-opacity-40 bg-deepblue shadow-[0_0_20px_#00ffe1]"
+      data-aos="fade-up">
+      <h3 class="text-3xl font-bold text-neon mb-4 text-center">🎮 YouTube-канал Superyanka 🎮</h3>
+
+      <p class="text-white text-center mb-6">
+        Привет! 👋 Добро пожаловать на мой игровой канал
+        <span id="easterEggTrigger"
+          class="text-neon font-semibold cursor-pointer select-none hover:text-white transition">
+          𝕊𝕦𝕡𝕖𝕣𝕪𝕒𝕟𝕜𝕒
+        </span>!
+        Здесь ты найдёшь атмосферу, загадки и немного безумия!
+      </p>
+
+      <div class="text-sm text-aqua font-semibold text-center space-y-2 mb-8 text-left max-w-xl mx-auto">
+        <p>👻 Атмосферные хорроры, от которых бегут мурашки! 👻</p>
+        <p>📖 Визуальные новеллы с интересным сюжетом и неожиданными поворотами! 📖 </p>
+        <p>🧠 Головоломки и логические игры, в которых надо хорошенько подумать! 🧠</p>
+        <p>🌌 Всё таинственное, мистическое и сюрреалистичное — моё всё! 🌌</p>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-3 text-sm mb-8">
+        <span class="bg-neon text-deepblue px-4 py-2 rounded-full shadow">Летсплеи</span>
+        <span class="bg-neon text-deepblue px-4 py-2 rounded-full shadow">Хорроры</span>
+        <span class="bg-neon text-deepblue px-4 py-2 rounded-full shadow">Инди-игры</span>
+        <span class="bg-neon text-deepblue px-4 py-2 rounded-full shadow">Головоломки</span>
+        <span class="bg-neon text-deepblue px-4 py-2 rounded-full shadow">Психологическое</span>
+        <span class="bg-neon text-deepblue px-4 py-2 rounded-full shadow">Сюрреализм</span>
+        <span class="bg-neon text-deepblue px-4 py-2 rounded-full shadow">Теории</span>
+        <span class="bg-neon text-deepblue px-4 py-2 rounded-full shadow">Черный юмор</span>
+        <span class="bg-neon text-deepblue px-4 py-2 rounded-full shadow">Визуальные новеллы</span>
+      </div>
+
+
+
+      <div class="flex justify-center">
+        <div class="relative inline-block">
+          <!-- Левая стрелка -->
+          <i data-lucide="arrow-left"
+            class="lucide text-neon w-6 h-6 animate-bounce-left absolute right-[-2.5rem] top-1/2 -translate-y-1/2"></i>
+
+          <!-- Кнопка -->
+          <a href="https://www.youtube.com/@superyankaplay" target="_blank"
+            class="bg-neon text-deepblue px-6 py-3 rounded-xl font-bold shadow-lg hover:bg-aqua hover:shadow-[0_0_25px_#00ffe1] transition text-base">
+            Подписаться на канал
+          </a>
+
+          <!-- Правая стрелка -->
+          <i data-lucide="arrow-right"
+            class="lucide text-neon w-6 h-6 animate-bounce-right absolute left-[-2.5rem] top-1/2 -translate-y-1/2"></i>
+        </div>
+      </div>
+
+
+
+    </section>
+
+
+    <!-- 🎥 Мои популярные видео и плейлисты -->
+
+    <section class="mb-20 px-6 max-w-6xl mx-auto" data-aos="fade-up">
+      <h3 class="text-3xl font-bold text-white mb-8 text-center">🎬 Мои популярные видео и плейлисты🎬</h3>
+      <p class="text-aqua font-semibold text-center max-w-3xl mx-auto mb-8">
+        Здесь ты найдёшь мои самые яркие и любимые ролики: от первых шагов до экспериментов в новых играх.
+        Каждое видео — это история, которой я хочу поделиться.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+
+
+
+        <!-- Видео 1 -->
+        <div
+          class="bg-deepblue bg-opacity-60 border border-neon rounded-xl p-4 shadow-neon cursor-pointer transition transform hover:scale-105 hover:bg-opacity-80 hover:shadow-[0_0_30px_#00ffe1]"
+          onclick="openVideoModal('https://www.youtube.com/watch?v=dIEODy_Etfc')">
+          <div class="relative h-48 w-full mb-3">
+            <div class="absolute inset-0 bg-black bg-opacity-40 rounded-lg flex items-center justify-center transition">
+              <span class="text-neon text-2xl">▶</span>
+            </div>
+            <img src="https://i.ytimg.com/vi/dIEODy_Etfc/hqdefault.jpg" alt="Choice of Life: Wild Islands"
+              class="w-full h-full object-cover rounded-lg border-2 border-neon" />
+          </div>
+          <h4 class="text-neon text-lg font-semibold mb-1">Choice of Life: Wild Islands</h4>
+          <p class="text-aqua text-sm">Мое самое первое видео на канале! Куча выборов, судьба и карты на таинственном
+            острове!</p>
+        </div>
+
+        <!-- Видео 2 -->
+        <div
+          class="bg-deepblue bg-opacity-60 border border-neon rounded-xl p-4 shadow-neon cursor-pointer transition transform hover:scale-105 hover:bg-opacity-80 hover:shadow-[0_0_30px_#00ffe1]"
+          onclick="openVideoModal('https://www.youtube.com/watch?v=nk513o1BMWI')">
+          <div class="relative h-48 w-full mb-3">
+            <div class="absolute inset-0 bg-black bg-opacity-40 rounded-lg flex items-center justify-center transition">
+              <span class="text-neon text-2xl">▶</span>
+            </div>
+            <img src="https://i.ytimg.com/vi/nk513o1BMWI/hqdefault.jpg" alt="Interdimensional Vending Machine"
+              class="w-full h-full object-cover rounded-lg border-2 border-neon" />
+          </div>
+          <h4 class="text-neon text-lg font-semibold mb-1">Interdimensional Vending Machine 🌀</h4>
+          <p class="text-aqua text-sm">Ты бы стал покупать у автомата из других миров? Я — да. И теперь жалею</p>
+        </div>
+
+        <!-- Видео 3 -->
+        <div
+          class="bg-deepblue bg-opacity-60 border border-neon rounded-xl p-4 shadow-neon cursor-pointer transition transform hover:scale-105 hover:bg-opacity-80 hover:shadow-[0_0_30px_#00ffe1]"
+          onclick="openVideoModal('https://www.youtube.com/watch?v=LSZaMPPbOLw')">
+          <div class="relative h-48 w-full mb-3">
+            <div class="absolute inset-0 bg-black bg-opacity-40 rounded-lg flex items-center justify-center transition">
+              <span class="text-neon text-2xl">▶</span>
+            </div>
+            <img src="https://i.ytimg.com/vi/LSZaMPPbOLw/hqdefault.jpg" alt="Aviassembly"
+              class="w-full h-full object-cover rounded-lg border-2 border-neon" />
+          </div>
+          <h4 class="text-neon text-lg font-semibold mb-1">Aviassembly ✈️</h4>
+          <p class="text-aqua text-sm">Квест про строительство самолёта, исследование карты и скоростной перевозке
+            грузов!</p>
+        </div>
+    </section>
+
+
+    <!-- 🎮 Плейлисты по жанрам -->
+    <section class="mb-20 px-6 max-w-6xl mx-auto" data-aos="fade-up">
+      <h3 class="text-3xl font-bold text-white mb-8 text-center">🕹️ Плейлисты по жанрам 🕹️</h3>
+
+      <!-- Вкладки -->
+      <div class="flex flex-wrap justify-center gap-4 mb-10" id="genreTabs">
+        <button data-tab="horror"
+          class="tab-btn bg-neon text-deepblue font-bold px-4 py-2 rounded-full hover:bg-aqua transition">👻
+          Хорроры</button>
+        <button data-tab="gore"
+          class="tab-btn bg-deepblue border border-neon text-neon font-bold px-4 py-2 rounded-full hover:bg-aqua transition">🩸
+          Кровища</button>
+        <button data-tab="novels"
+          class="tab-btn bg-deepblue border border-neon text-neon font-bold px-4 py-2 rounded-full hover:bg-aqua transition">🎨
+          Новеллы</button>
+        <button data-tab="logic"
+          class="tab-btn bg-deepblue border border-neon text-neon font-bold px-4 py-2 rounded-full hover:bg-aqua transition">🧠
+          Логические</button>
+        <button data-tab="surreal"
+          class="tab-btn bg-deepblue border border-neon text-neon font-bold px-4 py-2 rounded-full hover:bg-aqua transition">🌀
+          Сюрреализм</button>
+        <button data-tab="random"
+          class="tab-btn bg-deepblue border border-neon text-neon font-bold px-4 py-2 rounded-full hover:bg-aqua transition">❓
+          Разное</button>
+      </div>
+
+      <!-- Контент по вкладкам -->
+      <div id="genreTabContents" class="space-y-8">
+        <!-- Пример контента: Хорроры -->
+        <div class="tab-content" data-tab="horror">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Плейлист 1 -->
+            <a href="https://www.youtube.com/playlist?list=PLeWrGBe-fs83gNkGYuCM6qOoeNzFfK7-o" target="_blank"
+              class="block bg-deepblue p-4 rounded-xl border-2 border-neon hover:shadow-[0_0_20px_#00ffe1] transition">
+              <h4 class="text-neon text-lg font-semibold mb-2">Psychological & Indie Horrors 👻</h4>
+              <p class="text-white text-sm">Лёгкий сердечный приступ — часть геймплея. Враги страшные, атмосфера
+                гнетущая, а мои крики — ещё страшнее 😱 Заходи, если осмелишься!</p>
+            </a>
+            <!-- Плейлист 2 -->
+            <a href="https://www.youtube.com/playlist?list=PLeWrGBe-fs82g94x7eubnYyWQQq7vsyep" target="_blank"
+              class="block bg-deepblue p-4 rounded-xl border-2 border-neon hover:shadow-[0_0_20px_#00ffe1] transition">
+              <h4 class="text-neon text-lg font-semibold mb-2">🧩 Rusty Lake - Cube Escape 🧊</h4>
+              <p class="text-white text-sm">Сюрреализм, головоломки и тонкий психологизм. Каждый предмет может быть
+                ключом к прошлому. Попробуй разгадать тайну Ржавого Озера...</p>
+            </a>
+
+            <!-- Плейлист 3 -->
+            <a href="https://www.youtube.com/playlist?list=PLeWrGBe-fs80I_kT5_ofBauGoTc_EKWa9" target="_blank"
+              class="block bg-deepblue p-4 rounded-xl border-2 border-neon hover:shadow-[0_0_20px_#00ffe1] transition">
+              <h4 class="text-neon text-lg font-semibold mb-2">💖Miside💖</h4>
+              <p class="text-white text-sm">Miside — это история о девочке, которая делает всё, чтобы быть любимой.
+                Здесь не всё розовое и пушистое: за милотой прячется мрак, а за улыбкой — одержимость.</p>
+            </a>
+
+          </div>
+        </div>
+
+        <div class="tab-content" data-tab="gore">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- The Happyhills Homicide -->
+            <a href="https://www.youtube.com/playlist?list=PLeWrGBe-fs83-KNqiD5jbs-YVh9btcM-Y" target="_blank"
+              class="block bg-deepblue p-4 rounded-xl border-2 border-neon hover:shadow-[0_0_20px_#00ffe1] transition">
+              <h4 class="text-neon text-lg font-semibold mb-2">🎭 The Happyhills Homicide 🤡</h4>
+              <p class="text-white text-sm">Добро пожаловать в ретро-хоррор, где ты не герой, а серийный маньяк в маске.
+                Пиксельная жуть и месть по списку. Кровавое шоу начинается...</p>
+            </a>
+
+            <!-- Psychopomp GOLD -->
+            <a href="https://www.youtube.com/playlist?list=PLeWrGBe-fs839GcVgQyhh7-bnI42xFvx-" target="_blank"
+              class="block bg-deepblue p-4 rounded-xl border-2 border-neon hover:shadow-[0_0_20px_#00ffe1] transition">
+              <h4 class="text-neon text-lg font-semibold mb-2">🔨 Psychopomp GOLD</h4>
+              <p class="text-white text-sm">Сюрреалистическая мясная игра: молоток, монстры и фрактальный сюр. Но ты
+                втягиваешься. Очень быстро.
+                Странная, мистическая и стильная игра. Просто будь готов к психоделу.
+              </p>
+            </a>
+
+            <!-- Kindergarten -->
+            <a href="https://www.youtube.com/playlist?list=PLeWrGBe-fs83oLaNnf7Kj6JUMUzLGnTIj" target="_blank"
+              class="block bg-deepblue p-4 rounded-xl border-2 border-neon hover:shadow-[0_0_20px_#00ffe1] transition">
+              <h4 class="text-neon text-lg font-semibold mb-2">🏫 Kindergarten</h4>
+              <p class="text-white text-sm">Милый пиксельный ад. Перевожу цветочки, свожу парочек… и отпиливаю головы.
+                Урок окончен.
+                Головоломки и чёрный юмор.
+              </p>
+            </a>
+
+          </div>
+        </div>
+
+
+        <div class="tab-content" data-tab="novels">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Choice of Life: Wild Island -->
+            <a href="https://www.youtube.com/playlist?list=PLeWrGBe-fs80b900V-ppL0WfGPPcuIvcY" target="_blank"
+              class="block bg-deepblue p-4 rounded-xl border-2 border-neon hover:shadow-[0_0_20px_#00ffe1] transition">
+              <h4 class="text-neon text-lg font-semibold mb-2">🌿 Choice of Life: Wild Island</h4>
+              <p class="text-white text-sm">Твоё выживание — это серия выборов. Немного юмора, капелька драмы, и море
+                приключений. Просто сиди поудобнее — и решай, какой жизнью будешь жить. </p>
+            </a>
+
+          </div>
+        </div>
+
+
+        <div class="tab-content" data-tab="logic">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Rusty Lake -->
+            <a href="https://www.youtube.com/playlist?list=PleWrGBe-fs82g94x7eubnYyWQQq7vsyep" target="_blank"
+              class="block bg-deepblue p-4 rounded-xl border-2 border-neon hover:shadow-[0_0_20px_#00ffe1] transition">
+              <h4 class="text-neon font-semibold text-lg mb-2">🧩 Rusty Lake - Cube Escape 🧊</h4>
+              <p class="text-white text-sm">Сюрреализм, головоломки и тонкий психологизм. Каждый предмет может быть
+                ключом к прошлому. Попробуй разгадать тайну Ржавого Озера...</p>
+            </a>
+
+            <!-- Kindergarten -->
+            <a href="https://www.youtube.com/playlist?list=PleWrGBe-fs83oLaNnf7Kj6JUMUzLGnTIj" target="_blank"
+              class="block bg-deepblue p-4 rounded-xl border-2 border-neon hover:shadow-[0_0_20px_#00ffe1] transition">
+              <h4 class="text-neon font-semibold text-lg mb-2">🏫 Kindergarten</h4>
+              <p class="text-white text-sm">Милый пиксельный ад. Перевожу цветочки, свожу парочек… и отпиливаю головы.
+                Урок окончен.
+                Головоломки и чёрный юмор.</p>
+            </a>
+
+            <!-- Untitled Goose Game -->
+            <a href="https://www.youtube.com/playlist?list=PleWrGBe-fs80rRlJKa7d3Kl_rqUGxffXg" target="_blank"
+              class="block bg-deepblue p-4 rounded-xl border-2 border-neon hover:shadow-[0_0_20px_#00ffe1] transition">
+              <h4 class="text-neon font-semibold text-lg mb-2">🪿 Untitled Goose Game</h4>
+              <p class="text-white text-sm">Гусь-шалун, люди в панике, а ты — мастер проделок. Мини-квесты, где логика
+                сочетается с весельем и хаосом.</p>
+            </a>
+
+          </div>
+        </div>
+
+        <div class="tab-content" data-tab="surreal">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Psychopomp GOLD -->
+            <a href="https://www.youtube.com/playlist?list=PLeWrGBe-fs839GcVgQyhh7-bnI42xFvx-" target="_blank"
+              class="block bg-deepblue p-4 rounded-xl border-2 border-neon hover:shadow-[0_0_20px_#00ffe1] transition">
+              <h4 class="text-neon font-semibold text-lg mb-2">🔨 Psychopomp GOLD</h4>
+              <p class="text-white text-sm">Сюрреалистическая мясная игра: молоток, монстры и фрактальный сюр. Но ты
+                втягиваешься. Очень быстро.
+                Странная, мистическая и стильная игра. Просто будь готов к психоделу.</p>
+            </a>
+
+            <!-- Rusty Lake -->
+            <a href="https://www.youtube.com/playlist?list=PLeWrGBe-fs82g94x7eubnYyWQQq7vsyep" target="_blank"
+              class="block bg-deepblue p-4 rounded-xl border-2 border-neon hover:shadow-[0_0_20px_#00ffe1] transition">
+              <h4 class="text-neon font-semibold text-lg mb-2">🧩 Rusty Lake - Cube Escape 🧊</h4>
+              <p class="text-white text-sm">Сюрреализм, головоломки и тонкий психологизм. Каждый предмет может быть
+                ключом к прошлому. Попробуй разгадать тайну Ржавого Озера...</p>
+            </a>
+
+          </div>
+        </div>
+
+
+        <div class="tab-content" data-tab="random">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Хороший Кофе, Отличный Кофе -->
+            <a href="https://www.youtube.com/playlist?list=PLeWrGBe-fs82ALFtnD4M3CnEnMt-IU_Z9" target="_blank"
+              class="block bg-deepblue p-4 rounded-xl border-2 border-neon hover:shadow-[0_0_20px_#00ffe1] transition">
+              <h4 class="text-neon font-semibold text-lg mb-2">☕ Хороший Кофе, Отличный Кофе</h4>
+              <p class="text-white text-sm">Пиксельный уют, ароматный кофе и немного философии в каждой чашке. Залетай
+                на смену в кафешку мечты.</p>
+            </a>
+
+            <!-- That's not my Neighbor -->
+            <a href="https://www.youtube.com/playlist?list=PLeWrGBe-fs83IydYv-gMJzsA3bU-ZygYj" target="_blank"
+              class="block bg-deepblue p-4 rounded-xl border-2 border-neon hover:shadow-[0_0_20px_#00ffe1] transition">
+              <h4 class="text-neon font-semibold text-lg mb-2">👁️ That’s Not My Neighbor</h4>
+              <p class="text-white text-sm">Ты — охранник. Они — двойники. Вычисли подмену или поплатись. Каждое решение
+                — шаг между жизнью и неизвестным.</p>
+            </a>
+
+            <!-- Aviassembly -->
+            <a href="https://www.youtube.com/playlist?list=PLeWrGBe-fs810QQEm1b_tPczUl_FboGGR" target="_blank"
+              class="block bg-deepblue p-4 rounded-xl border-2 border-neon hover:shadow-[0_0_20px_#00ffe1] transition">
+              <h4 class="text-neon font-semibold text-lg mb-2">✈️ Aviassembly</h4>
+              <p class="text-white text-sm">Собираем самолёты, фармим монеты — и всё это в уютной атмосфере инженерного
+                дзен.</p>
+            </a>
+
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+
+
+
+
+    <!-- 📊 Статистика канала -->
+    <section class="mb-20 px-6 max-w-6xl mx-auto" data-aos="fade-up">
+      <h3 class="text-3xl font-bold text-white mb-6 text-center">📊 Статистика канала 📊</h3>
+
+      <!-- Сетка статистики -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center text-neon font-semibold">
+
+        <!-- Подписчики -->
+        <div class="bg-deepblue bg-opacity-60 p-4 rounded-xl border-2 border-neon shadow hover:scale-105 transition">
+          <p id="yt-subs" class="text-3xl text-white">загрузка…</p>
+          <p class="text-sm mt-1">подписчиков</p>
+        </div>
+        <!-- Видео -->
+        <div class="bg-deepblue bg-opacity-60 p-4 rounded-xl border-2 border-neon shadow hover:scale-105 transition">
+          <p id="yt-videos" class="text-3xl text-white">загрузка…</p>
+          <p class="text-sm mt-1">видео</p>
+        </div>
+        <!-- Просмотры -->
+        <div class="bg-deepblue bg-opacity-60 p-4 rounded-xl border-2 border-neon shadow hover:scale-105 transition">
+          <p id="yt-views" class="text-3xl text-white">загрузка…</p>
+          <p class="text-sm mt-1">просмотров всего</p>
+        </div>
+        <div class="bg-deepblue bg-opacity-60 p-4 rounded-xl border-2 border-neon shadow hover:scale-105 transition">
+          <p class="text-3xl text-white">1.3K</p>
+          <p class="text-sm mt-1">топ-видео</p>
+        </div>
+        <div class="bg-deepblue bg-opacity-60 p-4 rounded-xl border-2 border-neon shadow hover:scale-105 transition">
+          <p class="text-3xl text-white">2024</p>
+          <p class="text-sm mt-1">год старта</p>
+        </div>
+      </div>
+
+      <!-- Вехи -->
+      <div class="mt-12 bg-deepblue bg-opacity-60 p-6 rounded-xl border-2 border-neon text-aqua shadow">
+        <h4 class="text-xl font-bold text-white mb-4">📅 Вехи канала</h4>
+        <p class="mb-3">📈 Мы движемся к цели — <span class="text-neon font-semibold">100 подписчиков</span>! Подпишись
+          и будь частью нашего дружного игрового сообщества.</p>
+        <ul class="list-disc list-inside space-y-1 text-sm">
+          <li><span class="text-neon">18.10.2024</span> — 10 подписчиков</li>
+          <li><span class="text-neon">05.11.2024</span> — 20</li>
+          <li><span class="text-neon">16.11.2024</span> — 30</li>
+          <li><span class="text-neon">05.12.2024</span> — 40</li>
+          <li><span class="text-neon">20.12.2024</span> — 50</li>
+          <li><span class="text-neon">07.01.2025</span> — 60</li>
+          <li><span class="text-neon">03.04.2025</span> — 70</li>
+          <li><span class="text-neon">04.05.2025</span> — 80</li>
+          <li><span class="text-neon">22.05.2025</span> — 90</li>
+        </ul>
+      </div>
+      <!-- 🔥 Прогресс к 100 подписчикам -->
+      <div class="mt-10">
+        <h4 class="text-xl font-bold text-white mb-2">🔥 Прогресс к цели: <span class="text-neon">100 подписчиков</span>
+        </h4>
+        <div class="relative w-full h-6 bg-white/10 rounded-full overflow-hidden border-2 border-neon shadow-inner">
+          <div id="subProgress"
+            class="absolute left-0 top-0 h-full bg-neon transition-all duration-1000 ease-out rounded-r-full"
+            style="width: 96%;"></div>
+        </div>
+
+        <p class="mt-2 text-sm text-aqua">Осталось <span id="yt-left" class="text-3xl text-white">загрузка……</span>
+          подписчика до сотни 🎉</p>
+      </div>
+    </section>
+
+
+
+    <!-- 🧠 Почему я веду канал -->
+    <section class="mb-20 px-6 max-w-4xl mx-auto text-center" data-aos="fade-up">
+      <h3 class="text-3xl font-bold text-white mb-8 text-center">Почему я веду канал?</h3>
+      <p class="text-aqua font-semibold text-lg leading-relaxed">
+        Для меня YouTube — это способ выразить себя, поделиться эмоциями, смехом, и удивлением от каждой игры.
+        Я обожаю загадки, странности, закрученые сюжеты с тайнами и атмосферой — и хочу, чтобы ты пережил это вместе со
+        мной.
+      </p>
+      <p class="text-aqua font-semibold mt-4">
+        Мой канал — это уютное место, где можно и посмеяться, и испугаться, и поразмышлять.🎮❤️
+      </p>
+
+      <div class="text-center mt-10">
+        <a href="https://steamcommunity.com/id/superyankaplay/" target="_blank"
+          class="bg-neon text-deepblue px-6 py-3 rounded-xl font-bold shadow-lg hover:bg-aqua hover:shadow-[0_0_25px_#00ffe1] transition text-base">
+          Мой профиль в Steam
+        </a>
+      </div>
+
+    </section>
+
+
+
+
+    <!-- 🎮 Любимые игры -->
+    <section class="mb-16" data-aos="fade-up" data-aos-delay="300">
+      <h3 class="text-3xl font-bold text-white mb-8 text-center">💖 Мои любимые игры 💖</h3>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto p-6 bg-deepblue bg-opacity-50 rounded-xl border-2 border-neon">
+
+        <!-- Minecraft -->
+        <div
+          class="bg-deepblue bg-opacity-60 p-4 rounded-lg border border-neon hover:scale-105 hover:shadow-[0_0_25px_#00ffe1] transition">
+          <img src="assets/youtube/minecraft.jpg" class="w-full h-60 object-cover rounded mb-3 border border-neon"
+            alt="Minecraft">
+          <h4 class="text-neon font-bold text-lg">Minecraft</h4>
+          <p class="text-aqua text-sm">Мир свободы и творчества. Исследуй, строй, выживай — и всё это в кубическом
+            стиле.</p>
+        </div>
+
+        <!-- My Singing Monsters -->
+        <div
+          class="bg-deepblue bg-opacity-60 p-4 rounded-lg border border-neon hover:scale-105 hover:shadow-[0_0_25px_#00ffe1] transition">
+          <img src="assets/youtube/msm.jpg" class="w-full h-60 object-cover rounded mb-3 border border-neon"
+            alt="My Singing Monsters">
+          <h4 class="text-neon font-bold text-lg">My Singing Monsters</h4>
+          <p class="text-aqua text-sm">Пой вместе с монстриками! Каждое существо добавляет звук в музыкальный остров.
+            Весело, креативно и очень залипательно!</p>
+        </div>
+
+        <!-- Hay Day -->
+        <div
+          class="bg-deepblue bg-opacity-60 p-4 rounded-lg border border-neon hover:scale-105 hover:shadow-[0_0_25px_#00ffe1] transition">
+          <img src="assets/youtube/Hay_Day.jpg" class="w-full h-60 object-cover rounded mb-3 border border-neon"
+            alt="Hay Day">
+          <h4 class="text-neon font-bold text-lg">Hay Day</h4>
+          <p class="text-aqua text-sm">Фермерская жизнь на максималках: выращивай, продавай, строй свой идеальный уголок
+            природы.</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 🥚 Пасхалка -->
+    <section id="easterEggContent"
+      class="opacity-0 max-h-0 overflow-hidden transition-all duration-700 ease-in-out px-6 max-w-4xl mx-auto mt-20 bg-deepblue bg-opacity-50 p-6 rounded-xl border-2 border-neon">
+      <h3 class="text-2xl text-white font-bold mb-4">🥚 Пасхалка разблокирована!</h3>
+      <p class="text-aqua mb-4">Ты нашёл секретную зону! Вот несколько видео, которые доступны только по ссылке:</p>
+      <ul class="list-disc list-inside text-aqua space-y-2">
+        <li><a href="https://www.youtube.com/watch?v=AeWhKkATMaE" target="_blank"
+            class="underline text-neon hover:text-white">🎮 SPRUNKI — странный, очень странный летсплей</a></li>
+        <li><a href="https://www.youtube.com/watch?v=b4u8JYEce04" target="_blank"
+            class="underline text-neon hover:text-white">🎵 Новый любимый остров Psychic Island в MSM!</a></li>
+        <li><a href="https://www.youtube.com/watch?v=eAaGDylQrpo" target="_blank"
+            class="underline text-neon hover:text-white">🧠 Сапёр на харде — смогу ли я пройти?</a></li>
+      </ul>
+    </section>
+
+
+
+  </main>
+  <div id="footer-placeholder"></div>
+
+
+  <!-- Модалка видео -->
+  <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+    <div class="relative w-full max-w-3xl px-4">
+      <button onclick="closeVideoModal()"
+        class="absolute -top-4 -right-4 bg-neon text-deepblue rounded-full p-2 hover:bg-white transition">✕</button>
+      <iframe id="modalVideo" class="w-full h-[56vw] max-h-[60vh] rounded-lg" src="" frameborder="0"
+        allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
+
+
+  <!-- Scripts -->
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+
+  <script>
+    // Floating icons animation
+    const canvas = document.getElementById('youtube-canvas');
+    const ctx = canvas.getContext('2d');
+    let icons = [];
+    const symbols = ['▶️', '🎮', '❤️'];
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    window.addEventListener('resize', resize); resize();
+    class Icon {
+      constructor() { this.reset(); }
+      reset() { this.char = symbols[Math.floor(Math.random() * symbols.length)]; this.x = Math.random() * canvas.width; this.y = canvas.height + 20; this.speed = 0.5 + Math.random() * 1.5; this.size = 16 + Math.random() * 16; this.alpha = 0.3 + Math.random() * 0.4; }
+      draw() { ctx.save(); ctx.globalAlpha = this.alpha; ctx.font = `${this.size}px serif`; ctx.fillText(this.char, this.x, this.y); ctx.restore(); }
+      update() { this.y -= this.speed; if (this.y < -30) this.reset(); }
+    }
+    function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); if (icons.length < 50) icons.push(new Icon()); icons.forEach(i => { i.update(); i.draw(); }); requestAnimationFrame(animate); } animate();
+    AOS.init({ duration: 800, once: true });
+  </script>
+
+
+
+  <script>
+    const toggleBtn = document.getElementById('toggleGamesBtn');
+    const collapse = document.getElementById('gamesCollapse');
+    let isOpen = false;
+
+    toggleBtn.addEventListener('click', () => {
+      isOpen = !isOpen;
+
+      if (isOpen) {
+        collapse.classList.remove('max-h-0', 'opacity-0');
+        collapse.classList.add('max-h-[2000px]', 'opacity-100');
+        toggleBtn.textContent = "Скрыть любимые игры ❌";
+      } else {
+        collapse.classList.remove('max-h-[2000px]', 'opacity-100');
+        collapse.classList.add('max-h-0', 'opacity-0');
+        toggleBtn.textContent = "Показать любимые игры 🎮";
+      }
+    });
+
+  </script>
+
+
+  <script>
+    function openVideoModal(videoUrl) {
+      const embedUrl = convertToEmbedUrl(videoUrl);
+      if (embedUrl) {
+        document.getElementById('modalVideo').src = `${embedUrl}?autoplay=1`;
+        document.getElementById('videoModal').classList.remove('hidden');
+      }
+    }
+
+    function closeVideoModal() {
+      document.getElementById('modalVideo').src = '';
+      document.getElementById('videoModal').classList.add('hidden');
+    }
+
+    function convertToEmbedUrl(url) {
+      try {
+        const yt = new URL(url);
+        const videoId = yt.searchParams.get('v');
+        if (videoId) {
+          return `https://www.youtube.com/embed/${videoId}`;
+        } else if (yt.hostname === 'youtu.be') {
+          return `https://www.youtube.com/embed/${yt.pathname.slice(1)}`;
+        } else if (yt.pathname.startsWith('/embed/')) {
+          return url; // Уже embed
+        }
+        return null;
+      } catch (e) {
+        return null;
+      }
+    }
+  </script>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab-btn");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const target = btn.dataset.tab;
+
+        // Удаляем активные стили со всех кнопок
+        tabs.forEach(b => {
+          b.classList.remove("bg-neon", "text-deepblue");
+          b.classList.add("bg-deepblue", "text-neon");
+        });
+
+        // Добавляем активные стили к нажатой кнопке
+        btn.classList.add("bg-neon", "text-deepblue");
+        btn.classList.remove("bg-deepblue", "text-neon");
+
+        // Показываем соответствующий контент
+        tabContents.forEach(content => {
+          content.style.display = content.dataset.tab === target ? "block" : "none";
+        });
+      });
+    });
+
+    // По умолчанию активна первая вкладка
+    document.querySelector('.tab-btn[data-tab="horror"]').click();
+  </script>
+
+  <script>
+    // Анимация прогресс-бара (подписчики)
+    document.addEventListener("DOMContentLoaded", () => {
+      const progress = document.getElementById('subProgress');
+      const targetWidth = progress.style.width;
+      progress.style.width = '0%';
+      setTimeout(() => {
+        progress.style.width = targetWidth;
+      }, 200); // задержка для плавной анимации
+    });
+  </script>
+
+
+  <script>
+    let clickCount = 0;
+    const trigger = document.getElementById('easterEggTrigger');
+    const content = document.getElementById('easterEggContent');
+
+    trigger.addEventListener('click', () => {
+      clickCount++;
+      if (clickCount === 5) {
+        content.classList.remove('opacity-0', 'max-h-0', 'overflow-hidden');
+        content.classList.add('opacity-100', 'max-h-[1000px]');
+        trigger.innerText = '🥚 𝕊𝕦𝕡𝕖𝕣𝕪𝕒𝕟𝕜𝕒 (пасхалка!)';
+        trigger.classList.add('text-white');
+      }
+    });
+  </script>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch("https://my-flask-app-zjvv.onrender.com/api/youtube-stats")
+        .then(response => response.json())
+        .then(data => {
+          const stats = data.items[0].statistics;
+          const subs = stats.subscriberCount;
+          const views = stats.viewCount;
+          const videos = stats.videoCount;
+          const goal = 100;
+          const leftToGoal = goal - subs;
+
+          document.getElementById("yt-subs").textContent = subs;
+          document.getElementById("yt-views").textContent = views;
+          document.getElementById("yt-videos").textContent = videos;
+          document.getElementById("yt-left").textContent = leftToGoal > 0 ? leftToGoal : "🎉 Цель достигнута!";
+        })
+        .catch(error => console.error("Ошибка загрузки данных YouTube:", error));
+    });
+  </script>
+
+  <script>
+    fetch("components/footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById("menuToggle");
+      const menu = document.getElementById("navMenu");
+
+      toggle.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+
+      // lucide icons (если используешь)
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+
+
+
+</body>
+
+</html>

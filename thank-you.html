@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Спасибо!</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      background: radial-gradient(ellipse at center, #0f172a, #000);
+      color: #00ffe1;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px #00ffe1;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #c0faff;
+      margin-bottom: 2rem;
+    }
+
+    a {
+      background-color: #00ffe1;
+      color: #0f172a;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 0 20px #00ffe1;
+    }
+
+    a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px #00ffe1;
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1rem;
+      color: #00ffe1;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body data-aos="fade-in" data-aos-duration="800">
+  <i data-lucide="mail-check" class="icon"></i>
+  <h1>Спасибо за сообщение! 💌</h1>
+  <p>Я получила твоё письмо и обязательно его прочитаю и отвечу как можно скорее :) 🌵</p>
+  <a href="index.html">⬅ Вернуться на главную</a>
+  <script>
+    lucide.createIcons();
+    AOS.init();
+  </script>
+</body>
+</html>

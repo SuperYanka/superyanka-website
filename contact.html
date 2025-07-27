@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru" class="h-full">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Контакты — Super Yanka</title>
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { neon: '#00ffe1', aqua: '#00c9c9', deepblue: '#0b0f3b' } } } };
+  </script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <style>
+    /* Video background */
+    #video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    /* Overlay to darken video */
+    #video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(11, 15, 59, 0.6);
+      z-index: 1;
+    }
+
+    header,
+    main,
+    footer {
+      position: relative;
+      z-index: 2;
+    }
+  </style>
+
+</head>
+
+<body class="relative text-aqua font-sans overflow-x-hidden min-h-screen h-full">
+
+  <!-- Video background -->
+  <video id="video-bg" autoplay muted loop>
+    <source src="assets/video/call.mp4" type="video/mp4">
+    Ваш браузер не поддерживает видео.
+  </video>
+
+  <!-- Overlay that darkens video -->
+  <div id="video-overlay"></div>
+
+
+
+
+
+  <!-- Navigation -->
+  <header
+    class="fixed w-full top-0 left-0 bg-opacity-50 bg-deepblue backdrop-blur-sm px-4 py-2 flex items-center justify-between z-30">
+    <a href="index.html" class="text-xl sm:text-2xl font-bold text-neon whitespace-nowrap">Super Yanka</a>
+    <!-- Гамбургер -->
+    <button id="menuToggle" class="sm:hidden text-neon z-50">
+      <i data-lucide="menu" class="w-6 h-6"></i>
+    </button>
+    </div>
+
+    <!-- Навигация -->
+    <nav id="navMenu"
+      class="hidden sm:flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 absolute sm:relative top-full sm:top-0 left-0 w-full sm:w-auto
+    bg-opacity-50 bg-deepblue sm:bg-transparent z-40 px-4 sm:px-0 py-2 sm:py-0 text-aqua font-medium backdrop-blur-sm sm:backdrop-blur-0">
+      <a href="index.html" class="hover:text-neon transition">Главная</a>
+      <a href="about.html" class="hover:text-neon transition">Обо мне</a>
+      <a href="education.html" class="hover:text-neon transition">Образование</a>
+      <a href="projects.html" class="hover:text-neon transition">Проекты</a>
+      <a href="resume.html" class="hover:text-neon transition">Резюме</a>
+      <a href="art.html" class="hover:text-neon transition">Хобби и Творчество</a>
+      <a href="youtube.html" class="hover:text-neon transition">YouTube</a>
+      <a href="misc.html" class="hover:text-neon transition">Разное</a>
+      <a href="contact.html" class="text-neon">Контакты</a>
+    </nav>
+  </header>
+
+  <main class="relative z-10 pt-32 pb-16 px-4 max-w-5xl mx-auto bg-black/40 rounded-xl backdrop-blur-md">
+
+
+    <section class="text-center mb-12" data-aos="fade-up">
+      <h2 class="text-4xl font-extrabold text-white mb-4">📬 Контакты 📬</h2>
+      <p class="text-lg max-w-2xl mx-auto">
+        Остались вопросы, идеи, предложения или просто хочешь сказать привет?
+        Свяжись со мной удобным способом!
+      </p>
+    </section>
+
+    <!-- 💌 Контактная информация -->
+    <section class="mb-16 grid sm:grid-cols-2 gap-10 text-center" data-aos="fade-up" data-aos-delay="100">
+      <div>
+        <h3 class="text-xl font-semibold text-neon mb-2">Email</h3>
+        <p class="text-white text-lg hover:text-neon transition duration-300">
+          superyanka13@gmail.com
+
+        </p>
+      </div>
+      <div>
+
+        <h3 class="text-xl font-semibold text-neon mb-2">Соцсети</h3>
+        <div class="flex justify-center gap-6 text-2xl text-white">
+          <a href="https://t.me/neadekvattttt" target="_blank" class="hover:text-neon transition">
+            <i data-lucide="send"></i>
+          </a>
+          <a href="https://github.com/superyanka" target="_blank" class="hover:text-neon transition">
+            <i data-lucide="github"></i>
+          </a>
+          <a href="https://linkedin.com/in/superyanka" target="_blank" class="hover:text-neon transition">
+            <i data-lucide="linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🌐 Платформы и профили -->
+    <section class="mt-12 mb-16 text-center" data-aos="fade-up" data-aos-delay="150">
+      <h3 class="text-xl font-semibold text-neon mb-4">Профили и платформы</h3>
+      <div class="flex flex-wrap justify-center gap-6 text-white text-lg">
+
+        <!-- Steam -->
+        <a href="https://steamcommunity.com/id/superyankaplay/" target="_blank"
+          class="flex items-center gap-2 hover:text-neon transition">
+          <i data-lucide="gamepad-2" class="w-5 h-5"></i>Steam
+        </a>
+
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/@superyankaplay" target="_blank"
+          class="flex items-center gap-2 hover:text-neon transition">
+          <i data-lucide="youtube" class="w-5 h-5"></i>YouTube
+        </a>
+
+        <!-- Shikimori -->
+        <a href="https://shikimori.one/%D0%A1%D1%83%D0%BF%D0%B5%D1%80+%D0%AF%D0%BD%D0%BA%D0%B0" target="_blank"
+          class="flex items-center gap-2 hover:text-neon transition">
+          <i data-lucide="tv" class="w-5 h-5"></i>Shikimori
+        </a>
+
+        <!-- Kaggle -->
+        <a href="https://www.kaggle.com/yaninakostiv" target="_blank"
+          class="flex items-center gap-2 hover:text-neon transition">
+          <i data-lucide="bar-chart-3" class="w-5 h-5"></i>Kaggle
+        </a>
+
+      </div>
+    </section>
+
+
+
+<!-- 📮 Форма обратной связи -->
+<section class="mb-16" data-aos="fade-up" data-aos-delay="200">
+  <h3 class="text-xl font-semibold text-neon mb-4 text-center">Написать мне</h3>
+
+  <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you"
+    class="space-y-4 max-w-xl mx-auto">
+    
+    <!-- Honeypot: защита от ботов -->
+    <input type="hidden" name="form-name" value="contact" />
+    <p class="hidden">
+      <label>Не заполняй это поле: <input name="bot-field" /></label>
+    </p>
+
+    <input type="text" name="name" placeholder="Твоё имя" required
+      class="w-full p-3 bg-white/10 text-white rounded-lg border border-transparent focus:border-neon focus:outline-none transition duration-300" />
+
+    <input type="email" name="email" placeholder="Email" required
+      class="w-full p-3 bg-white/10 text-white rounded-lg border border-transparent focus:border-neon focus:outline-none transition duration-300" />
+
+    <textarea name="message" placeholder="Сообщение" rows="4" required
+      class="w-full p-3 bg-white/10 text-white rounded-lg border border-transparent focus:border-neon focus:outline-none transition duration-300"></textarea>
+
+    <button type="submit"
+      class="w-full px-6 py-3 bg-neon text-deepblue font-semibold rounded-lg shadow-md hover:shadow-[0_0_20px_#00ffe1] transition">
+      ✉️ Отправить
+    </button>
+  </form>
+</section>
+
+
+
+
+
+
+    <!-- ✨ Цитата -->
+    <section class="text-center" data-aos="fade-up" data-aos-delay="300">
+      <blockquote class="italic text-gray-400 text-lg">"Контакт — это всегда больше, чем сообщение."</blockquote>
+    </section>
+
+
+    <!-- Подвал -->
+    <footer class="text-center text-gray-500 text-sm p-6 z-10">
+      © 2025 Super Yanka. Все права защищены.
+    </footer>
+
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+
+
+
+    <script>
+      AOS.init({ duration: 800, once: true });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggle = document.getElementById("menuToggle");
+        const menu = document.getElementById("navMenu");
+
+        toggle.addEventListener("click", () => {
+          menu.classList.toggle("hidden");
+        });
+
+        // lucide icons (если используешь)
+        if (window.lucide) lucide.createIcons();
+      });
+    </script>
+
+
+
+
+</body>
+
+</html>
