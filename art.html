@@ -349,12 +349,12 @@
       </div>
     </section>
 
-    <!-- 🧵 Паззлы -->
+    <!-- 🧵 Пазлы -->
     <section class="px-6 py-12 max-w-6xl mx-auto rounded-xl bg-opacity-40 bg-deepblue shadow-[0_0_20px_#00ffe1] mb-10"
       data-aos="fade-up">
-      <h3 class="text-3xl font-bold text-neon mb-6 border-b border-neon pb-2 inline-block">🧩 Паззлы</h3>
+      <h3 class="text-3xl font-bold text-neon mb-6 border-b border-neon pb-2 inline-block">🧩 Пазлы</h3>
 
-      <p class="text-aqua mb-4 text-sm">Паззлы с детства — моё любимое занятие перед сном 😴🧠</p>
+      <p class="text-aqua mb-4 text-sm">Пазлы с детства — моё любимое занятие перед сном 😴🧠</p>
       <div class="flex overflow-x-auto gap-4 scrollbar-hide py-2">
         <img src="assets/arts/puzzle/puz_0.jpg" alt="1"
           class="h-[240px] object-cover object-center rounded border-2 border-neon hover:scale-110 transition modal-trigger" />
@@ -488,7 +488,9 @@
 
     function animateNotes() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      if (notes.length < 80) notes.push(new Note());
+      const maxNotes = window.innerWidth < 768 ? 20 : 80; // меньше нот на мобилках
+
+if (notes.length < maxNotes) notes.push(new Note());
       notes.forEach(n => { n.update(); n.draw(); });
       requestAnimationFrame(animateNotes);
     }
