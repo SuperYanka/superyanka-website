@@ -48,6 +48,7 @@ Neon portfolio site with music & projects | EN/UA translations coming soon
 - Lucide Icons, particles.js
 - WaveSurfer.js (аудио-плеер)
 - Netlify Forms (форма обратной связи)
+-  Адаптивный дизайн — красиво смотрится на телефонах, планшетах и десктопах
 
 ## 🚀 Размещение
 
