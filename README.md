@@ -11,6 +11,7 @@ Neon portfolio site with music & projects | EN/UA translations coming soon
 ![i18n](https://img.shields.io/badge/Localization-in%20progress-blueviolet?logo=translate)
 ![Made in Ukraine](https://img.shields.io/badge/Made%20in-Ukraine-005BBB?logo=flag&labelColor=FFD500)
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=SuperYanka.superyanka-website)
+<img src="https://readme-anim-cactus.vercel.app/api/badge" alt="Кактус SuperYanka" width="220"/>
 
 ---
 
