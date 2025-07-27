@@ -2,3 +2,4 @@ my-flask-app/
 *.env
 *.pyc
 __pycache__/
+assets/vacation/
