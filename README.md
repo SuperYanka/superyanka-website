@@ -6,7 +6,6 @@ Neon portfolio site with music & projects | EN/UA translations coming soon
 
 # 🌐 SuperYanka Website
 
-
 [![Netlify Status](https://api.netlify.com/api/v1/badges/29386dd1-1f83-4e45-be06-6b40ae9fe1f0/deploy-status)](https://app.netlify.com/sites/superyanka-website/deploys)
 [![Live Site](https://img.shields.io/website?url=https%3A%2F%2Fsuperyanka-website.netlify.app&style=flat&logo=netlify)](https://superyanka-website.netlify.app)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
