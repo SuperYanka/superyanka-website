@@ -11,9 +11,11 @@ Neon portfolio site with music & projects | EN/UA translations coming soon
 ![i18n](https://img.shields.io/badge/Localization-in%20progress-blueviolet?logo=translate)
 ![Made in Ukraine](https://img.shields.io/badge/Made%20in-Ukraine-005BBB?logo=flag&labelColor=FFD500)
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=SuperYanka.superyanka-website)
-![Made with ChatGPT](https://img.shields.io/badge/Made%20with-ChatGPT-00b26a?logo=openai&logoColor=white&style=for-the-badge)
+![Made with ChatGPT](https://img.shields.io/badge/Made%20with-ChatGPT-00b26a?logo=openai&logoColor=white&style=flat)
 ![Made by SuperYanka & ChatGPT](https://img.shields.io/badge/Made%20by-SuperYanka%20%26%20ChatGPT-00ffe1?logo=openai&logoColor=black&style=flat-square)
-
+<p align="center">
+  <img src="assets/badges/superyanka-gpt.png" alt="Made by SuperYanka & ChatGPT" width="300"/>
+</p>
 <p align="center">
   <img src="assets/avatars/logo.png" width="100" alt="SuperYanka Logo"/>
   <br>
