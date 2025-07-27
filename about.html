@@ -294,6 +294,12 @@
                   <img src="assets/education/kid_photos/kid_17.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
+                  <img src="assets/education/kid_photos/kid_18.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_19.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
 
                   <!-- ♻️ КЛОНЫ -->
                   <img src="assets/education/kid_photos/kid_1.jpg"
@@ -347,11 +353,80 @@
                   <img src="assets/education/kid_photos/kid_17.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-
-
+                  <img src="assets/education/kid_photos/kid_18.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
+                  <img src="assets/education/kid_photos/kid_19.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="1">
                 </div>
               </div>
             </div>
+
+
+            <!-- ☀️ Август 2009 -->
+            <div x-data="{ open2009: false }" class="mt-10 text-center">
+              <button @click="open2009 = !open2009" class="text-neon font-semibold hover:underline transition">
+                ☀️ Август 2009: Поездка в Турцию. Аланья
+              </button>
+
+            <div x-show="open2009" x-transition class="mt-6">
+              <div class="overflow-x-auto">
+                <div class="flex gap-4 px-4 py-2 w-max mx-auto">
+                  <template x-for="(src, index) in [
+        'assets/education/kid_photos/turcia_2009/tur_1.jpg',
+        'assets/education/kid_photos/turcia_2009/tur_2.jpg',
+        'assets/education/kid_photos/turcia_2009/tur_3.jpg',
+        'assets/education/kid_photos/turcia_2009/tur_4.jpg',
+        'assets/education/kid_photos/turcia_2009/tur_5.jpg',
+        'assets/education/kid_photos/turcia_2009/tur_6.jpg',
+        'assets/education/kid_photos/turcia_2009/tur_7.jpg',
+        'assets/education/kid_photos/turcia_2009/tur_8.jpg',
+        'assets/education/kid_photos/turcia_2009/tur_9.jpg',
+        'assets/education/kid_photos/turcia_2009/tur_10.jpg',
+        'assets/education/kid_photos/turcia_2009/tur_11.jpg',
+        'assets/education/kid_photos/turcia_2009/tur_12.jpg',
+        'assets/education/kid_photos/turcia_2009/tur_13.jpg',
+        'assets/education/kid_photos/turcia_2009/tur_14.jpg'
+      ]" :key="index">
+                    <img :src="src" @click="openImageModal(src)"
+                      class="w-48 h-43 object-cover rounded-xl border-2 border-neon shadow-neon hover:scale-105 transition-all cursor-zoom-in"
+                      :alt="'Турция 2009 - ' + (index + 1)" />
+                  </template>
+                </div>
+              </div>
+            </div>
+
+
+            
+            <!-- ☀️ Зима 2010 -->
+            <div x-data="{ open2010: false }" class="mt-10 text-center">
+              <button @click="open2010 = !open2010" class="text-neon font-semibold hover:underline transition">
+                ☀️ Брянск 2010
+              </button>
+
+            <div x-show="open2010" x-transition class="mt-6">
+              <div class="overflow-x-auto">
+                <div class="flex gap-4 px-4 py-2 w-max mx-auto">
+                  <template x-for="(src, index) in [
+        'assets/education/kid_photos/bryansk_2010/br1.jpg',
+        'assets/education/kid_photos/bryansk_2010/br2.jpg',
+        'assets/education/kid_photos/bryansk_2010/br3.jpg',
+        'assets/education/kid_photos/bryansk_2010/br4.jpg',
+        'assets/education/kid_photos/bryansk_2010/br5.jpg',
+        'assets/education/kid_photos/bryansk_2010/br6.jpg',
+        'assets/education/kid_photos/bryansk_2010/br7.jpg',
+
+      ]" :key="index">
+                    <img :src="src" @click="openImageModal(src)"
+                      class="w-48 h-43 object-cover rounded-xl border-2 border-neon shadow-neon hover:scale-105 transition-all cursor-zoom-in"
+                      :alt="'Брянск 2010 - ' + (index + 1)" />
+                  </template>
+                </div>
+              </div>
+            </div>
+
+
 
             <!-- Противоположная сторона -->
             <div class="md:w-5/12"></div>
@@ -421,19 +496,34 @@
                 <div class="carousel-track flex gap-4 w-max transition-transform duration-1000 ease-in-out">
 
                   <!-- ✅ ОРИГИНАЛЫ -->
-                  <img src="assets/education/school/1-4class/1class_0.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/school/1-4class/1class_myphoto.jpg"
+                  <img src="assets/education/school/1-4class/1class_1.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
                   <img src="assets/education/school/1-4class/1class_2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/school/1-4class/1class_1.jpg"
+                  <img src="assets/education/school/1-4class/1class_3.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/school/1-4class/1class_3.jpg"
+                  <img src="assets/education/school/1-4class/1class_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/school/1-4class/1class_5.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/school/1-4class/1class_6.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/school/1-4class/1class_7.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/school/1-4class/1class_8.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/school/1-4class/1class_9.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/school/1-4class/1class_10.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
                   <img src="assets/education/school/1-4class/2class_1.jpg"
@@ -442,15 +532,30 @@
                   <img src="assets/education/school/1-4class/2class_2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
+                  <img src="assets/education/school/1-4class/2class_3.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/school/1-4class/2class_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/school/1-4class/2class_5.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/school/1-4class/2class_6.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
                   <img src="assets/education/school/1-4class/3class_1.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
                   <img src="assets/education/school/1-4class/3class_2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
-                  <img src="assets/education/school/1-4class/4class_0.jpg"
+                  <img src="assets/education/school/1-4class/3class_3.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="4">
+                    alt="3">
+                  <img src="assets/education/school/1-4class/3class_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
                   <img src="assets/education/school/1-4class/4class_1.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="4">
@@ -461,25 +566,49 @@
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="6">
                   <img src="assets/education/school/1-4class/4class_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+                  <img src="assets/education/school/1-4class/4class_5.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+                  <img src="assets/education/school/1-4class/4class_6.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+                  <img src="assets/education/school/1-4class/4class_7.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="6">
 
 
                   <!-- ♻️ КЛОНЫ -->
 
-                  <img src="assets/education/school/1-4class/1class_0.jpg"
-                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="1">
-                  <img src="assets/education/school/1-4class/1class_myphoto.jpg"
+                  <img src="assets/education/school/1-4class/1class_1.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
                   <img src="assets/education/school/1-4class/1class_2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="1">
-                  <img src="assets/education/school/1-4class/1class_1.jpg"
+                  <img src="assets/education/school/1-4class/1class_3.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
-                  <img src="assets/education/school/1-4class/1class_3.jpg"
+                  <img src="assets/education/school/1-4class/1class_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/school/1-4class/1class_5.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/school/1-4class/1class_6.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/school/1-4class/1class_7.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/school/1-4class/1class_8.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/school/1-4class/1class_9.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="2">
+                  <img src="assets/education/school/1-4class/1class_10.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="2">
                   <img src="assets/education/school/1-4class/2class_1.jpg"
@@ -488,15 +617,30 @@
                   <img src="assets/education/school/1-4class/2class_2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
+                  <img src="assets/education/school/1-4class/2class_3.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/school/1-4class/2class_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/school/1-4class/2class_5.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
+                  <img src="assets/education/school/1-4class/2class_6.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
                   <img src="assets/education/school/1-4class/3class_1.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
                   <img src="assets/education/school/1-4class/3class_2.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="3">
-                  <img src="assets/education/school/1-4class/4class_0.jpg"
+                  <img src="assets/education/school/1-4class/3class_3.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
-                    alt="4">
+                    alt="3">
+                  <img src="assets/education/school/1-4class/3class_4.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="3">
                   <img src="assets/education/school/1-4class/4class_1.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="4">
@@ -509,6 +653,16 @@
                   <img src="assets/education/school/1-4class/4class_4.jpg"
                     class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
                     alt="6">
+                  <img src="assets/education/school/1-4class/4class_5.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+                  <img src="assets/education/school/1-4class/4class_6.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+                  <img src="assets/education/school/1-4class/4class_7.jpg"
+                    class="carousel-img w-48 rounded-lg border-2 border-neon hover:scale-105 transition-all cursor-zoom-in"
+                    alt="6">
+
 
                 </div>
               </div>
@@ -521,7 +675,7 @@
             <!-- ☀️ Ноябрь 2010 -->
             <div x-data="{ open2010: false }" class="mt-10 text-center">
               <button @click="open2010 = !open2010" class="text-neon font-semibold hover:underline transition">
-                ☀️ Ноябрь 2010: Поездка в Египет
+                ☀️ Ноябрь 2010: Поездка в Египет. Хургада
               </button>
 
               <div x-show="open2010" x-transition class="mt-6">
@@ -539,7 +693,8 @@
           'assets/education/school/1-4class/egypt_2010/eg_9.jpg',
           'assets/education/school/1-4class/egypt_2010/eg_10.jpg',
           'assets/education/school/1-4class/egypt_2010/eg_11.jpg',
-          'assets/education/school/1-4class/egypt_2010/eg_12.jpg'
+          'assets/education/school/1-4class/egypt_2010/eg_12.jpg',
+          'assets/education/school/1-4class/egypt_2010/eg_13.jpg'
         ]" :key="index">
                       <img :src="src" @click="openImageModal(src)"
                         class="w-48 h-43 object-cover rounded-xl border-2 border-neon shadow-neon hover:scale-105 transition-all cursor-zoom-in"
@@ -549,6 +704,68 @@
                 </div>
               </div>
             </div>
+
+
+
+            <!-- ☀️ Болгария 2011 -->
+            <div x-data="{ open2011: false }" class="mt-10 text-center">
+              <button @click="open2011 = !open2011" class="text-neon font-semibold hover:underline transition">
+                ☀️ 2011: Поездка в Болгарию. 
+              </button>
+
+              <div x-show="open2011" x-transition class="mt-6">
+                <div class="overflow-x-auto">
+                  <div class="flex gap-4 px-4 py-2 w-max mx-auto">
+                    <template x-for="(src, index) in [
+          'assets/education/school/1-4class/bolgaria_2011/bol_1.jpg',
+          'assets/education/school/1-4class/bolgaria_2011/bol_2.jpg',
+          'assets/education/school/1-4class/bolgaria_2011/bol_3.jpg',
+          'assets/education/school/1-4class/bolgaria_2011/bol_4.jpg',
+          'assets/education/school/1-4class/bolgaria_2011/bol_5.jpg',
+          'assets/education/school/1-4class/bolgaria_2011/bol_6.jpg',
+          'assets/education/school/1-4class/bolgaria_2011/bol_7.jpg',
+          'assets/education/school/1-4class/bolgaria_2011/bol_8.jpg',
+          'assets/education/school/1-4class/bolgaria_2011/bol_9.jpg'
+        ]" :key="index">
+                      <img :src="src" @click="openImageModal(src)"
+                        class="w-48 h-43 object-cover rounded-xl border-2 border-neon shadow-neon hover:scale-105 transition-all cursor-zoom-in"
+                        :alt="'Болгария 2011 - ' + (index + 1)" />
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <!-- ☀️ Belarus Shatsky 2012 -->
+            <div x-data="{ open2012: false }" class="mt-10 text-center">
+              <button @click="open2012 = !open2012" class="text-neon font-semibold hover:underline transition">
+                ☀️ 2012: Поездка в Беларусь. Шацкие 
+              </button>
+
+              <div x-show="open2012" x-transition class="mt-6">
+                <div class="overflow-x-auto">
+                  <div class="flex gap-4 px-4 py-2 w-max mx-auto">
+                    <template x-for="(src, index) in [
+          'assets/education/school/1-4class/belarus_2012/bel_1.jpg',
+          'assets/education/school/1-4class/belarus_2012/bel_2.jpg',
+          'assets/education/school/1-4class/belarus_2012/bel_3.jpg',
+          'assets/education/school/1-4class/belarus_2012/bel_4.jpg',
+          'assets/education/school/1-4class/belarus_2012/bel_5.jpg'
+        ]" :key="index">
+                      <img :src="src" @click="openImageModal(src)"
+                        class="w-48 h-43 object-cover rounded-xl border-2 border-neon shadow-neon hover:scale-105 transition-all cursor-zoom-in"
+                        :alt="'Шацкие 2012 - ' + (index + 1)" />
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
 
             <!-- ☀️ Ноябрь 2012 -->
             <div x-data="{ open2012: false }" class="mt-10 text-center">
