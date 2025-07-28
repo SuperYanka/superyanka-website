@@ -161,34 +161,34 @@
 
 
 
-<!-- 📮 Форма обратной связи -->
-<section class="mb-16" data-aos="fade-up" data-aos-delay="200">
-  <h3 class="text-xl font-semibold text-neon mb-4 text-center">Написать мне</h3>
+    <!-- 📮 Форма обратной связи -->
+    <section class="mb-16" data-aos="fade-up" data-aos-delay="200">
+      <h3 class="text-xl font-semibold text-neon mb-4 text-center">Написать мне</h3>
 
-  <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you"
-    class="space-y-4 max-w-xl mx-auto">
-    
-    <!-- Honeypot: защита от ботов -->
-    <input type="hidden" name="form-name" value="contact" />
-    <p class="hidden">
-      <label>Не заполняй это поле: <input name="bot-field" /></label>
-    </p>
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you"
+        class="space-y-4 max-w-xl mx-auto">
 
-    <input type="text" name="name" placeholder="Твоё имя" required
-      class="w-full p-3 bg-white/10 text-white rounded-lg border border-transparent focus:border-neon focus:outline-none transition duration-300" />
+        <!-- Honeypot: защита от ботов -->
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="hidden">
+          <label>Не заполняй это поле: <input name="bot-field" /></label>
+        </p>
 
-    <input type="email" name="email" placeholder="Email" required
-      class="w-full p-3 bg-white/10 text-white rounded-lg border border-transparent focus:border-neon focus:outline-none transition duration-300" />
+        <input type="text" name="name" placeholder="Твоё имя" required
+          class="w-full p-3 bg-white/10 text-white rounded-lg border border-transparent focus:border-neon focus:outline-none transition duration-300" />
 
-    <textarea name="message" placeholder="Сообщение" rows="4" required
-      class="w-full p-3 bg-white/10 text-white rounded-lg border border-transparent focus:border-neon focus:outline-none transition duration-300"></textarea>
+        <input type="email" name="email" placeholder="Email" required
+          class="w-full p-3 bg-white/10 text-white rounded-lg border border-transparent focus:border-neon focus:outline-none transition duration-300" />
 
-    <button type="submit"
-      class="w-full px-6 py-3 bg-neon text-deepblue font-semibold rounded-lg shadow-md hover:shadow-[0_0_20px_#00ffe1] transition">
-      ✉️ Отправить
-    </button>
-  </form>
-</section>
+        <textarea name="message" placeholder="Сообщение" rows="4" required
+          class="w-full p-3 bg-white/10 text-white rounded-lg border border-transparent focus:border-neon focus:outline-none transition duration-300"></textarea>
+
+        <button type="submit"
+          class="w-full px-6 py-3 bg-neon text-deepblue font-semibold rounded-lg shadow-md hover:shadow-[0_0_20px_#00ffe1] transition">
+          ✉️ Отправить
+        </button>
+      </form>
+    </section>
 
 
 

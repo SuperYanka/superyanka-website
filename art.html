@@ -133,21 +133,14 @@
 
     <div class="hidden sm:flex items-center gap-2 max-w-xs overflow-hidden">
 
-    <!-- 🌟 Бегущая строка -->
-    <div class="overflow-hidden whitespace-nowrap text-sm text-aqua max-w-[120px]">
-      <span id="trackTitle" class="animate-marquee inline-block text-neon font-bold text-sm truncate"></span>
+      <!-- 🌟 Бегущая строка -->
+      <div class="overflow-hidden whitespace-nowrap text-sm text-aqua max-w-[120px]">
+        <span id="trackTitle" class="animate-marquee inline-block text-neon font-bold text-sm truncate"></span>
+      </div>
+      <!-- 🔊 Ползунок громкости (только на sm и выше) -->
+      <input id="volumeSlider" type="range" min="0" max="1" step="0.01" value="0.2"
+        class="w-20 h-2 accent-neon cursor-pointer hidden sm:block" />
     </div>
-  <!-- 🔊 Ползунок громкости (только на sm и выше) -->
-  <input
-    id="volumeSlider"
-    type="range"
-    min="0"
-    max="1"
-    step="0.01"
-    value="0.2"
-    class="w-20 h-2 accent-neon cursor-pointer hidden sm:block"
-  />
-</div>
 
 
 
@@ -214,8 +207,11 @@
   <main class="relative pt-32 pb-16 z-10">
     <!-- Заголовок -->
     <section class="text-center p-10" data-aos="fade-up">
-      <h2 class="text-4xl font-extrabold text-white mb-4">Творчество</h2>
-      <p class="text-lg max-w-2xl mx-auto">Рисую, слышу, чувствую. Всё это — часть моего внутреннего мира.</p>
+      <h2 class="text-4xl font-extrabold text-white mb-4">Хобби и Творчество</h2>
+      <p class="text-lg max-w-2xl mx-auto">Когда есть минутка для себя — я рисую, играю либо создаю музыку, вышиваю. Тут
+        всё, что люблю делать от души.
+
+      </p>
     </section>
 
 
@@ -224,10 +220,17 @@
     <!-- 🎵 Музыкальный блок -->
     <section class="px-6 py-12 max-w-3xl mx-auto rounded-xl bg-opacity-40 bg-deepblue shadow-[0_0_20px_#00ffe1] mb-10"
       data-aos="fade-up">
-      <h3 class="text-3xl font-bold text-neon mb-6 border-b border-neon pb-2 inline-block text-center">🎵 Мои песни</h3>
+      <h3 class="text-3xl font-bold text-neon mb-6 border-b border-neon pb-2 inline-block text-center">🎵 Мои песни 🎵
+      </h3>
 
-      <p class="text-aqua mb-6 text-sm text-center">Музыка, которую я написала. Не забудь включить их,
-        нажми на кнопку ▶️ и наслаждайся!</p>
+      <p class="text-aqua mb-6 text-sm text-center">
+        Музыка, которую я написала. Включи её перед тем, как будешь рассматривать страницу.
+        Нажми на кнопку
+        <span class="inline-flex items-center whitespace-nowrap">
+          <i data-lucide="play" class="w-4 h-4 mx-1"></i>
+        </span>
+        и наслаждайся! Пусть играет фоном и создаёт настроение 🎵
+      </p>
 
       <!-- 🎧 Выбор трека -->
       <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-6 w-full">
@@ -290,17 +293,13 @@
 
 
 
-
-
-
-
     <!-- 🎨 Мини-галерея рисунков -->
     <section class="max-w-6xl mx-auto px-6 py-12 rounded-xl bg-opacity-40 bg-deepblue shadow-[0_0_20px_#00ffe1] mb-10"
       data-aos="fade-up">
-      <h3 class="text-3xl font-bold text-neon mb-6 border-b border-neon pb-2 inline-block">🎨 Рисунки</h3>
+      <h3 class="text-3xl font-bold text-neon mb-6 border-b border-neon pb-2 inline-block">🎨 Рисунки 🖼️</h3>
 
       <p class="text-aqua mb-6 text-sm">
-        Цифровые и традиционные. Я люблю играть с формой, эмоцией и цветом
+        Немного диджитал и куча традишки. Уютная галерея моих работ, полистай и вдохновляйся ✨
       </p>
 
       <!-- Кнопка -->
@@ -325,9 +324,10 @@
     <!-- 🧵 Рукоделие -->
     <section class="px-6 py-12 max-w-6xl mx-auto rounded-xl bg-opacity-40 bg-deepblue shadow-[0_0_20px_#00ffe1] mb-10"
       data-aos="fade-up">
-      <h3 class="text-3xl font-bold text-neon mb-6 border-b border-neon pb-2 inline-block">🧵 Рукоделие
+      <h3 class="text-3xl font-bold text-neon mb-6 border-b border-neon pb-2 inline-block">🧵 Рукоделие 🧶
       </h3>
-      <p class="text-aqua mb-4 text-sm">Ручная работа — моя медитация ✨</p>
+      <p class="text-aqua mb-4 text-sm">Вышивка, бисер, конструктор - я увлекаюсь всем подряд ✨ Руки так и тянутся
+        что-нибудь сотворить!</p>
 
       <div class="flex overflow-x-auto gap-4 scrollbar-hide py-2">
         <img src="assets/arts/tvorchestvo/braslet_2018.jpg" alt="1"
@@ -352,9 +352,10 @@
     <!-- 🧵 Пазлы -->
     <section class="px-6 py-12 max-w-6xl mx-auto rounded-xl bg-opacity-40 bg-deepblue shadow-[0_0_20px_#00ffe1] mb-10"
       data-aos="fade-up">
-      <h3 class="text-3xl font-bold text-neon mb-6 border-b border-neon pb-2 inline-block">🧩 Пазлы</h3>
+      <h3 class="text-3xl font-bold text-neon mb-6 border-b border-neon pb-2 inline-block">🧩 Пазлы 🧩</h3>
 
-      <p class="text-aqua mb-4 text-sm">Пазлы с детства — моё любимое занятие перед сном 😴🧠</p>
+      <p class="text-aqua mb-4 text-sm">Пазлы — моё любимое занятие с детства. Плюсы: красивая картинка и медитативный
+        процесс. Минусы: больная спина и затекшие конечности 😅</p>
       <div class="flex overflow-x-auto gap-4 scrollbar-hide py-2">
         <img src="assets/arts/puzzle/puz_0.jpg" alt="1"
           class="h-[240px] object-cover object-center rounded border-2 border-neon hover:scale-110 transition modal-trigger" />
@@ -371,17 +372,15 @@
 
 
 
-
-
     <!-- 🍱 Галерея еды -->
     <section class="max-w-6xl mx-auto px-6 py-12 rounded-xl bg-opacity-40 bg-deepblue shadow-[0_0_20px_#00ffe1] mb-10"
       data-aos="fade-up">
-      <h3 class="text-3xl font-bold text-neon mb-6 border-b border-neon pb-2 inline-block">📷 Фотография еды</h3>
+      <h3 class="text-3xl font-bold text-neon mb-6 border-b border-neon pb-2 inline-block">📷 Фотографии еды 🍰</h3>
 
       <p class="text-aqua mb-6 text-sm">
-        Я обожаю фотографировать еду — как приготовленную, так и в кафе. Эти снимки — мой способ ловить красоту в
-        деталях 🍰🍓
-      </p>
+        Еда — не только вкус, но и визуальное удовольствие. Люблю, когда блюда выглядят как искусство 🎨🍽️<br>
+        Фотографирую еду, которая радует глаз (и желудок): будь то домашняя тарелка или ресторанный шедевр.</p>
+
 
       <!-- Кнопка для показа/скрытия -->
       <button onclick="toggleFoodGallery()"
@@ -405,10 +404,14 @@
 
     <!-- Вдохновение -->
     <section class="text-center px-6 py-16" data-aos="fade-up">
-      <h3 class="text-xl text-aqua font-medium mb-2">О чём моё искусство?</h3>
+      <h3 class="text-xl text-aqua font-medium mb-2">Искусство как отражение</h3>
       <p class="text-aqua max-w-2xl mx-auto leading-relaxed">
-        Это попытка понять себя. О тенях, о свете, о текстурах, которые не видно, но чувствуешь.<br>
-        Я не просто художник — я наблюдатель, который оставляет след.
+        В каждом штрихе — частичка меня.<br>
+        Вот такое моё творческое закулисье.
+        Всё, что я люблю делать в свободное время — рисовать, собирать, фотографировать, слушать и создавать.
+        Эти хобби — не просто развлечения, а часть моей истории и самовыражения.
+        Маленькие радости, из которых складывается моя вселенная ✨
+
       </p>
     </section>
   </main>
@@ -490,21 +493,14 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const maxNotes = window.innerWidth < 768 ? 20 : 80; // меньше нот на мобилках
 
-if (notes.length < maxNotes) notes.push(new Note());
+      if (notes.length < maxNotes) notes.push(new Note());
       notes.forEach(n => { n.update(); n.draw(); });
       requestAnimationFrame(animateNotes);
     }
     animateNotes();
 
+
   </script>
-
-
-
-
-
-
-
-
 
   <script>
     const modal = document.getElementById('imageModal');
@@ -886,15 +882,24 @@ if (notes.length < maxNotes) notes.push(new Note());
     document.addEventListener("DOMContentLoaded", () => {
       const toggle = document.getElementById("menuToggle");
       const menu = document.getElementById("navMenu");
+      const volumeSlider = document.getElementById("volumeSlider");
 
       toggle.addEventListener("click", () => {
         menu.classList.toggle("hidden");
       });
 
+      volumeSlider.addEventListener("input", () => {
+        wavesurfer.setVolume(parseFloat(volumeSlider.value));
+      });
+
       // lucide icons (если используешь)
       if (window.lucide) lucide.createIcons();
     });
+
+    wavesurfer.setVolume(parseFloat(volumeSlider.value));
+
   </script>
+
 
 
 </body>

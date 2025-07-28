@@ -317,16 +317,9 @@
         <div class="bar w-[3px] bg-neon rounded animate-eq delay-400"></div>
       </div>
     </div>
-<!-- Ползунок громкости (скрыт на мобильных, виден на sm и выше) -->
-<input
-  id="volumeSlider"
-  type="range"
-  min="0"
-  max="1"
-  step="0.01"
-  value="0.2"
-  class="hidden sm:block w-20 h-2 accent-neon cursor-pointer"
-/>
+    <!-- Ползунок громкости (скрыт на мобильных, виден на sm и выше) -->
+    <input id="volumeSlider" type="range" min="0" max="1" step="0.01" value="0.2"
+      class="hidden sm:block w-20 h-2 accent-neon cursor-pointer" />
     <!-- Навигация справа -->
     <!-- Mobile nav toggle -->
     <button id="menuToggle" class="sm:hidden text-neon z-50">
@@ -374,7 +367,7 @@ bg-opacity-50 bg-deepblue sm:bg-transparent z-40 px-4 sm:px-0 py-2 sm:py-0 text-
     </div>
     <a href="about.html"
       class="mt-4 mb-4 px-6 py-2 border-2 border-neon rounded-full text-neon font-bold tracking-wide glow-text hover:bg-neon hover:text-deepblue transition shadow-neon pulse-neon">
-      🚪 Войти в портал
+      🌀 Войти в портал 🌀
     </a>
 
     <h1 class="text-2xl sm:text-4xl md:text-6xl font-extrabold text-white mb-2 flicker">Привет, я <span
@@ -398,87 +391,125 @@ bg-opacity-50 bg-deepblue sm:bg-transparent z-40 px-4 sm:px-0 py-2 sm:py-0 text-
     <div class="mt-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 gap-y-8 px-4 max-w-5xl w-full">
 
       <!-- Карточка 1: Кто я -->
-      <div class="flip-card group perspective transform transition-transform duration-300 hover:scale-105"
-        onclick="this.querySelector('.flip-card-inner').classList.toggle('rotated')">
-        <div class="flip-card-inner">
+      <div class="flip-card group perspective transform transition-transform duration-300 hover:scale-105 relative"
+        onclick="flipCard(this)">
 
+        <!-- Иконка руки -->
+        <div
+          class="click-icon absolute top-2 left-2 text-neon opacity-70 group-hover:opacity-100 transition z-10 pointer-events-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 4.1 12 6" />
+            <path d="m5.1 8-2.9-.8" />
+            <path d="m6 12-1.9 2" />
+            <path d="M7.2 2.2 8 5.1" />
+            <path
+              d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z" />
+          </svg>
+        </div>
+
+        <div class="flip-card-inner">
           <div
             class="flip-card-front bg-deepblue border border-neon text-neon p-6 rounded-xl shadow-neon flex flex-col justify-center items-center">
             <i data-lucide="sparkles" class="w-8 h-8 mb-3 text-neon"></i>
             <h3 class="text-xl font-bold mb-2 glow-text">Кто я</h3>
             <p class="text-sm text-aqua text-center">Логика, стиль и немного хаоса</p>
           </div>
-
           <div class="flip-card-back bg-neon text-deepblue p-6 rounded-xl flex flex-col justify-center items-center">
             <p class="text-sm font-semibold text-center">Я — Яна. Выпускница по автоматизации, уверенно иду в мир IT.
-              Строю карьеру в IT.
-              Меня увлекает обучение моделей, которые умеют «думать». </p>
+              Строю карьеру в IT. Меня увлекает обучение моделей, которые умеют «думать».</p>
           </div>
-
         </div>
       </div>
 
       <!-- Карточка 2: Data Science -->
-      <div class="flip-card group perspective transform transition-transform duration-300 hover:scale-105"
-        onclick="this.querySelector('.flip-card-inner').classList.toggle('rotated')">
+      <div class="flip-card group perspective transform transition-transform duration-300 hover:scale-105 relative"
+        onclick="flipCard(this)">
+        <div
+          class="click-icon absolute top-2 left-2 text-neon opacity-70 group-hover:opacity-100 transition z-10 pointer-events-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 4.1 12 6" />
+            <path d="m5.1 8-2.9-.8" />
+            <path d="m6 12-1.9 2" />
+            <path d="M7.2 2.2 8 5.1" />
+            <path
+              d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z" />
+          </svg>
+        </div>
         <div class="flip-card-inner">
-
           <div
             class="flip-card-front bg-deepblue border border-neon text-neon p-6 rounded-xl shadow-neon flex flex-col justify-center items-center">
             <i data-lucide="brain-cog" class="w-8 h-8 mb-3 text-neon"></i>
             <h3 class="text-xl font-bold mb-2 glow-text">Data Science</h3>
             <p class="text-sm text-aqua text-center">Модели, данные и немного магии</p>
           </div>
-
           <div class="flip-card-back bg-neon text-deepblue p-6 rounded-xl flex flex-col justify-center items-center">
             <p class="text-sm font-semibold text-center">Активно развиваюсь в области анализа данных и машинного
-              обучения.
-              Строю модели, визуализирую процессы, учусь на реальных проектах и готовлюсь к карьере в IT.</p>
+              обучения. Строю модели, визуализирую процессы, учусь на реальных проектах и готовлюсь к карьере в IT.</p>
           </div>
-
         </div>
       </div>
 
       <!-- Карточка 3: YouTube -->
-      <div class="flip-card group perspective transform transition-transform duration-300 hover:scale-105"
-        onclick="this.querySelector('.flip-card-inner').classList.toggle('rotated')">
+      <div class="flip-card group perspective transform transition-transform duration-300 hover:scale-105 relative"
+        onclick="flipCard(this)">
+        <div
+          class="click-icon absolute top-2 left-2 text-neon opacity-70 group-hover:opacity-100 transition z-10 pointer-events-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 4.1 12 6" />
+            <path d="m5.1 8-2.9-.8" />
+            <path d="m6 12-1.9 2" />
+            <path d="M7.2 2.2 8 5.1" />
+            <path
+              d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z" />
+          </svg>
+        </div>
         <div class="flip-card-inner">
-
           <div
             class="flip-card-front bg-deepblue border border-neon text-neon p-6 rounded-xl shadow-neon flex flex-col justify-center items-center">
             <i data-lucide="video" class="w-8 h-8 mb-3 text-neon"></i>
             <h3 class="text-xl font-bold mb-2 glow-text">YouTube</h3>
             <p class="text-sm text-aqua text-center">Где-то между Git и геймпадом</p>
           </div>
-
           <div class="flip-card-back bg-neon text-deepblue p-6 rounded-xl flex flex-col justify-center items-center">
             <p class="text-sm font-semibold text-center">Я веду свой YouTube-канал, где снимаю летсплеи и говорю обо
-              всём, что люблю: хорроры, инди-игры, ВН и загадки.
-              Видео, монтаж, голос — всё делаю сама. Это моё творческое пространство, где можно быть собой.</p>
+              всём, что люблю: хорроры, инди-игры, ВН и загадки. Видео, монтаж, голос — всё делаю сама. Это моё
+              творческое пространство, где можно быть собой.</p>
           </div>
-
         </div>
       </div>
 
       <!-- Карточка 4: Интересы -->
-      <div class="flip-card group perspective transform transition-transform duration-300 hover:scale-105"
-        onclick="this.querySelector('.flip-card-inner').classList.toggle('rotated')">
+      <div class="flip-card group perspective transform transition-transform duration-300 hover:scale-105 relative"
+        onclick="flipCard(this)">
+        <div
+          class="click-icon absolute top-2 left-2 text-neon opacity-70 group-hover:opacity-100 transition z-10 pointer-events-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 4.1 12 6" />
+            <path d="m5.1 8-2.9-.8" />
+            <path d="m6 12-1.9 2" />
+            <path d="M7.2 2.2 8 5.1" />
+            <path
+              d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z" />
+          </svg>
+        </div>
         <div class="flip-card-inner">
-
           <div
             class="flip-card-front bg-deepblue border border-neon text-neon p-6 rounded-xl shadow-neon flex flex-col justify-center items-center">
             <i data-lucide="moon-star" class="w-8 h-8 mb-3 text-neon"></i>
             <h3 class="text-xl font-bold mb-2 glow-text">Интересы</h3>
             <p class="text-sm text-aqua text-center">Аниме, музыка, рисование и спокойствие</p>
           </div>
-
           <div class="flip-card-back bg-neon text-deepblue p-6 rounded-xl flex flex-col justify-center items-center">
-            <p class="text-sm font-semibold text-center"> Слушаю вдохновляющую музыку, обожаю смотреть аниме, играть на
-              музыкальных инструментах и рисовать. </p>
+            <p class="text-sm font-semibold text-center">Слушаю вдохновляющую музыку, обожаю смотреть аниме, играть на
+              музыкальных инструментах и рисовать.</p>
           </div>
-
         </div>
       </div>
+
 
     </div>
     </div>
@@ -812,15 +843,15 @@ bg-opacity-50 bg-deepblue sm:bg-transparent z-40 px-4 sm:px-0 py-2 sm:py-0 text-
       setBarsActive(false);
 
       const volumeSlider = document.getElementById('volumeSlider');
-  if (volumeSlider) {
-    volumeSlider.value = 0.2;
-    wavesurfer.setVolume(0.1);
+      if (volumeSlider) {
+        volumeSlider.value = 0.2;
+        wavesurfer.setVolume(0.1);
 
-    // Изменение громкости
-    volumeSlider.addEventListener('input', (e) => {
-      wavesurfer.setVolume(parseFloat(e.target.value));
-    });
-  }
+        // Изменение громкости
+        volumeSlider.addEventListener('input', (e) => {
+          wavesurfer.setVolume(parseFloat(e.target.value));
+        });
+      }
 
     });
 
@@ -831,61 +862,61 @@ bg-opacity-50 bg-deepblue sm:bg-transparent z-40 px-4 sm:px-0 py-2 sm:py-0 text-
 
 
     const avatarList = [
-  "assets/avatars/ava1.jpg",
-  "assets/avatars/ava2.png",
-  "assets/avatars/ava3.jpg",
-  "assets/avatars/ava4.jpg",
-  "assets/avatars/ava5.jpg",
-  "assets/avatars/ava6.jpg",
-  "assets/avatars/ava7.jpg",
-];
+      "assets/avatars/ava1.jpg",
+      "assets/avatars/ava2.png",
+      "assets/avatars/ava3.jpg",
+      "assets/avatars/ava4.jpg",
+      "assets/avatars/ava5.jpg",
+      "assets/avatars/ava6.jpg",
+      "assets/avatars/ava7.jpg",
+    ];
 
-let avatarPool = [...avatarList];
-let lastAvatar = null;
+    let avatarPool = [...avatarList];
+    let lastAvatar = null;
 
-function shuffle(array) {
-  return array.sort(() => Math.random() - 0.5);
-}
-
-function getNextAvatar() {
-  if (avatarPool.length === 0) {
-    avatarPool = shuffle([...avatarList]);
-    // Убираем повтор предыдущего
-    if (avatarPool[0] === lastAvatar && avatarPool.length > 1) {
-      [avatarPool[0], avatarPool[1]] = [avatarPool[1], avatarPool[0]];
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
     }
-  }
 
-  const next = avatarPool.shift();
-  lastAvatar = next;
-  return next;
-}
+    function getNextAvatar() {
+      if (avatarPool.length === 0) {
+        avatarPool = shuffle([...avatarList]);
+        // Убираем повтор предыдущего
+        if (avatarPool[0] === lastAvatar && avatarPool.length > 1) {
+          [avatarPool[0], avatarPool[1]] = [avatarPool[1], avatarPool[0]];
+        }
+      }
 
-function setRandomAvatar() {
-  const img = document.getElementById("avatarImg");
+      const next = avatarPool.shift();
+      lastAvatar = next;
+      return next;
+    }
 
-  img.classList.remove("fade-in-avatar");
+    function setRandomAvatar() {
+      const img = document.getElementById("avatarImg");
 
-  setTimeout(() => {
-    img.src = getNextAvatar();
-    img.classList.add("fade-in-avatar");
-  }, 50);
-}
+      img.classList.remove("fade-in-avatar");
 
-// При загрузке
-document.addEventListener("DOMContentLoaded", () => {
-  avatarPool = shuffle([...avatarList]);
-  setRandomAvatar();
-  showNewFact(); // typing
-});
+      setTimeout(() => {
+        img.src = getNextAvatar();
+        img.classList.add("fade-in-avatar");
+      }, 50);
+    }
 
-// При клике
-document.addEventListener("DOMContentLoaded", () => {
-  const img = document.getElementById("avatarImg");
-  img.style.cursor = "pointer";
-  img.title = "Кликни, чтобы сменить образ!";
-  img.addEventListener("click", setRandomAvatar);
-});
+    // При загрузке
+    document.addEventListener("DOMContentLoaded", () => {
+      avatarPool = shuffle([...avatarList]);
+      setRandomAvatar();
+      showNewFact(); // typing
+    });
+
+    // При клике
+    document.addEventListener("DOMContentLoaded", () => {
+      const img = document.getElementById("avatarImg");
+      img.style.cursor = "pointer";
+      img.title = "Кликни, чтобы сменить образ!";
+      img.addEventListener("click", setRandomAvatar);
+    });
 
 
   </script>
@@ -942,36 +973,36 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       function showCactusEasterEgg() {
-  const isMobile = window.innerWidth <= 640; // sm breakpoint
-  const direction = Math.random() < 0.5 ? "left" : "right";
-  const egg = document.createElement("div");
+        const isMobile = window.innerWidth <= 640; // sm breakpoint
+        const direction = Math.random() < 0.5 ? "left" : "right";
+        const egg = document.createElement("div");
 
-  egg.textContent = "🌵 Вы нашли скрытый кактус Стас!";
+        egg.textContent = "🌵 Вы нашли скрытый кактус Стас!";
 
-  // Классы базовые
-  egg.className = `
+        // Классы базовые
+        egg.className = `
     absolute top-1/2 -translate-y-1/2
     bg-neon text-deepblue text-sm sm:text-base font-bold px-4 py-2 
     rounded-lg shadow-neon z-50 animate-cactus-pop pointer-events-none
     whitespace-nowrap
   `;
 
-  // Добавляем позицию в зависимости от устройства
-  if (isMobile) {
-    egg.classList.add("left-1/2", "-translate-x-1/2");
-  } else {
-    if (direction === "left") {
-      egg.classList.add("right-[120%]", "translate-x-[-10px]");
-    } else {
-      egg.classList.add("left-[120%]", "translate-x-[10px]");
-    }
-  }
+        // Добавляем позицию в зависимости от устройства
+        if (isMobile) {
+          egg.classList.add("left-1/2", "-translate-x-1/2");
+        } else {
+          if (direction === "left") {
+            egg.classList.add("right-[120%]", "translate-x-[-10px]");
+          } else {
+            egg.classList.add("left-[120%]", "translate-x-[10px]");
+          }
+        }
 
-  avatar.parentElement.appendChild(egg);
+        avatar.parentElement.appendChild(egg);
 
-  setTimeout(() => {
-    egg.remove();
-  }, 3000);
+        setTimeout(() => {
+          egg.remove();
+        }, 3000);
       }
     });
 
@@ -989,6 +1020,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   </script>
 
+  <script>
+    function flipCard(card) {
+      const inner = card.querySelector('.flip-card-inner');
+      const icon = card.querySelector('.click-icon');
+
+      inner.classList.toggle('rotated');
+
+      if (inner.classList.contains('rotated')) {
+        icon.classList.add('hidden');
+      } else {
+        icon.classList.remove('hidden');
+      }
+    }
+  </script>
 
 
 

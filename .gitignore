@@ -3,3 +3,6 @@ my-flask-app/
 *.pyc
 __pycache__/
 assets/vacation/
+
+# Local Netlify folder
+.netlify
