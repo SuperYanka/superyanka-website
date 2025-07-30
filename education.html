@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="ru" class="h-full">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Образование — Super Yanka</title>
+  <link rel="stylesheet" href="styles/common.css" />
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            neon: '#00ffe1',
+            aqua: '#00c9c9',
+            deepblue: '#0b0f3b'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <style>
+    /* Canvas for floating edu icons */
+    #edu-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Hover enlarge */
+    .img-hover {
+      transition: transform 0.3s ease;
+    }
+
+    .img-hover:hover {
+      transform: scale(1.05);
+    }
+
+    /* Scrollable gallery */
+    .gallery-scroll {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .gallery-scroll img {
+      flex: 0 0 auto;
+      width: 200px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      border: 2px solid #00ffe1;
+    }
+
+    /* Content layering */
+    header,
+    main,
+    footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    .perspective {
+      perspective: 1000px;
+    }
+
+
+    .flip-card-inner {
+      transform-style: preserve-3d;
+    }
+
+    .rotated {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-inner>div {
+      backface-visibility: hidden;
+    }
+
+    .carousel-track {
+      width: max-content;
+    }
+  </style>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+
+
+<body class="relative bg-deepblue text-aqua font-sans overflow-x-hidden min-h-screen">
+
+  <!-- 🎞 Фон-видео -->
+  <video autoplay muted loop id="video-bg">
+    <source src="assets/video/edu_background.mp4" type="video/mp4" />
+    Ваш браузер не поддерживает видео.
+  </video>
+
+  <!-- 🌌 Оверлей -->
+  <div class="absolute inset-0 bg-deepblue bg-opacity-80 z-10"></div>
+
+  <!-- Navigation -->
+  <header
+    class="fixed w-full top-0 left-0 bg-opacity-50 bg-deepblue backdrop-blur-sm px-4 py-2 flex items-center justify-between z-30">
+    <a href="index.html" class="text-xl sm:text-2xl font-bold text-neon whitespace-nowrap">Super Yanka</a>
+
+
+    <!-- Гамбургер -->
+    <button id="menuToggle" class="sm:hidden text-neon z-50">
+      <i data-lucide="menu" class="w-6 h-6"></i>
+    </button>
+    </div>
+
+    <!-- Навигация -->
+    <nav id="navMenu"
+      class="hidden sm:flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 absolute sm:relative top-full sm:top-0 left-0 w-full sm:w-auto
+         bg-opacity-50 bg-deepblue sm:bg-transparent z-40 px-4 sm:px-0 py-2 sm:py-0 text-aqua font-medium backdrop-blur-sm sm:backdrop-blur-0">
+      <a href="index.html" class="hover:text-neon transition">Главная</a>
+      <a href="about.html" class="hover:text-neon transition">Обо мне</a>
+      <a href="education.html" class="text-neon">Образование</a>
+      <a href="projects.html" class="hover:text-neon transition">Проекты</a>
+      <a href="resume.html" class="hover:text-neon transition">Резюме</a>
+      <a href="art.html" class="hover:text-neon transition">Хобби и Творчество</a>
+      <a href="youtube.html" class="hover:text-neon transition">YouTube</a>
+      <a href="misc.html" class="hover:text-neon transition">Разное</a>
+      <a href="contact.html" class="hover:text-neon transition">Контакты</a>
+    </nav>
+
+
+  </header>
+
+
+
+  <main class="relative pt-32 pb-16 z-10 px-4">
+    <!-- Заголовок -->
+    <section class="text-center mb-12" data-aos="fade-up">
+      <h2 class="text-4xl font-extrabold text-white mb-4">Образование и обучение</h2>
+      <p class="text-lg max-w-2xl mx-auto">Путь знаний: школа, музыкалка и курсы, которые сформировали меня как
+        специалиста и творческую личность.</p>
+    </section>
+
+
+    <!-- Школа -->
+    <section class="mb-20 max-w-5xl mx-auto" data-aos="fade-up">
+      <h3 class="text-3xl font-bold text-white mb-8 text-center">
+        Общеобразовательное учебное заведение - Школа І–ІІІ ступеней (2010–2021)
+      </h3>
+      <p class="text-aqua mb-6 text-center">
+        Моя школьная история длилась 11 лет.
+        Я участвовала в конкурсах, колосках, гринвичах и получила немало сертификатов и грамот 📜
+      </p>
+
+
+
+      <!-- 🌌 Адаптивная карусель школьных достижений -->
+      <div
+        class="carousel carousel-education relative overflow-hidden mt-6 w-full rounded-xl border-2 border-neon shadow-neon group">
+
+        <!-- ⬅️ Влево -->
+        <button
+          class="carousel-prev absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+
+        <!-- ➡️ Вправо -->
+        <button
+          class="carousel-next absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-deepblue bg-opacity-70 text-neon border border-neon rounded-full p-2 hover:bg-neon hover:text-deepblue transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </button>
+
+        <!-- 🖼 Слайдер -->
+        <div class="overflow-hidden">
+          <div class="carousel-track flex gap-4 w-max transition-transform duration-1000 ease-in-out px-4">
+            <!-- ✅ Картинки -->
+            <img src="assets/education/diplomas/1class_gramota_1.jpg" alt="Грамота за первый класс"
+              class="carousel-img rounded-xl cursor-pointer border-2 border-neon shadow-neon object-contain h-[140px] transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+              onclick="openImageModal(this.src)" />
+            <img src="assets/education/diplomas/4class_diploma.jpg" alt="Грамота за четвертый класс"
+              class="carousel-img rounded-xl cursor-pointer border-2 border-neon shadow-neon object-contain h-[140px] transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+              onclick="openImageModal(this.src)" />
+            <img src="assets/education/diplomas/4class_gramota.jpg" alt="Грамота за четвертый класс"
+              class="carousel-img rounded-xl cursor-pointer border-2 border-neon shadow-neon object-contain h-[140px] transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+              onclick="openImageModal(this.src)" />
+            <img src="assets/education/diplomas/5class_grinvich.jpg" alt="Пятый класс Гринвич"
+              class="carousel-img rounded-xl cursor-pointer border-2 border-neon shadow-neon object-contain h-[140px] transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+              onclick="openImageModal(this.src)" />
+            <img src="assets/education/diplomas/5class_kolosok.jpg" alt="Пятый класс Колосок"
+              class="carousel-img rounded-xl cursor-pointer border-2 border-neon shadow-neon object-contain h-[140px] transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+              onclick="openImageModal(this.src)" />
+            <img src="assets/education/diplomas/6class_kolosok.jpg" alt="Шестой класс Колосок"
+              class="carousel-img rounded-xl cursor-pointer border-2 border-neon shadow-neon object-contain h-[140px] transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+              onclick="openImageModal(this.src)" />
+            <img src="assets/education/diplomas/7class_grinvich.jpg" alt="Седьмой класс Гринвич"
+              class="carousel-img rounded-xl cursor-pointer border-2 border-neon shadow-neon object-contain h-[140px] transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+              onclick="openImageModal(this.src)" />
+            <img src="assets/education/diplomas/9class_kolosok.jpg" alt="Девятый класс Колосок"
+              class="carousel-img rounded-xl cursor-pointer border-2 border-neon shadow-neon object-contain h-[140px] transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+              onclick="openImageModal(this.src)" />
+
+            <img src="assets/education/diplomas/zoshit.jpg" alt="Подяка"
+              class="carousel-img rounded-xl cursor-pointer border-2 border-neon shadow-neon object-contain h-[140px] transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+              onclick="openImageModal(this.src)" />
+
+            <!-- ♻️ КЛОНЫ -->
+            <img src="assets/education/diplomas/1class_gramota_1.jpg" alt="Грамота за первый класс"
+              class="carousel-img rounded-xl cursor-pointer border-2 border-neon shadow-neon object-contain h-[140px] transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+              onclick="openImageModal(this.src)" />
+            <img src="assets/education/diplomas/4class_diploma.jpg" alt="Грамота за четвертый класс"
+              class="carousel-img rounded-xl cursor-pointer border-2 border-neon shadow-neon object-contain h-[140px] transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+              onclick="openImageModal(this.src)" />
+            <img src="assets/education/diplomas/4class_gramota.jpg" alt="Грамота за четвертый класс"
+              class="carousel-img rounded-xl cursor-pointer border-2 border-neon shadow-neon object-contain h-[140px] transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+              onclick="openImageModal(this.src)" />
+            <img src="assets/education/diplomas/5class_grinvich.jpg" alt="Пятый класс Гринвич"
+              class="carousel-img rounded-xl cursor-pointer border-2 border-neon shadow-neon object-contain h-[140px] transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+              onclick="openImageModal(this.src)" />
+            <img src="assets/education/diplomas/5class_kolosok.jpg" alt="Пятый класс Колосок"
+              class="carousel-img rounded-xl cursor-pointer border-2 border-neon shadow-neon object-contain h-[140px] transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+              onclick="openImageModal(this.src)" />
+            <img src="assets/education/diplomas/6class_kolosok.jpg" alt="Шестой класс Колосок"
+              class="carousel-img rounded-xl cursor-pointer border-2 border-neon shadow-neon object-contain h-[140px] transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+              onclick="openImageModal(this.src)" />
+            <img src="assets/education/diplomas/7class_grinvich.jpg" alt="Седьмой класс Гринвич"
+              class="carousel-img rounded-xl cursor-pointer border-2 border-neon shadow-neon object-contain h-[140px] transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+              onclick="openImageModal(this.src)" />
+            <img src="assets/education/diplomas/9class_kolosok.jpg" alt="Девятый класс Колосок"
+              class="carousel-img rounded-xl cursor-pointer border-2 border-neon shadow-neon object-contain h-[140px] transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+              onclick="openImageModal(this.src)" />
+            <img src="assets/education/diplomas/zoshit.jpg" alt="Подяка"
+              class="carousel-img rounded-xl cursor-pointer border-2 border-neon shadow-neon object-contain h-[140px] transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+              onclick="openImageModal(this.src)" />
+
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+
+
+    <section class="mb-20 max-w-6xl mx-auto" data-aos="fade-up">
+      <h3 class="text-3xl font-bold text-white mb-8 text-center">Мои дипломы за 9 и 11 классы</h3>
+      <p class="text-aqua mb-10 text-center">Свидетельства об окончании среднего образования и приложения с оценками —
+        важные вехи на моем учебном пути.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+        <!-- 🧩 9 КЛАСС -->
+        <div class="space-y-8">
+          <h4 class="text-neon text-center font-semibold mb-3">Свидетельство об окончании 9-го класса</h4>
+
+          <!-- 🎓 9 КЛАСС -->
+          <div class="relative w-full h-[360px] group perspective" onclick="flipCard(this)">
+            <!-- Иконка -->
+            <div
+              class="click-icon absolute top-2 left-2 text-neon opacity-70 group-hover:opacity-100 transition z-10 pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 4.1 12 6" />
+                <path d="m5.1 8-2.9-.8" />
+                <path d="m6 12-1.9 2" />
+                <path d="M7.2 2.2 8 5.1" />
+                <path
+                  d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z" />
+              </svg>
+            </div>
+
+            <div
+              class="flip-card-inner w-full h-full relative transition-transform duration-700 [transform-style:preserve-3d] cursor-pointer">
+              <!-- Фронт -->
+              <div
+                class="absolute inset-0 bg-deepblue border-2 border-neon rounded-xl shadow-neon flex items-center justify-center [backface-visibility:hidden] [transform:rotateY(0deg)]">
+                <img src="assets/education/diplomas/9class_diploma/9class_svid1.jpg" alt="Сертификат 9 класс"
+                  class="h-[320px] object-contain rounded-md border border-neon shadow" />
+              </div>
+
+              <!-- Бэк -->
+              <div
+                class="absolute inset-0 bg-neon text-deepblue rounded-xl [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-center p-4">
+                <img src="assets/education/diplomas/9class_diploma/9class_svid1.jpg" alt="Оборот сертификата"
+                  class="h-[320px] object-contain rounded-md border border-deepblue shadow" />
+                <p class="mt-2 text-sm font-semibold">Оборот</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 📄 ДОДАТОК 9 КЛАСС -->
+          <div class="relative w-full h-[360px] group perspective" onclick="flipCard(this)">
+            <div
+              class="click-icon absolute top-2 left-2 text-neon opacity-70 group-hover:opacity-100 transition z-10 pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 4.1 12 6" />
+                <path d="m5.1 8-2.9-.8" />
+                <path d="m6 12-1.9 2" />
+                <path d="M7.2 2.2 8 5.1" />
+                <path
+                  d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z" />
+              </svg>
+            </div>
+
+            <div
+              class="flip-card-inner w-full h-full relative transition-transform duration-700 [transform-style:preserve-3d] cursor-pointer">
+              <!-- Фронт -->
+              <div
+                class="absolute inset-0 bg-deepblue border-2 border-neon rounded-xl shadow-neon flex flex-col items-center justify-center p-4 [backface-visibility:hidden] [transform:rotateY(0deg)]">
+                <img src="assets/education/diplomas/9class_diploma/9class_dod1.jpg" alt="Диплом 9 класс"
+                  class="h-[320px] object-contain rounded-md border border-neon shadow" />
+                <p class="mt-2 text-sm text-neon font-semibold">Приложение 9 класс</p>
+              </div>
+
+              <!-- Бэк -->
+              <div
+                class="absolute inset-0 bg-neon text-deepblue rounded-xl [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-center p-4">
+                <img src="assets/education/diplomas/9class_diploma/9class_dod1.jpg" alt="Оценки 9 класса"
+                  class="h-[320px] object-contain rounded-md border border-deepblue shadow" />
+                <p class="mt-2 text-sm font-semibold">Приложение: оценки 9 класса</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <!-- 🎓 11 класс -->
+        <div class="space-y-8">
+          <h4 class="text-neon text-center font-semibold mb-3">Свидетельство об окончании 11-го класса</h4>
+
+          <div class="relative w-full h-[360px] group perspective" onclick="flipCard(this)">
+
+            <!-- Иконка -->
+            <div
+              class="click-icon absolute top-2 left-2 text-neon opacity-70 group-hover:opacity-100 transition z-10 pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 4.1 12 6" />
+                <path d="m5.1 8-2.9-.8" />
+                <path d="m6 12-1.9 2" />
+                <path d="M7.2 2.2 8 5.1" />
+                <path
+                  d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z" />
+              </svg>
+            </div>
+
+            <div
+              class="flip-card-inner w-full h-full relative transition-transform duration-700 [transform-style:preserve-3d] cursor-pointer">
+              <!-- Фронт -->
+              <div
+                class="absolute inset-0 bg-deepblue border-2 border-neon rounded-xl shadow-neon flex items-center justify-center [backface-visibility:hidden] [transform:rotateY(0deg)]">
+                <img src="assets/education/diplomas/11class_diploma/11class_svid1.jpg" alt="Сертификат 11 класс"
+                  class="h-[320px] object-contain rounded-md border border-neon shadow" />
+              </div>
+
+              <!-- Бэк -->
+              <div
+                class="absolute inset-0 bg-neon text-deepblue rounded-xl [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-center p-4">
+                <img src="assets/education/diplomas/11class_diploma/11class_svid2.jpg" alt="Оборот сертификата"
+                  class="h-[320px] object-contain rounded-md border border-deepblue shadow" />
+                <p class="mt-2 text-sm font-semibold">Оборот</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 📄 ДОДАТОК 11 КЛАСС -->
+          <div class="relative w-full h-[360px] group perspective" onclick="flipCard(this)">
+            <div
+              class="click-icon absolute top-2 left-2 text-neon opacity-70 group-hover:opacity-100 transition z-10 pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 4.1 12 6" />
+                <path d="m5.1 8-2.9-.8" />
+                <path d="m6 12-1.9 2" />
+                <path d="M7.2 2.2 8 5.1" />
+                <path
+                  d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z" />
+              </svg>
+            </div>
+
+            <div
+              class="flip-card-inner w-full h-full relative transition-transform duration-700 [transform-style:preserve-3d] cursor-pointer">
+              <!-- Фронт -->
+              <div
+                class="absolute inset-0 bg-deepblue border-2 border-neon rounded-xl shadow-neon flex flex-col items-center justify-center p-4 [backface-visibility:hidden] [transform:rotateY(0deg)]">
+                <img src="assets/education/diplomas/11class_diploma/11class_dod1.jpg" alt="Приложение 11 класс"
+                  class="h-[320px] object-contain rounded-md border border-neon shadow" />
+                <p class="mt-2 text-sm text-neon font-semibold">Приложение 11 класс</p>
+              </div>
+
+              <!-- Бэк -->
+              <div
+                class="absolute inset-0 bg-neon text-deepblue rounded-xl [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-center p-4">
+                <img src="assets/education/diplomas/11class_diploma/11class_dod2.jpg" alt="Оценки 11 класса"
+                  class="h-[320px] object-contain rounded-md border border-deepblue shadow" />
+                <p class="mt-2 text-sm font-semibold">Приложение: оценки 11 класса</p>
+              </div>
+            </div>
+          </div>
+
+    </section>
+
+
+
+    <section class="mb-20 max-w-6xl mx-auto" data-aos="fade-up">
+      <h3 class="text-3xl font-bold text-white mb-8 text-center">Музыкальная школа (2012–2021)</h3>
+      <p class="text-aqua mb-10 text-center">Скрипка, сольфеджио, хор, грамоты, свидетельство и приложение с оценками. 9
+        лет с музыкой 🎻
+      </p>
+
+      <!-- 🏅 Медаль -->
+      <div class="text-center mb-10">
+        <h4 class="text-neon font-semibold mb-3">🥇 1-е место за ансамль скрипачей 🥇</h4>
+        <img src="assets/education/music/medal.png" alt="Медаль 1 место" class="w-32 h-32 object-contain inline-block transform hover:scale-[3] transition duration-500 cursor-pointer  
+            drop-shadow-[0_0_8px_#00ffe1] hover:drop-shadow-[0_0_16px_#00ffe1]"
+          onclick="openImageModal('assets/education/music/medal_1.png')" />
+      </div>
+
+      </div>
+
+
+
+
+      <!-- 📜 Грамоты -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
+        <img src="assets/education/music/music_gramota.jpg" alt="Грамота 1"
+          class="w-full h-60 object-contain rounded-lg border-2 border-neon shadow transition duration-300 cursor-pointer hover:scale-105 hover:shadow-[0_0_20px_#00ffe1]"
+          onclick="openImageModal('assets/education/music/music_gramota.jpg')" />
+
+        <img src="assets/education/music/music_gramota1.jpg" alt="Грамота 2"
+          class="w-full h-60 object-contain rounded-lg border-2 border-neon shadow transition duration-300 cursor-pointer hover:scale-105 hover:shadow-[0_0_20px_#00ffe1]"
+          onclick="openImageModal('assets/education/music/music_gramota1.jpg')" />
+
+        <img src="assets/education/music/music_gramota2.jpg" alt="Грамота 3"
+          class="w-full h-60 object-contain rounded-lg border-2 border-neon shadow transition duration-300 cursor-pointer hover:scale-105 hover:shadow-[0_0_20px_#00ffe1]"
+          onclick="openImageModal('assets/education/music/music_gramota2.jpg')" />
+      </div>
+
+
+      <!-- 📘 Диплом и приложение -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+        <!-- 📄 Свидетельство -->
+        <div class="space-y-8">
+          <h4 class="text-neon text-center font-semibold mb-3">Свидетельство</h4>
+
+          <div class="relative w-full h-[360px] group perspective cursor-pointer" onclick="flipCard(this)">
+
+            <!-- Иконка -->
+            <div
+              class="click-icon absolute top-2 left-2 text-neon opacity-70 group-hover:opacity-100 transition z-10 pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 4.1 12 6" />
+                <path d="m5.1 8-2.9-.8" />
+                <path d="m6 12-1.9 2" />
+                <path d="M7.2 2.2 8 5.1" />
+                <path
+                  d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z" />
+              </svg>
+            </div>
+
+            <div
+              class="flip-card-inner w-full h-full relative transition-transform duration-700 [transform-style:preserve-3d]">
+              <!-- Фронт -->
+              <div
+                class="absolute inset-0 bg-deepblue border-2 border-neon rounded-xl shadow-neon flex items-center justify-center [backface-visibility:hidden] [transform:rotateY(0deg)]">
+                <img src="assets/education/music/music_svid1.jpg" alt="Свидетельство"
+                  class="h-[320px] object-contain rounded-md border border-neon shadow" />
+              </div>
+
+              <!-- Бэк -->
+              <div
+                class="absolute inset-0 bg-neon text-deepblue rounded-xl [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-center p-4">
+                <img src="assets/education/music/music_svid2.jpg" alt="Оборот свидетельства"
+                  class="h-[320px] object-contain rounded-md border border-deepblue shadow" />
+                <p class="mt-2 text-sm font-semibold">Оборот свидетельства</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- 📕 Приложение -->
+        <div class="space-y-8">
+          <h4 class="text-neon text-center font-semibold mb-3">Приложение</h4>
+
+          <div class="relative w-full h-[360px] group perspective cursor-pointer" onclick="flipCard(this)">
+
+            <!-- Иконка -->
+            <div
+              class="click-icon absolute top-2 left-2 text-neon opacity-70 group-hover:opacity-100 transition z-10 pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 4.1 12 6" />
+                <path d="m5.1 8-2.9-.8" />
+                <path d="m6 12-1.9 2" />
+                <path d="M7.2 2.2 8 5.1" />
+                <path
+                  d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z" />
+              </svg>
+            </div>
+
+            <div
+              class="flip-card-inner w-full h-full relative transition-transform duration-700 [transform-style:preserve-3d]">
+              <!-- Фронт -->
+              <div
+                class="absolute inset-0 bg-deepblue border-2 border-neon rounded-xl shadow-neon flex items-center justify-center [backface-visibility:hidden] [transform:rotateY(0deg)]">
+                <img src="assets/education/music/music_dod1.jpg" alt="Приложение"
+                  class="h-[320px] object-contain rounded-md border border-neon shadow" />
+              </div>
+
+              <!-- Бэк -->
+              <div
+                class="absolute inset-0 bg-neon text-deepblue rounded-xl [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-center p-4">
+                <img src="assets/education/music/music_dod2.jpg" alt="Приложение - оборот"
+                  class="h-[320px] object-contain rounded-md border border-deepblue shadow" />
+                <p class="mt-2 text-sm font-semibold">Оценки и оборот</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+
+
+
+
+
+    <!-- 🌟 Модельная школа -->
+    <section class="mb-20 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1200">
+      <h3 class="text-3xl font-bold text-white mb-8 text-center">Grand Models (2017–2018)</h3>
+      <p class="text-aqua mb-8 text-center max-w-2xl mx-auto">Я прошла курс в модельной школе, где научилась уверенно
+        держаться перед камерой,
+        работать с позами и выразительностью. Это стало для меня опытом, который пригодился в жизни и творчестве.</p>
+
+      <!-- 🧾 Сертификат -->
+      <div class="flex justify-center mb-10">
+        <img src="assets/education/models/grandmodels.jpg" alt="Сертификат Grand Models"
+          class="rounded-xl cursor-pointer border-2 border-neon shadow-neon object-contain h-[200px] transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+          onclick="openImageModal(this.src)" />
+      </div>
+      <h4 class="text-neon text-center font-semibold">Портфолио</h4>
+
+
+
+      <!-- 📸 Фото моделей — прокрутка -->
+      <div
+        class="mt-6 overflow-x-auto rounded-xl border-2 border-neon shadow-neon bg-deepblue bg-opacity-50 px-4 py-3 max-w-6xl mx-auto">
+        <div class="flex gap-4 w-max">
+          <img src="assets/education/models/mod_1.jpg" alt="Фото модели 1"
+            class="h-[200px] w-auto object-cover rounded-lg border-2 border-neon shadow cursor-zoom-in transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+            onclick="openImageModal(this.src)" />
+          <img src="assets/education/models/mod_3.jpg" alt="Фото модели 2"
+            class="h-[200px] w-auto object-cover rounded-lg border-2 border-neon shadow cursor-zoom-in transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+            onclick="openImageModal(this.src)" />
+          <img src="assets/education/models/mod_4.jpg" alt="Фото модели 3"
+            class="h-[200px] w-auto object-cover rounded-lg border-2 border-neon shadow cursor-zoom-in transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+            onclick="openImageModal(this.src)" />
+          <img src="assets/education/models/mod_5.jpg" alt="Фото модели 4"
+            class="h-[200px] w-auto object-cover rounded-lg border-2 border-neon shadow cursor-zoom-in transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+            onclick="openImageModal(this.src)" />
+          <img src="assets/education/models/mod_6.jpg" alt="Фото модели 5"
+            class="h-[200px] w-auto object-cover rounded-lg border-2 border-neon shadow cursor-zoom-in transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+            onclick="openImageModal(this.src)" />
+          <img src="assets/education/models/mod_7.jpg" alt="Фото модели 6"
+            class="h-[200px] w-auto object-cover rounded-lg border-2 border-neon shadow cursor-zoom-in transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+            onclick="openImageModal(this.src)" />
+          <img src="assets/education/models/mod_8.jpg" alt="Фото модели 7"
+            class="h-[200px] w-auto object-cover rounded-lg border-2 border-neon shadow cursor-zoom-in transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+            onclick="openImageModal(this.src)" />
+          <img src="assets/education/models/mod_9.jpg" alt="Фото модели 8"
+            class="h-[200px] w-auto object-cover rounded-lg border-2 border-neon shadow cursor-zoom-in transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+            onclick="openImageModal(this.src)" />
+          <img src="assets/education/models/mod_10.jpg" alt="Фото модели 9"
+            class="h-[200px] w-auto object-cover rounded-lg border-2 border-neon shadow cursor-zoom-in transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+            onclick="openImageModal(this.src)" />
+          <img src="assets/education/models/mod_11.jpg" alt="Фото модели 10"
+            class="h-[200px] w-auto object-cover rounded-lg border-2 border-neon shadow cursor-zoom-in transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+            onclick="openImageModal(this.src)" />
+          <img src="assets/education/models/mod_12.jpg" alt="Фото модели 11"
+            class="h-[200px] w-auto object-cover rounded-lg border-2 border-neon shadow cursor-zoom-in transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+            onclick="openImageModal(this.src)" />
+          <img src="assets/education/models/mod_13.jpg" alt="Фото модели 12"
+            class="h-[200px] w-auto object-cover rounded-lg border-2 border-neon shadow cursor-zoom-in transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#00ffe1]"
+            onclick="openImageModal(this.src)" />
+        </div>
+      </div>
+
+      </div>
+      </div>
+    </section>
+
+
+
+
+
+
+    <section class="mb-20 max-w-6xl mx-auto" data-aos="fade-up">
+      <h3 class="text-3xl font-bold text-white mb-8 text-center">
+        Київський політехнічний інститут імені Ігоря Сікорського (2021–2025)
+      </h3>
+      <p class="text-aqua mb-10 text-center">✨ Финальный шаг моего базового образования — диплом бакалавра по
+        специальности
+        автоматизация и компьютерно-интегрированные технологии ✨</p>
+      <h3 class="text-3xl font-bold text-white mb-8 text-center">🎓 Диплом бакалавра 🎓</h3>
+
+      <!-- 📜 Основной диплом -->
+      <div class="w-full mb-10">
+        <div class="w-full flex justify-center">
+          <img src="assets/education/bachelor/diploma.jpg" alt="Диплом бакалавра"
+            class="w-full max-w-4xl object-contain rounded-xl border-2 border-neon shadow hover:scale-105 transition" />
+        </div>
+      </div>
+
+      <!-- 📄 Приложения -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <!-- Додаток 1 -->
+        <div class="flex flex-col items-center">
+          <img src="assets/education/bachelor/diploma_dod1.jpg" alt="Додаток 1"
+            class="w-full h-[200px] object-cover rounded-lg border-2 border-neon shadow cursor-pointer hover:scale-110 transition"
+            onclick="openImageModal('assets/education/bachelor/diploma_dod1.jpg')" />
+          <p class="text-sm mt-2 text-center text-neon font-semibold">Приложение к диплому</p>
+        </div>
+
+        <!-- Додаток 2 -->
+        <div class="flex flex-col items-center">
+          <img src="assets/education/bachelor/diploma_dod2.jpg" alt="Додаток 2"
+            class="w-full h-[200px] object-cover rounded-lg border-2 border-neon shadow cursor-pointer hover:scale-110 transition"
+            onclick="openImageModal('assets/education/bachelor/diploma_dod2.jpg')" />
+          <p class="text-sm mt-2 text-center text-neon font-semibold">Приложение: оценки</p>
+        </div>
+
+        <!-- Додаток 3 -->
+        <div class="flex flex-col items-center">
+          <img src="assets/education/bachelor/diploma_dod3.jpg" alt="Додаток 3"
+            class="w-full h-[200px] object-cover rounded-lg border-2 border-neon shadow cursor-pointer hover:scale-110 transition"
+            onclick="openImageModal('assets/education/bachelor/diploma_dod3.jpg')" />
+          <p class="text-sm mt-2 text-center text-neon font-semibold">Приложение: оценки</p>
+        </div>
+
+        <!-- Додаток 4 -->
+        <div class="flex flex-col items-center">
+          <img src="assets/education/bachelor/diploma_dod4.jpg" alt="Додаток 4"
+            class="w-full h-[200px] object-cover rounded-lg border-2 border-neon shadow cursor-pointer hover:scale-110 transition"
+            onclick="openImageModal('assets/education/bachelor/diploma_dod4.jpg')" />
+          <p class="text-sm mt-2 text-center text-neon font-semibold">Приложение: оценки</p>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="mb-20 max-w-5xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+      <h3 class="text-3xl font-bold text-white mb-8 text-center"> Курсы и сертификаты</h3>
+      <p class="text-aqua mb-10 text-center">Онлайн-обучение и международные сертификаты, которые расширяют мой багаж
+        знаний и подтверждают навыки.</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+        <!-- Python Essentials -->
+        <div
+          class="bg-deepblue border-2 border-neon rounded-xl shadow-neon p-4 group transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_20px_#00ffe1]">
+          <h4 class="text-neon font-semibold mb-2">Python Essentials 1</h4>
+          <div class="border border-neon rounded-md mb-2 overflow-hidden cursor-pointer"
+            onclick="openImageModal('assets/education/certificates/python_essentials.png')">
+            <img src="assets/education/certificates/python_essentials.png" alt="Python Essentials"
+              class="w-full h-40 object-contain" />
+          </div>
+          <a href="https://www.credly.com/badges/ce1a9cc3-ca06-4eaf-b5bf-e7b6b3d673ef/public_url" target="_blank"
+            class="text-sm text-white opacity-70 group-hover:underline block text-center">Посмотреть бейдж</a>
+        </div>
+
+        <!-- AIT-2025-CERT -->
+        <div
+          class="bg-deepblue border-2 border-neon rounded-xl shadow-neon p-4 group transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_20px_#00ffe1]">
+          <h4 class="text-neon font-semibold mb-2">AIT-2025-CERT</h4>
+          <div class="border border-neon rounded-md overflow-hidden mb-2 cursor-pointer"
+            onclick="openImageModal('assets/education/certificates/AIT_2025_CERT.png')">
+            <img src="assets/education/certificates/AIT_2025_CERT.png" alt="AIT Certificate"
+              class="w-full h-40 object-contain" />
+          </div>
+          <p class="text-sm text-white opacity-70 text-center">Локальный сертификат (без ссылки)</p>
+        </div>
+
+        <!-- Canva Course -->
+        <div
+          class="bg-deepblue border-2 border-neon rounded-xl shadow-neon p-4 group transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_20px_#00ffe1]">
+          <h4 class="text-neon font-semibold mb-2">Canva: Digital Course Collateral</h4>
+          <div class="border border-neon rounded-md mb-2 overflow-hidden cursor-pointer"
+            onclick="openImageModal('assets/education/certificates/Coursera_canva_1.png')">
+            <img src="assets/education/certificates/Coursera_canva_1.png" alt="Canva Course"
+              class="w-full h-40 object-contain" />
+          </div>
+          <a href="https://coursera.org/share/34739aec5e8335c8b8d88d64167bbb43" target="_blank"
+            class="text-sm text-white opacity-70 group-hover:underline block text-center">Посмотреть сертификат</a>
+        </div>
+
+        <!-- Canva 3D -->
+        <div
+          class="bg-deepblue border-2 border-neon rounded-xl shadow-neon p-4 group transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_20px_#00ffe1]">
+          <h4 class="text-neon font-semibold mb-2">LinkedIn Design with 3D in Canva</h4>
+          <div class="border border-neon rounded-md mb-2 overflow-hidden cursor-pointer"
+            onclick="openImageModal('assets/education/certificates/Coursera_canva_2.png')">
+            <img src="assets/education/certificates/Coursera_canva_2.png" alt="Canva 3D"
+              class="w-full h-40 object-contain" />
+          </div>
+          <a href="https://coursera.org/share/4910f423460855a36ae1cd9278c94c82" target="_blank"
+            class="text-sm text-white opacity-70 group-hover:underline block text-center">Посмотреть сертификат</a>
+        </div>
+
+      </div>
+    </section>
+
+
+  </main>
+  <div id="footer-placeholder"></div>
+
+
+  <!-- 🌌 Модалка -->
+  <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+    <div class="relative">
+      <button id="closeModal"
+        class="absolute -top-4 -right-4 bg-neon text-deepblue rounded-full p-2 hover:bg-white transition">
+        ✕
+      </button>
+      <img id="modalImage" src="" alt="Увеличенное фото"
+        class="max-w-full max-h-[80vh] rounded-lg shadow-[0_0_25px_#00ffe1] border-2 border-neon" />
+    </div>
+  </div>
+
+
+
+  <script>
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeModal = document.getElementById('closeModal');
+
+    document.querySelectorAll('.carousel-img').forEach(img => {
+      img.classList.add('modal-trigger');
+      img.addEventListener('click', () => {
+        modalImg.src = img.src;
+        modal.classList.remove('hidden');
+      });
+    });
+
+    closeModal.addEventListener('click', () => modal.classList.add('hidden'));
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.add('hidden');
+    });
+  </script>
+
+
+
+
+  <!-- AOS Init -->
+  <script>
+    AOS.init({
+      duration: 1000, once: true,
+      easing: 'ease-out-cubic'
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll('.carousel-education').forEach(carousel => {
+        const track = carousel.querySelector('.carousel-track');
+        const prevBtn = carousel.querySelector('.carousel-prev');
+        const nextBtn = carousel.querySelector('.carousel-next');
+        const slides = carousel.querySelectorAll('.carousel-img');
+
+        const photoWidth = slides[0].offsetWidth + 16;
+        const totalSlides = slides.length;
+        let currentIndex = 0;
+        let interval;
+
+        function scrollToIndex(index, animate = true) {
+          track.style.transition = animate ? 'transform 1s ease-in-out' : 'none';
+          track.style.transform = `translateX(-${index * photoWidth}px)`;
+        }
+
+        function goNext() {
+          currentIndex++;
+          scrollToIndex(currentIndex);
+          if (currentIndex >= totalSlides / 2) {
+            setTimeout(() => {
+              currentIndex = 0;
+              scrollToIndex(currentIndex, false);
+            }, 1000);
+          }
+        }
+
+        function goPrev() {
+          if (currentIndex === 0) {
+            currentIndex = totalSlides / 2;
+            scrollToIndex(currentIndex, false);
+          }
+          currentIndex--;
+          scrollToIndex(currentIndex);
+        }
+
+        function startAutoScroll() {
+          interval = setInterval(goNext, 2000); // каждые 10 секунд
+        }
+
+        function stopAutoScroll() {
+          clearInterval(interval);
+        }
+
+        nextBtn.addEventListener('click', () => {
+          goNext();
+          stopAutoScroll();
+          startAutoScroll();
+        });
+
+        prevBtn.addEventListener('click', () => {
+          goPrev();
+          stopAutoScroll();
+          startAutoScroll();
+        });
+
+        carousel.addEventListener('mouseenter', stopAutoScroll);
+        carousel.addEventListener('mouseleave', startAutoScroll);
+
+        startAutoScroll();
+      });
+    });
+
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+            observer.unobserve(entry.target); // если не нужно повторно
+          }
+        });
+      }, { threshold: 0.2 });
+
+      document.querySelectorAll('.reveal').forEach(el => {
+        observer.observe(el);
+      });
+    });
+
+    function initCarousel() {
+      document.querySelectorAll('.carousel').forEach(carousel => {
+        const prev = carousel.querySelector('.carousel-prev');
+        const next = carousel.querySelector('.carousel-next');
+        const track = carousel.querySelector('.carousel-track');
+
+        let scrollAmount = 300;
+
+        prev?.addEventListener('click', () => {
+          track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+
+        next?.addEventListener('click', () => {
+          track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+      });
+    }
+
+    function openImageModal(src) {
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("modalImage");
+      modalImg.src = src;
+      modal.classList.remove("hidden");
+    }
+
+    document.getElementById("closeModal").addEventListener("click", () => {
+      document.getElementById("imageModal").classList.add("hidden");
+    });
+  </script>
+
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const carousel = document.querySelector('.carousel-models');
+      const track = carousel.querySelector('.carousel-track');
+      const slides = carousel.querySelectorAll('.carousel-img');
+      const prevBtn = carousel.querySelector('.carousel-prev');
+      const nextBtn = carousel.querySelector('.carousel-next');
+
+      let slideWidth = slides[0].offsetWidth + 16; // 16px — gap
+      let currentIndex = 0;
+      let isTransitioning = false;
+      let autoScrollInterval;
+
+      function scrollToIndex(index) {
+        isTransitioning = true;
+        track.style.transition = 'transform 0.6s ease-in-out';
+        track.style.transform = `translateX(-${index * slideWidth}px)`;
+      }
+
+      function goNext() {
+        if (isTransitioning) return;
+        currentIndex++;
+        scrollToIndex(currentIndex);
+
+        if (currentIndex >= slides.length / 2) {
+          setTimeout(() => {
+            track.style.transition = 'none';
+            currentIndex = 0;
+            track.style.transform = `translateX(0px)`;
+          }, 600);
+        }
+      }
+
+      function goPrev() {
+        if (isTransitioning) return;
+        if (currentIndex === 0) {
+          currentIndex = Math.floor(slides.length / 2);
+          track.style.transition = 'none';
+          track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        }
+        currentIndex--;
+        scrollToIndex(currentIndex);
+      }
+
+      function startAutoScroll() {
+        autoScrollInterval = setInterval(goNext, 4000);
+      }
+
+      function stopAutoScroll() {
+        clearInterval(autoScrollInterval);
+      }
+
+      track.addEventListener('transitionend', () => {
+        isTransitioning = false;
+      });
+
+      prevBtn.addEventListener('click', () => {
+        stopAutoScroll();
+        goPrev();
+        startAutoScroll();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        stopAutoScroll();
+        goNext();
+        startAutoScroll();
+      });
+
+      carousel.addEventListener('mouseenter', stopAutoScroll);
+      carousel.addEventListener('mouseleave', startAutoScroll);
+
+      startAutoScroll();
+    });
+  </script>
+
+
+
+  <script>
+    fetch("components/footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById("menuToggle");
+      const menu = document.getElementById("navMenu");
+
+      toggle.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+
+      // lucide icons (если используешь)
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+
+  <script>
+    function flipCard(card) {
+      const inner = card.querySelector('.flip-card-inner');
+      const icon = card.querySelector('.click-icon');
+
+      inner.classList.toggle('rotated');
+
+      if (inner.classList.contains('rotated')) {
+        icon.classList.add('hidden');
+      } else {
+        icon.classList.remove('hidden');
+      }
+    }
+  </script>
+
+
+</body>
+
+</html>
