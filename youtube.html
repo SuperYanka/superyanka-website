@@ -822,26 +822,35 @@
   </script>
 
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      fetch("https://my-flask-app-zjvv.onrender.com/api/youtube-stats")
-        .then(response => response.json())
-        .then(data => {
-          const stats = data.items[0].statistics;
-          const subs = stats.subscriberCount;
-          const views = stats.viewCount;
-          const videos = stats.videoCount;
-          const goal = 100;
-          const leftToGoal = goal - subs;
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    fetch("https://my-flask-app-zjvv.onrender.com/api/youtube-stats")
+      .then(response => response.json())
+      .then(data => {
+        const stats = data.items[0].statistics;
+        const subs = parseInt(stats.subscriberCount);
+        const views = stats.viewCount;
+        const videos = stats.videoCount;
+        const goal = 250;
 
-          document.getElementById("yt-subs").textContent = subs;
-          document.getElementById("yt-views").textContent = views;
-          document.getElementById("yt-videos").textContent = videos;
-          document.getElementById("yt-left").textContent = leftToGoal > 0 ? leftToGoal : "🎉 Цель достигнута!";
-        })
-        .catch(error => console.error("Ошибка загрузки данных YouTube:", error));
-    });
-  </script>
+        const leftToGoal = goal - subs;
+        const percent = Math.min((subs / goal) * 100, 100); // ограничим максимум 100%
+
+        // Обновляем прогресс-бар
+        const bar = document.getElementById("subProgress");
+        bar.style.width = percent + "%";
+
+        // Обновляем подписи
+        document.getElementById("yt-subs").textContent = subs;
+        document.getElementById("yt-views").textContent = views;
+        document.getElementById("yt-videos").textContent = videos;
+        document.getElementById("yt-left").textContent =
+          leftToGoal > 0 ? leftToGoal : "🎉 Цель достигнута!";
+      })
+      .catch(error => console.error("Ошибка загрузки данных YouTube:", error));
+  });
+</script>
+
 
   <script>
     fetch("components/footer.html")
