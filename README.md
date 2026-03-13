@@ -57,7 +57,7 @@ Neon portfolio site with music & projects | EN/UA translations coming soon
 
 ## 📫 Контакты
 
-Если хочешь оставить сообщение, используй [форму обратной связи на сайте](https://superyanka-website.netlify.app/#contact)  
+Если хочешь оставить сообщение, используй [форму обратной связи на сайте](https://superyanka-website.netlify.app/contact)  
 Или пиши на 📧 superyanka13@gmail.com
 
 ---
