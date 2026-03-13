@@ -124,6 +124,29 @@ bg-opacity-50 bg-deepblue sm:bg-transparent z-40 px-4 sm:px-0 py-2 sm:py-0 text-
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 max-w-6xl mx-auto">
 
 
+        <!-- Бакалаврский проект -->
+
+        <div
+        class="project-card bg-deepblue bg-opacity-60 p-6 rounded-xl border-2 border-neon hover:scale-105 hover:shadow-[0_0_25px_#00ffe1] transition duration-300 cursor-pointer"
+        data-aos="fade-up" data-aos-delay="300" onclick="openModal({
+     title: 'Автоматизация управления вакуумной дистилляцией',
+          desc: ' Проект для бакалаврской работы: автоматизация процесса вакуумной дистилляции перегонки мазуту для разделения оливных фракций.'+ 
+          ' Проведено анализ и математичекое моделирования радиационно-конвективной печи для нагревания мазуту преред подачей в колону. ' +
+          ' Реализована система PI и MPC -регулирования температуры на выходе печи. Разработан щит управления подготовки мазуту перед подачей в колону. ' +
+           ' Проект выполнен в Matlab и Simulink с использование Model Predictive Control Toolbox ',
+          links: [
+            { label: 'GitHub', url: 'https://github.com/SuperYanka/vacuum-distillation-control-system' }
+          ]
+        })">
+
+        <img src="assets/projects/automation_scheme.png" alt="Автоматизация управления вакуумной дистилляцией"
+          class="w-full h-40 object-cover rounded mb-4 border border-neon cursor-zoom-in"
+          onclick="event.stopPropagation(); openImageModal(this.src)" />
+
+        <h3 class="text-xl font-semibold text-neon mb-2">Автоматизация управления вакуумной дистилляцией</h3>
+        <p class="text-aqua text-sm mb-4">Проект для бакалаврской работы: автоматизация процесса вакуумной дистилляции. Математическое моделирование печи. Реализованы PI и MPC-регулирование. Щит управления.</p>
+        <span class="text-neon underline">Подробнее →</span>
+      </div>
 
 
       <!-- Проект: Airbnb NYC -->
@@ -222,24 +245,7 @@ desc: 'Личный сайт Super Yanka — креативное портфол
 
       <!-- In future -->
 
-      <div
-        class="project-card bg-deepblue bg-opacity-60 p-6 rounded-xl border-2 border-neon hover:scale-105 hover:shadow-[0_0_25px_#00ffe1] transition duration-300 cursor-pointer"
-        data-aos="fade-up" data-aos-delay="300" onclick="openModal({
-     title: 'Soon',
-          desc: 'Soon...',
-          links: [
-            { label: 'GitHub', url: 'https://github.com/superyanka/' }
-          ]
-        })">
 
-        <img src="assets/projects/soon.png" alt="soon"
-          class="w-full h-40 object-cover rounded mb-4 border border-neon cursor-zoom-in"
-          onclick="event.stopPropagation(); openImageModal(this.src)" />
-
-        <h3 class="text-xl font-semibold text-neon mb-2">Soon...</h3>
-        <p class="text-aqua text-sm mb-4">Soon...</p>
-        <span class="text-neon underline">Подробнее →</span>
-      </div>
 
 
 
