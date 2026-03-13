@@ -9,8 +9,6 @@ Neon portfolio site with music & projects | EN/UA translations coming soon
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![Built with ❤️](https://img.shields.io/badge/Built%20with-%E2%9D%A4-red)
 ![i18n](https://img.shields.io/badge/Localization-in%20progress-blueviolet?logo=translate)
-![Made in Ukraine](https://img.shields.io/badge/Made%20in-Ukraine-005BBB?logo=flag&labelColor=FFD500)
-![visitors](https://visitor-badge.laobi.icu/badge?page_id=SuperYanka.superyanka-website)
 ![Made with ChatGPT](https://img.shields.io/badge/Made%20with-ChatGPT-00b26a?logo=openai&logoColor=white&style=flat)
 ![Made by SuperYanka & ChatGPT](https://img.shields.io/badge/Made%20by-SuperYanka%20%26%20ChatGPT-00ffe1?logo=openai&logoColor=black&style=flat-square)
 
